@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'app/services/user-services/models/user';
+import { UserService } from 'app/services/user-services/user.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,11 @@ export class LoginComponent implements OnInit {
 
     data : Date = new Date();
 
-    constructor() { }
+    public user:User=null;
+    usern:string;
+    passw:string;
+
+    constructor(private userService: UserService) { }
 
     ngOnInit() {
         var body = document.getElementsByTagName('body')[0];
@@ -27,6 +34,12 @@ export class LoginComponent implements OnInit {
         body.classList.remove('login');
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.remove('navbar-transparent');
+    }
+
+    onSubmit(form)
+    {
+        this.userService.login(this.usern,this.passw).subscribe(u=>this.user=u);
+        console.log(this.user);
     }
 
 }

@@ -42,7 +42,8 @@ import { Page500Component } from './page500/page500.component';
         AgmCoreModule.forRoot({
             apiKey: 'NO_API_KEY'
         }),
-        ImageUploadModule
+        ImageUploadModule,
+        FormsModule
     ],
     declarations: [
         ExamplesComponent,
