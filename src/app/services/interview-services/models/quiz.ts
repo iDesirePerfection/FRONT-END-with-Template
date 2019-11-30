@@ -1,9 +1,12 @@
+import { Interview } from "./interview";
+import { Question } from "./question";
+
 export interface Quiz{
     id:number;
     score:number;
     state:string;
-    questions:any[];
+    questions:Question[];
     candidate:any;
     jobOffer:any;
-    interview:any;
+    interview:Interview;
 }
