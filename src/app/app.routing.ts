@@ -25,7 +25,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { Page422Component } from './pages/page422/page422.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
-
+import { ClaimsComponent } from './pages/claims/claims.component';
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
     { path: 'components',           component: ComponentsComponent },
@@ -49,6 +49,7 @@ const routes: Routes =[
     { path: 'pages/page404',     component: Page404Component },
     { path: 'pages/page422',     component: Page422Component },
     { path: 'pages/page500',     component: Page500Component },
+    { path: 'pages/claims',   component: ClaimsComponent },
     { path: '', redirectTo: 'presentation', pathMatch: 'full' }
 ];
 

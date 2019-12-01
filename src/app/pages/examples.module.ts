@@ -29,6 +29,7 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { Page404Component } from './page404/page404.component';
 import { Page422Component } from './page422/page422.component';
 import { Page500Component } from './page500/page500.component';
+import { ClaimsComponent } from './claims/claims.component';
 
 @NgModule({
     imports: [
@@ -64,7 +65,8 @@ import { Page500Component } from './page500/page500.component';
         TwitterComponent,
         Page404Component,
         Page422Component,
-        Page500Component
+        Page500Component,
+        ClaimsComponent
     ]
 })
 export class ExamplesModule { }
