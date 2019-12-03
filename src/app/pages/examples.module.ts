@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { NouisliderModule } from 'ng2-nouislider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -38,6 +38,15 @@ import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
 
 
+
+import { ExperienceComponent } from './experience/experience.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddExperienceFormComponent } from './add-experience-form/add-experience-form.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EditExperienceFormComponent } from './edit-experience-form/edit-experience-form.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -53,7 +62,15 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
         ImageUploadModule,
         FormsModule,
         Ng2SearchPipeModule,
-        RouterModule
+        RouterModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        BrowserAnimationsModule,
+
+
+        
+        
+        
     ],
     declarations: [
         ExamplesComponent,
@@ -79,12 +96,24 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
-        MyjobofferlistPageComponent
+        MyjobofferlistPageComponent,
+        ExperienceComponent,
     ],
     exports: [
         
         Ng2SearchPipeModule,
         RouterModule
+        
+        
+        
+        
+
+    ],
+    entryComponents: [
+        AddExperienceFormComponent,
+        EditExperienceFormComponent,
+        
+        
     ]
 })
 export class ExamplesModule { }
