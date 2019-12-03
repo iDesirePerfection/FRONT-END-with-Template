@@ -32,10 +32,12 @@ import { AgmCoreModule } from '@agm/core';
         ProjectsComponent,
         PricingComponent,
         TestimonialsComponent,
-        ContactsComponent
+        ContactsComponent,
+        
     ],
     exports: [
-        SectionsComponent
+        SectionsComponent,
+        RouterModule
     ]
 })
 export class SectionsModule { }

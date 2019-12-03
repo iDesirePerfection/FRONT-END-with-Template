@@ -1,3 +1,5 @@
+import { Entprofile } from "app/services/enterprise-services/models/entprofile";
+
 export interface User{
     id:number;
     email:string;
@@ -16,7 +18,7 @@ export interface User{
     interests:string;
     accountCreationDate:Date;
     // TODO:change any to their types
-    entreprise:any;
+    enterprise:Entprofile;
     Posts:any[];
     Reactions:any[];
     Messages:any[];
