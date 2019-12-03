@@ -41,17 +41,25 @@ export class ExperienceComponent implements OnInit {
     });
   }
 
-  editExperience(exp:any): void {
-    const dialogRef = this.dialog.open(AddExperienceFormComponent, {
+  editExperience(exp:Experience): void {
+    const dialogRef = this.dialog.open(EditExperienceFormComponent, {
       width: '400px',
       data: exp,
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
-    this.experiencesService.addExperienceToCandidate(result.designation,result.type,result.startDate,result.endDate,1).subscribe(exp=>{
-      console.log(exp);
-      this.experiences.push(exp);
+    this.experiencesService.updateExperience(result.id,result.designation,result.type,result.startDate,result.endDate).subscribe(exp=>{
+      var i;
+      for(i=0;i<this.experiences.length;i++)
+      {
+        if(result.id==this.experiences[i].id)
+        {
+          // TODO fix date after update, displays as object for some reasons..
+          this.experiences[i]=result;
+          break;
+        }
+      }
+
     });
 
     });
@@ -70,6 +78,10 @@ export class ExperienceComponent implements OnInit {
     }
 
     this.experiencesService.deleteExperience(id.toString(),'1').subscribe();
+  }
+
+  test() {
+    this.experiences[0].startDate= new Date();
   }
 
 }

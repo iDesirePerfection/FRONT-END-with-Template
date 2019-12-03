@@ -47,6 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditExperienceFormComponent } from './edit-experience-form/edit-experience-form.component';
+import { SkillComponent } from './skill/skill.component';
+import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -98,22 +100,19 @@ import { EditExperienceFormComponent } from './edit-experience-form/edit-experie
         ListeventPageComponent,
         MyjobofferlistPageComponent,
         ExperienceComponent,
+        SkillComponent,
     ],
     exports: [
         
         Ng2SearchPipeModule,
-        RouterModule
-        
-        
-        
-        
-
+        RouterModule,
+       
     ],
     entryComponents: [
         AddExperienceFormComponent,
         EditExperienceFormComponent,
-        
-        
+
+        AddSkillFormComponent
     ]
 })
 export class ExamplesModule { }

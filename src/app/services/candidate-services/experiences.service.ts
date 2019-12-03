@@ -27,6 +27,10 @@ export class ExperiencesService {
     addExperienceToCandidate(designation:string,type:string,startDate:any,endDate:any,candidateId:number): Observable<Experience> {
        return this.httpClient.post<Experience>(environment.backend_url+ 'candidate/addExperience?designation='+designation+'&type='+type+'&startDate='+this.convertDateToString(startDate)+'&endDate='+this.convertDateToString(endDate)+'&candidateID='+candidateId,null);
     }
+    updateExperience(candidateId:number,designation:string,type:string,startDate:any,endDate:any): Observable<Experience> {
+        return this.httpClient.put<Experience>(environment.backend_url+ 'candidate/updateExperience?id='+candidateId+'&designation='+designation+'&type='+type+'&startDate='+this.convertDateToString(startDate)+'&endDate='+this.convertDateToString(endDate),null);
+     }
+    
 
     deleteExperience(experienceId:string,candidateId:string) : Observable<{}>
     {
