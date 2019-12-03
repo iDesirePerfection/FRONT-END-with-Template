@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Interview } from './models/interview';
 
 @Injectable({ providedIn: 'root' })
-export class UserService {
+export class InterviewService {
     constructor(private httpClient: HttpClient) { }
     deleteInterview(interviewId: number): Observable<{}> {
         return this.httpClient.delete(environment.backend_url + 'interviews/deleteInterview?id=' + interviewId);

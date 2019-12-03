@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PresentationComponent } from './presentation/presentation.component';
@@ -25,30 +25,32 @@ import { Page404Component } from './pages/page404/page404.component';
 import { Page422Component } from './pages/page422/page422.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
-const routes: Routes =[
-    { path: 'presentation',         component: PresentationComponent },
-    { path: 'components',           component: ComponentsComponent },
-    { path: 'sections',             component: SectionsComponent },
-    { path: 'nucleoicons',          component: NucleoiconsComponent },
-    { path: 'pages/aboutus',     component: AboutusComponent },
-    { path: 'pages/addproduct',  component: AddproductComponent },
-    { path: 'pages/blogpost',    component: BlogpostComponent },
-    { path: 'pages/blogposts',   component: BlogpostsComponent },
-    { path: 'pages/contactus',   component: ContactusComponent },
-    { path: 'pages/discover',    component: DiscoverComponent },
-    { path: 'pages/ecommerce',   component: EcommerceComponent },
-    { path: 'pages/landing',     component: LandingComponent },
-    { path: 'pages/login',       component: LoginComponent },
+const routes: Routes = [
+    { path: 'presentation', component: PresentationComponent },
+    { path: 'pages/quizSpace', component: QuizComponent },
+    { path: 'components', component: ComponentsComponent },
+    { path: 'sections', component: SectionsComponent },
+    { path: 'nucleoicons', component: NucleoiconsComponent },
+    { path: 'pages/aboutus', component: AboutusComponent },
+    { path: 'pages/addproduct', component: AddproductComponent },
+    { path: 'pages/blogpost', component: BlogpostComponent },
+    { path: 'pages/blogposts', component: BlogpostsComponent },
+    { path: 'pages/contactus', component: ContactusComponent },
+    { path: 'pages/discover', component: DiscoverComponent },
+    { path: 'pages/ecommerce', component: EcommerceComponent },
+    { path: 'pages/landing', component: LandingComponent },
+    { path: 'pages/login', component: LoginComponent },
     { path: 'pages/productpage', component: ProductpageComponent },
-    { path: 'pages/profile',     component: ProfileComponent },
-    { path: 'pages/register',    component: RegisterComponent },
-    { path: 'pages/search',      component: SearchComponent },
-    { path: 'pages/settings',    component: SettingsComponent },
-    { path: 'pages/twitter',     component: TwitterComponent },
-    { path: 'pages/page404',     component: Page404Component },
-    { path: 'pages/page422',     component: Page422Component },
-    { path: 'pages/page500',     component: Page500Component },
+    { path: 'pages/profile', component: ProfileComponent },
+    { path: 'pages/register', component: RegisterComponent },
+    { path: 'pages/search', component: SearchComponent },
+    { path: 'pages/settings', component: SettingsComponent },
+    { path: 'pages/twitter', component: TwitterComponent },
+    { path: 'pages/page404', component: Page404Component },
+    { path: 'pages/page422', component: Page422Component },
+    { path: 'pages/page500', component: Page500Component },
     { path: '', redirectTo: 'presentation', pathMatch: 'full' }
 ];
 
@@ -56,8 +58,8 @@ const routes: Routes =[
     imports: [
         CommonModule,
         BrowserModule,
-        RouterModule.forRoot(routes,{
-          useHash: true
+        RouterModule.forRoot(routes, {
+            useHash: true
         })
     ],
     exports: [

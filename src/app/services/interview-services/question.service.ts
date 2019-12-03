@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Question } from './models/question';
 
 @Injectable({ providedIn: 'root' })
-export class UserService {
+export class QuestionService {
     constructor(private httpClient: HttpClient) { }
     addQuestion(question: string): Observable<Question> {
 

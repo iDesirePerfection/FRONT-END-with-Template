@@ -1,0 +1,49 @@
+<div class="section section-gray">
+    <div class="container tim-container">
+        <div class="title">
+            <h3>Tables</h3>
+        </div>
+        <h4>Simple Table</h4>
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <h4 class="title">
+                    <small>Simple With Actions</small>
+                </h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Candidate Name</th>
+                                <th>quiz score</th>
+                                <th>quiz state</th>
+                                <th class="text-right">questions</th>
+                                <th class="text-right">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let l of list">
+                                <td class="text-center">{{l.candidate.firstName}} {{l.candidate.lastName}}</td>
+                                <td>{{l.score}}</td>
+                                <td>{{l.state}}</td>
+                                <td class="text-right"> {{l.questions.length}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" ngbTooltip="set up an interview" (click)="setInterview(l.id)"
+                                        class="btn btn-info btn-link btn-sm">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                    <button type="button" ngbTooltip="Edit Profile"
+                                        class="btn btn-success btn-link btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" ngbTooltip="Remove" class="btn btn-danger btn-link btn-sm" (click)="cancelQuiz(l.id)">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

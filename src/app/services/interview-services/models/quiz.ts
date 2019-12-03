@@ -6,7 +6,7 @@ export interface Quiz{
     score:number;
     state:string;
     questions:Question[];
-    candidate:any;
-    jobOffer:any;
+    candidate:any[];
+    jobOffer:any[];
     interview:Interview;
 }
