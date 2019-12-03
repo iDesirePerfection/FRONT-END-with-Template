@@ -33,28 +33,24 @@
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
                     <h3 class="title"><small>Or drop us a note</small></h3>
-                    <form class="contact" (ngSubmit)="onSubmit(claimForm)">
+                    <form class="contact" #claimForm="ngForm" (ngSubmit)="onSubmit(claimForm)">
+                      
+                           
+                        <input type="text" class="form-control" rows="7" name="username" placeholder="Username" [(ngModel)]="usern" #username="ngModel">
+                            
+                       
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="usern" #username="ngModel">
+                                <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="mail" #email="ngModel">
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Last Name"[(ngModel)]="usern" #username="ngModel">
+                                <input type="text" class="form-control" placeholder="Subject" name="subject" [(ngModel)]="subj" #subject="ngModel">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Email" [(ngModel)]="usern" #username="ngModel">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Subject" [(ngModel)]="usern" #username="ngModel">
-                            </div>
-                        </div>
-                        <textarea class="form-control" placeholder="Message" rows="7" [(ngModel)]="usern" #username="ngModel"></textarea>
-
+                        <textarea class="form-control" placeholder="Message" rows="7" [(ngModel)]="desc" name="description" #description="ngModel"></textarea>
                         <div class="row">
                             <div class="col-md-6 ml-auto mr-auto">
-                                <button class="btn btn-primary btn-block btn-round">Send </button>
+                                <button type="submit" class="btn btn-primary btn-block btn-round">Send </button>
                             </div>
                         </div>
                     </form>

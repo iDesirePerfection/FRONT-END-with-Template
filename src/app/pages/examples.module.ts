@@ -30,6 +30,7 @@ import { Page404Component } from './page404/page404.component';
 import { Page422Component } from './page422/page422.component';
 import { Page500Component } from './page500/page500.component';
 import { ClaimsComponent } from './claims/claims.component';
+import { PackComponent } from './pack/pack.component';
 
 @NgModule({
     imports: [
@@ -66,7 +67,8 @@ import { ClaimsComponent } from './claims/claims.component';
         Page404Component,
         Page422Component,
         Page500Component,
-        ClaimsComponent
+        ClaimsComponent,
+        PackComponent
     ]
 })
 export class ExamplesModule { }

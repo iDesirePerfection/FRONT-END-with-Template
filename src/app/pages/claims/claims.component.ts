@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Claim } from 'app/services/claims-services/models/claim';
+import { ClaimsService } from 'app/services/claims-services/claims.service';
 
 @Component({
   selector: 'app-claims',
@@ -12,7 +14,7 @@ export class ClaimsComponent implements OnInit {
   styles: any[] = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}];
   data : Date = new Date();
 
-constructor() { }
+constructor(private claimService: ClaimsService) { }
 
 ngOnInit() {
     var body = document.getElementsByTagName('body')[0];
@@ -29,4 +31,17 @@ ngOnDestroy(){
     navbar.classList.add('navbar-transparent');
 
 }
+
+    public claim:Claim=null;
+    usern:string;
+    mail:string;
+    subj:string;
+    desc:string;
+
+    onSubmit(form)
+    {
+        this.claimService.addClaim(this.desc,this.subj,1,1).subscribe(u=>this.claim=u);
+        console.log(this.claim);
+    }
+    
 }
