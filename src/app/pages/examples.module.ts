@@ -31,6 +31,14 @@ import { Page422Component } from './page422/page422.component';
 import { Page500Component } from './page500/page500.component';
 import { ClaimsComponent } from './claims/claims.component';
 import { PackComponent } from './pack/pack.component';
+import { EntprofilePageComponent } from './enterprise-pages/entprofile-page/entprofile-page.component';
+import { EnterpriseprofilePageComponent } from './enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
+import { ListjobofferPageComponent } from './enterprise-pages/listjoboffer-page/listjoboffer-page.component';
+import { ListeventPageComponent } from './enterprise-pages/listevent-page/listevent-page.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RouterModule } from '@angular/router';
+import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+
 
 @NgModule({
     imports: [
@@ -45,7 +53,10 @@ import { PackComponent } from './pack/pack.component';
             apiKey: 'NO_API_KEY'
         }),
         ImageUploadModule,
-        FormsModule
+        
+        FormsModule,
+        Ng2SearchPipeModule,
+        RouterModule
     ],
     declarations: [
         ExamplesComponent,
@@ -68,7 +79,17 @@ import { PackComponent } from './pack/pack.component';
         Page422Component,
         Page500Component,
         ClaimsComponent,
-        PackComponent
+        PackComponent,
+        EntprofilePageComponent,
+        EnterpriseprofilePageComponent,
+        ListjobofferPageComponent,
+        ListeventPageComponent,
+        MyjobofferlistPageComponent
+    ],
+    exports: [
+        
+        Ng2SearchPipeModule,
+        RouterModule
     ]
 })
 export class ExamplesModule { }

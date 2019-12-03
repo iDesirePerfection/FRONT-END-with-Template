@@ -27,6 +27,12 @@ import { Page500Component } from './pages/page500/page500.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { ClaimsComponent } from './pages/claims/claims.component';
 import { PackComponent } from './pages/pack/pack.component';
+import { EntprofilePageComponent } from './pages/enterprise-pages/entprofile-page/entprofile-page.component';
+import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
+import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
+import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/listevent-page.component';
+import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
     { path: 'components',           component: ComponentsComponent },
@@ -52,7 +58,14 @@ const routes: Routes =[
     { path: 'pages/page500',     component: Page500Component },
     { path: 'pages/claims',   component: ClaimsComponent },
     { path: 'pages/pack',   component: PackComponent },
-    { path: '', redirectTo: 'presentation', pathMatch: 'full' }
+    { path: '', redirectTo: 'presentation', pathMatch: 'full' },
+  
+    { path: 'pages/enterprise-pages/entprofile-page',       component: EntprofilePageComponent },
+    { path: 'pages/enterprise-pages/enterpriseprofile-page/:entId',       component: EnterpriseprofilePageComponent },
+    { path: 'pages/enterprise-pages/listjoboffer-page',       component: ListjobofferPageComponent },
+    { path: 'pages/enterprise-pages/listevent-page',       component: ListeventPageComponent },
+    { path: 'pages/enterprise-pages/myjobofferlist-page',       component: MyjobofferlistPageComponent },
+    
 ];
 
 @NgModule({

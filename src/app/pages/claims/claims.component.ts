@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Claim } from 'app/services/claims-services/models/claim';
+
 import { ClaimsService } from 'app/services/claims-services/claims.service';
+import { Claim } from 'app/services/claims-services/model/claim';
 
 @Component({
   selector: 'app-claims',

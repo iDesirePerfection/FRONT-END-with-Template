@@ -12,7 +12,7 @@ export class PackComponent implements OnInit {
   constructor(private packService:PackService) { }
   listPack:Pack[]=null;
   
-  ngOnInit() {
+  ngOnInit() {  
     this.packService.getAllPacks().subscribe(u=>this.listPack=u);
     console.log(this.listPack);
   }

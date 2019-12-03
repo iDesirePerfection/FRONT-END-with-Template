@@ -1,6 +1,7 @@
-import { User } from "app/services/user-services/models/user";
+
 import { Pack } from "app/services/pack-service/model/pack";
 import { Payement } from "app/services/Payement/model/payement";
+import { User } from "app/services/user-services/model/user";
 
 export interface UserPack{
     id:number;

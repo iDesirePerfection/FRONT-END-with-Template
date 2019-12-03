@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Claim } from './models/claim';
+
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
+import { Claim } from './model/claim';
 
 
 
@@ -33,4 +34,6 @@ export class ClaimsService {
      {
      return this.httpClient.delete(environment.backend_url+ 'claim/deleteClaim?id='+claimId);
      }
+    
+
 }

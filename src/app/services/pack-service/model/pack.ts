@@ -1,4 +1,5 @@
-import { User } from "app/services/user-services/models/user";
+import { User } from "app/services/user-services/model/user";
+
 
 export interface Pack{
     id:number;

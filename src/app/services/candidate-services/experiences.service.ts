@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Experience } from './models/experience.model';
+<<<<<<< HEAD
 
 import { map, catchError } from 'rxjs/operators';
 import { environment } from 'environments/environment';
+=======
+import { environment } from 'src/environments/environment';
+import { map, catchError } from 'rxjs/operators';
+>>>>>>> b214d18285827c91e9a79c6631cee7a56be3963d
 
 @Injectable({ providedIn: 'root' })
 export class ExperiencesService {
