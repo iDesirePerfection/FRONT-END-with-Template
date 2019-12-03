@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
     data : Date = new Date();
 
-    public user:User=null;
+    public user:User;
     usern:string;
     passw:string;
 
@@ -39,6 +39,16 @@ export class LoginComponent implements OnInit {
     onSubmit(form)
     {
         this.userService.login(this.usern,this.passw).subscribe(u=>this.user=u);
+        
+        localStorage.setItem('id', this.user.id.toString());
+        localStorage.setItem('email', this.user.email.toString());
+        localStorage.setItem('firstname', this.user.firstName.toString());
+        localStorage.setItem('lastname', this.user.lastName.toString());
+        localStorage.setItem('password', this.user.password.toString());
+        localStorage.setItem('username', this.user.username.toString());
+        localStorage.setItem('role', this.user.role.toString());
+        localStorage.setItem('interests', this.user.interests.toString());
+        localStorage.setItem('entid', this.user.enterprise.eid.toString());
         console.log(this.user);
     }
 
