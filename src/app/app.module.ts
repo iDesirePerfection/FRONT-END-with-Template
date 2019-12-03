@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
         ComponentsModule,
         ExamplesModule,
         HttpClientModule,
+        
     ],
     providers: [],
     bootstrap: [AppComponent]

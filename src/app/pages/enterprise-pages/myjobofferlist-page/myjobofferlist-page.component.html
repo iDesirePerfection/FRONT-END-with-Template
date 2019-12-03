@@ -1,0 +1,138 @@
+<div class="page-header page-header-small" style="background-image: url('./assets/img/sections/gerrit-vermeulen.jpg');">
+    <div class="filter filter-danger"></div>
+    <div class="content-center">
+        <div class="container">
+            <h1> A place to find a job <br /> list of joboffers.</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+<h4>Our Enterprise Joboffer List</h4>
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <h4 class="title">
+                    <small>manipulate our joboffers</small>
+                </h4>
+                <div class="table-responsive" >
+                    <table class="table">
+                        <thead>
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th class="text-center">Title</th>
+                              <th>date</th>
+                              <th >description</th>
+                              <th class="text-right">area</th>
+                              <th class="text-right">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let j of myjoboffers ; index as i">
+                                    <td class="text-center">{{j.joid}}</td>
+                                <td class="text-center">{{j.jotitle}}</td>
+                                <td>{{j.jodate}}</td>
+                                <td>{{j.jodescription}}</td>
+                                <td class="text-right" > {{j.joarea}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" ngbTooltip="View Profile" class="btn btn-info btn-link btn-sm">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                    <button (click)="Opena(ajout,j.joid,j.jotitle,j.joarea,j.jodescription,j.joexperience,j.interests)" type="button" ngbTooltip="Edit joboffer" class="btn btn-success btn-link btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" ngbTooltip="Remove" class="btn btn-danger btn-link btn-sm">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+   <!--popup settings-->
+
+   <ng-template #ajout let-modal1>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal1-basic-title">Update Profile</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+
+
+                <div class="wrapper">
+                        <div class="main">
+                            <div class="section">
+                                <div class="container">
+                                    <h3></h3>
+                                    <form #updateformm="ngForm" (ngSubmit)="updateJoboffer()">
+                                        
+                    
+                                            <div class="col-md-7 col-sm-7">
+                                                <div class="form-group">
+                                                    <h6>Title <span class="icon-danger">*</span></h6>
+                                                    <input type="text" style="width: 350px;" class="form-control border-input"  placeholder="title" name="JOtitle" [(ngModel)]="updateform.JOtitle" #JOtitle="ngModel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Area <span class="icon-danger">*</span></h6>
+                                                    <input type="text" style="width: 350px;" class="form-control border-input"  placeholder="area" name="JOarea" [(ngModel)]="updateform.JOarea" #JOarea="ngModel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Experience <span class="icon-danger">*</span></h6>
+                                                    <input type="text" style="width: 350px;" class="form-control border-input"  placeholder="experience" name="JOexperience" [(ngModel)]="updateform.JOexperience" #JOexperience="ngModel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Interests <span class="icon-danger">*</span></h6>
+                                                    <input type="text"  style="width: 80px;"class="form-control border-input"  placeholder="interests" name="interests" [(ngModel)]="updateform.interests" #interests="ngModel">                                                       
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Description</h6>
+                                                            <textarea style="width: 350px;" class="form-control textarea-limited"  rows="13" maxlength="150"   placeholder="description" name="JOdescription" [(ngModel)]="updateform.JOdescription" #JOdescription="ngModel" ></textarea>
+                                                </div>
+                                            </div>               
+                                         
+                    
+                    
+                                        <div class="row buttons-row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <button class="btn btn-outline-danger btn-block btn-round" (click)="modal1.dismiss('Cross click')">Cancel</button>
+                                            </div>
+                                            <div>
+                                                ___________________
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <button type="submit" class="btn btn-outline-primary btn-block btn-round">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+
+
+        </div>
+      </ng-template>
+

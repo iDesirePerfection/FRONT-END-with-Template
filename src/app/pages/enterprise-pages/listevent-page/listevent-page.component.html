@@ -1,0 +1,81 @@
+<div class="wrapper">
+        <div class="main">
+            <div class="section section-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 ml-auto mr-auto text-center title">
+                            <h2>A place for selfImproving</h2>
+                            <h3 class="title-uppercase"><small>our Enterprises offer you some Events and Workshops</small></h3>
+                        </div>
+                    </div>
+                    <div class="article">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto" *ngFor="let e of events;index as i">
+                                <div class="card card-blog card-plain text-center">
+                                    <div class="container2">
+                                        
+                                            <img src="./assets/img/sections/bruno-abatti.jpg" alt="Norway" style="width:100%;">
+                                            <div class="text-block">
+                                                    <h4>{{e.eeprice}}</h4>
+                                                    <p>Dinars</p>
+                                                  </div>
+                                            
+                                        
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-category">
+                                            <span class="label label-primary main-tag">{{e.enterprise.ename}}</span>
+                                        </div>
+                                        <a href="javascrip: void(0);">
+                                            <h3 class="card-title">{{e.eetitle}}</h3>
+                                        </a>
+                                        <div class="card-description">
+                                            <p>{{e.eedescription}}</p>
+                                        </div>
+                                        <h6 class="card-category text-info" ><i class="fa fa-map-marker"></i>location : {{e.eeplace}}</h6>
+                                        <h6 class="title-uppercase">{{e.eesdate}} To {{e.eeedate}}</h6>
+                                    </div>
+                                    <button class="btn btn-danger btn-round btn-sm" (click)="Participate(e.eeid)">Participate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-left">
+                                <button class="btn btn-link btn-default btn-move-left btn-sm"> <i class="fa fa-angle-left"></i> Older Posts</button>
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-link btn-default btn-move-right btn-sm">Newer Posts  <i class="fa fa-angle-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    <footer class="footer footer-black">
+            <div class="container">
+                <div class="row">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                            <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                            <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                        </ul>
+                    </nav>
+                    <div class="credits ml-auto">
+                        <span class="copyright">
+                            © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
