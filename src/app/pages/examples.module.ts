@@ -101,6 +101,9 @@ import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component
         MyjobofferlistPageComponent,
         ExperienceComponent,
         SkillComponent,
+        AddExperienceFormComponent,
+        EditExperienceFormComponent,
+        AddSkillFormComponent
     ],
     exports: [
         
@@ -111,7 +114,6 @@ import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component
     entryComponents: [
         AddExperienceFormComponent,
         EditExperienceFormComponent,
-
         AddSkillFormComponent
     ]
 })

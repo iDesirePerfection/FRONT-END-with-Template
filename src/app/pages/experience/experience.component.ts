@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddExperienceFormComponent } from '../add-experience-form/add-experience-form.component';
+
 import { Experience } from 'app/services/candidate-services/models/experience.model';
 import { ExperiencesService } from 'app/services/candidate-services/experiences.service';
-import { DialogData } from '../add-experience-form/DialogData';
+import { DialogData } from 'app/pages/add-experience-form/DialogData';
 import { EditExperienceFormComponent } from '../edit-experience-form/edit-experience-form.component';
+import { AddExperienceFormComponent } from '../add-experience-form/add-experience-form.component';
 
 
 @Component({
