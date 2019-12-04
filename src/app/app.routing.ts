@@ -31,10 +31,12 @@ import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpr
 import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
 import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/listevent-page.component';
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { InterviewComponent } from './pages/interview/interview.component';
 
 const routes: Routes = [
     { path: 'presentation', component: PresentationComponent },
     { path: 'pages/quizSpace', component: QuizComponent },
+    { path: 'pages/quizSpace/interviews/:id', component: InterviewComponent },
     { path: 'components', component: ComponentsComponent },
     { path: 'sections', component: SectionsComponent },
     { path: 'nucleoicons', component: NucleoiconsComponent },

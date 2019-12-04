@@ -15,9 +15,9 @@ export class QuizService {
     deleteQuiz(quizId: number): Observable<{}> {
         return this.httpClient.delete(environment.backend_url + 'quiz/deleteQuiz?id=' + quizId);
     }
-    displayQuiz(id: number): Observable<Quiz[]> {
+    displayQuiz(id: number): Observable<Quiz> {
 
-        return this.httpClient.get<Quiz[]>(environment.backend_url + 'quiz/getQuiz?id=' + id);
+        return this.httpClient.get<Quiz>(environment.backend_url + 'quiz/getQuiz?id=' + id);
     }
     assignQuestion(idQuiz: number, idQuestion: number): Observable<{}> {
         return this.httpClient.put<Quiz>(environment.backend_url + 'quiz/assignQuestion?idQuiz=' + idQuiz + '&idQuestion=' + idQuestion, null);

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/filter';
 import { Location, PopStateEvent } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
+
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
@@ -13,7 +14,7 @@ var navbarHeight = 0;
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
     private _router: Subscription;

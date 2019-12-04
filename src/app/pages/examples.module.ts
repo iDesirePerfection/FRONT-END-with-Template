@@ -38,6 +38,7 @@ import { ListeventPageComponent } from './enterprise-pages/listevent-page/listev
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { InterviewComponent } from './interview/interview.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
-        MyjobofferlistPageComponent
+        MyjobofferlistPageComponent,
+        InterviewComponent
     ],
     exports: [
         
