@@ -25,13 +25,16 @@ export class PackService {
 
     addReduction(id:number,reduction:number,dateDebut:Date,dateFin:Date):Observable<Pack>
     {
-        return this.httpClient.put<Pack>(environment.backend_url + 'pack/addReduction/'+id+'?reduction='+reduction+'&dateDebut='+dateDebut+'&dateFin='+dateFin,null);
+        return this.httpClient.put<Pack>(environment.backend_url +'pack/addReduction/'+id+'?reduction='+reduction+'&dateDebut=2019-10-30&dateFin=2019-11-10',null);
     }
-    deletePack(id:number):Observable<{}>{
-        return this.httpClient.delete(environment.backend_url+'pack/deletePack?id='+id);
+    deletePack(id:number):Observable<string>{
+        return this.httpClient.delete<string>(environment.backend_url+'pack/deletePack?id='+id);
     }
     payPack(id:number):Observable<Pack>{
         return this.httpClient.put<Pack>(environment.backend_url+'pack/payPack/'+id,null);
+    }
+    getPackById(id:number):Observable<Pack>{
+        return this.httpClient.get<Pack>(environment.backend_url+'pack/pack/'+id);
     }
     
 }

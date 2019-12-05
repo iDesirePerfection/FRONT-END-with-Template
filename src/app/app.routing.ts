@@ -32,6 +32,9 @@ import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpr
 import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
 import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/listevent-page.component';
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { PackAdminComponent } from './pages/pack-admin-pages/pack-admin/pack-admin.component';
+import { EditPackAdminComponent } from './pages/pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
+import { ShowPackDetailsComponent } from './pages/pack-admin-pages/show-pack-details/show-pack-details.component';
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -58,6 +61,9 @@ const routes: Routes =[
     { path: 'pages/page500',     component: Page500Component },
     { path: 'pages/claims',   component: ClaimsComponent },
     { path: 'pages/pack',   component: PackComponent },
+    { path: 'pages/pack-admin-pages/packAdmin',  component: PackAdminComponent },
+    { path: 'pages/pack-admin-pages/editPackAdmin/:packId',   component: EditPackAdminComponent },
+    { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
     { path: '', redirectTo: 'presentation', pathMatch: 'full' },
   
     { path: 'pages/enterprise-pages/entprofile-page',       component: EntprofilePageComponent },

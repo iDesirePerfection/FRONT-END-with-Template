@@ -16,5 +16,8 @@ export class PackComponent implements OnInit {
     this.packService.getAllPacks().subscribe(u=>this.listPack=u);
     console.log(this.listPack);
   }
+  pay(id:number){
+    this.packService.payPack(id).subscribe(u=>u);
+  }
 
 }

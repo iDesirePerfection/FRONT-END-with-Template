@@ -38,6 +38,10 @@ import { ListeventPageComponent } from './enterprise-pages/listevent-page/listev
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { PackAdminComponent } from './pack-admin-pages/pack-admin/pack-admin.component';
+import { EditPackAdminComponent } from './pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
+import { ShowPackDetailsComponent } from './pack-admin-pages/show-pack-details/show-pack-details.component';
+
 
 
 @NgModule({
@@ -84,7 +88,10 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
-        MyjobofferlistPageComponent
+        MyjobofferlistPageComponent,
+        PackAdminComponent,
+        EditPackAdminComponent,
+        ShowPackDetailsComponent
     ],
     exports: [
         
