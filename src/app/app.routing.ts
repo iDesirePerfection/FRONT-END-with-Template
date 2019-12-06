@@ -30,6 +30,8 @@ import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpr
 import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
 import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/listevent-page.component';
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { PostsPageComponent } from './pages/profile/posts-page/post-page.component';
+
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -60,7 +62,7 @@ const routes: Routes =[
     { path: 'pages/enterprise-pages/listjoboffer-page',       component: ListjobofferPageComponent },
     { path: 'pages/enterprise-pages/listevent-page',       component: ListeventPageComponent },
     { path: 'pages/enterprise-pages/myjobofferlist-page',       component: MyjobofferlistPageComponent },
-    
+    { path : 'pages/comments/test' , component: PostsPageComponent},
 ];
 
 @NgModule({

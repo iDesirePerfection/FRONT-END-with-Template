@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+
 import { SectionsModule } from './sections/sections.module';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './pages/examples.module';
