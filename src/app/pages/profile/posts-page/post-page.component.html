@@ -18,54 +18,54 @@
                 </div>
             </div>
             <!-- end media-post -->
+            <div class="media" *ngFor="let post of posts;index as i">
 
+                <a class="pull-left" href="javascript:void(0)">
+                    <div class="avatar">
+                        <img class="media-object" alt="Tim Picture" src="assets/img/faces/ayo-ogunseinde-2.jpg">
+                    </div>
+                </a>
+                <div class="media-body">
 
+                    <h5 class="media-heading">{{post?.user?.firstName}}</h5>
+                    <div class="pull-right">
+                        <h6 class="text-muted">{{post?.date}}</h6>
+                        <a href="javascript:void(0)" class="btn btn-info btn-link pull-right "> <i class="fa fa-reply"></i> Reply</a>
 
-            <div class="row " *ngFor="let post of posts;index as i ">
-                <div class="col-md-8 ml-auto mr-auto ">
-                    <div class="media-area ">
-                        <h3>Comments &middot; 10</h3>
-                        <div class="media ">
-                            <a class="pull-left " href="javascript:void(0) ">
-                                <div class="avatar ">
-                                    <img class="media-object " src="assets/img/faces/clem-onojeghuo-2.jpg " alt="... " />
-                                </div>
+                    </div>
+                    <p>{{post.content}}</p>
+
+                    <div class="media-footer">
+
+                        <a href="javascript:void(0)" class="btn btn-link" *ngFor="let like of getLikes(post?.reactions);count as c">
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{c}}
+                        </a>
+                        <a href="javascript:void(0)" class="btn btn-primary btn-link" *ngFor="let like of getDislikes(post?.reactions);count as c">
+                            <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{c}}
+                        </a>
+                        <a href="javascript:void(0) " class="btn btn-link ">
+                                 Follow &middot;
                             </a>
-                            <div class="media-body ">
-                                <h5 class="media-heading ">John Wayne</h5>
-                                <div class="pull-right ">
-                                    <h6 class="text-muted ">Sep 11, 11:53 AM</h6>
-                                    <a href="javascript:void(0) " class="btn btn-info btn-link pull-right "> <i class="fa fa-reply "></i> Reply</a>
-
-                                </div>
-                                <p>{{post.content}}</p>
-
-                                <div class="media-footer ">
-                                    <a href="javascript:void(0) " class="btn btn-danger btn-link ">
-                                        <i class="fa fa-thumbs-up " aria-hidden="true " *ngFor="let comment of post?.comments"></i> 243
-                                    </a>
-                                    <a href="javascript:void(0) " class="btn btn-link ">
-                                        <i class="fa fa-thumbs-down " aria-hidden="true "></i> 2
-                                    </a>
-                                    <a href="javascript:void(0) " class="btn btn-link ">
-                                     Follow &middot; 3
-                                </a>
-                                </div>
-
-                                <div class="media media-post ">
-                                    <a class="pull-left author " href="javascript:void(0) ">
-                                        <div class="avatar ">
-                                            <img class="media-object " alt="64x64 " src="assets/img/faces/kaci-baum-2.jpg ">
-                                        </div>
-                                    </a>
-                                    <div class="media-body ">
-                                        <textarea class="form-control " placeholder="Write a nice reply or go home... " rows="4 "></textarea>
-                                        <div class="media-footer ">
-                                            <a href="javascript:void(0) " class="btn btn-info pull-right ">Reply</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end media-post -->
+                    </div>
+                    <div class="media " *ngFor="let comment of post?.comments ">
+                        <a class="pull-left " href="javascript:void(0) ">
+                            <div class="avatar ">
+                                <img class="media-object " alt="64x64 " src="assets/img/faces/erik-lucatero-2.jpg ">
                             </div>
+                        </a>
+                        <div class="media-body ">
+                            <h5 class="media-heading ">{{comment?.commentingUser?.firstName}}</h5>
+                            <div class="pull-right ">
+                                <h6 class="text-muted ">{{comment?.date}}</h6>
+                                <a href="javascript:void(0) " class="btn btn-info btn-link pull-right "> <i class="fa fa-reply "></i> Reply</a>
+
+                            </div>
+                            <p>{{comment?.content}}</p>
                         </div>
-                        <!-- end media -->
+                    </div>
+                    <!-- end media -->
+                </div>
+            </div>
+
+
+            < <!-- end media -->

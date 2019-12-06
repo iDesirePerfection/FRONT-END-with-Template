@@ -17,7 +17,7 @@ export class PostsService {
         //         return [exp];
         //     })
         // )
-        return this.httpClient.get<Post[]>(environment.backend_url + 'post/all');
+        return this.httpClient.get<Post[]>(environment.backend_url + 'post/myposts');
 
         // return of([
         //     {

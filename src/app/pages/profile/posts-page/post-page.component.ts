@@ -11,7 +11,7 @@ import { Post } from 'app/services/candidate-services/models/posts.model';
 export class PostsPageComponent implements OnInit {
 
 
-posts:Post[]=[];
+posts:any[]=[];
 public post:Post={content:''};
 
 
@@ -20,7 +20,7 @@ constructor(private postsService: PostsService) { }
   ngOnInit() {
     this.postsService.getPosts().subscribe(posts => {
       this.posts=posts;
-      console.log(posts);
+      //console.log(JSON.stringify(posts[1].reactions[0].id));
     });
 
   }
@@ -46,8 +46,11 @@ constructor(private postsService: PostsService) { }
     }
   }
 
+getLikes(reactions:any[]) {
+      return reactions.filter(r => (r.type) === 'Like');
+}
 
-
-
-
+getDislikes(reactions:any[]) {
+      return reactions.filter(r => (r.type) === 'Dislike');
+}
 }
