@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', this.user.role.toString());
         localStorage.setItem('interests', this.user.interests.toString());
         localStorage.setItem('entid', this.user.enterprise.eid.toString());
-        console.log(this.user);
+        console.log(this.user.id);
     }
 
 }

@@ -16,6 +16,8 @@ import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { AddExperienceFormComponent } from './pages/add-experience-form/add-experience-form.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 @NgModule({
     declarations: [
@@ -32,6 +34,7 @@ import { AddExperienceFormComponent } from './pages/add-experience-form/add-expe
         SectionsModule,
         ComponentsModule,
         ExamplesModule,
+        AngularFontAwesomeModule,
         HttpClientModule,
 
     ],
