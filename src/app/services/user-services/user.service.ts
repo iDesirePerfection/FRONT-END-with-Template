@@ -12,4 +12,11 @@ export class UserService {
 
         return this.httpClient.get<User>(environment.backend_url + 'user/authenticate?username=' +username+'&password='+password );
     }
+
+
+    
+
+
+
+
 }

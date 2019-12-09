@@ -13,6 +13,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
     declarations: [
@@ -30,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
         ComponentsModule,
         ExamplesModule,
         HttpClientModule,
+        ToastrModule.forRoot() 
         
     ],
     providers: [],

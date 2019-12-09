@@ -9,7 +9,7 @@ export class AddproductComponent implements OnInit, OnDestroy {
     data : Date = new Date();
     tagItems = ['Minimal', 'Light', 'New', 'Friends'];
     categories = ['Food', 'Drink'];
-
+    
   constructor() { }
 
   ngOnInit() {

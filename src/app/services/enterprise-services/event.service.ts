@@ -16,11 +16,25 @@ export class EventService {
         return this.httpClient.get<Event[]>(environment.backend_url + 'enterpriseevent/getevent' );
     }
 
-    AddParticipation(eventId:number): Observable<Participation[]>{
-        return this.httpClient.post<Participation[]>(environment.backend_url + 'eventparticipation/addparticipation?eventId=' + eventId,null);
+    AddParticipation(eventId:number,userid:string): Observable<Participation[]>{
+        return this.httpClient.post<Participation[]>(environment.backend_url + 'eventparticipation/addparticipation?eventId=' + eventId+'&userid='+userid,null);
     }
 
+    AddEvent(EEtitle:string,EEplace:string,EESdate:Date,EEEdate:Date,EEdescription:string,EEminparticipants:number,
+        EEmaxparticipants:number,EEprice:number,user:string): Observable<Event>{
+        return this.httpClient.post<Event>(environment.backend_url + 'enterpriseevent/addevent?EEtitle='+EEtitle+'&EEplace='+EEplace+'&EESdate='+EESdate+'&EEEdate='+EEEdate+'&EEdescription='+EEdescription+'&EEminparticipants='+EEminparticipants+'&EEmaxparticipants='+EEmaxparticipants+'&EEprice='+EEprice+'&user='+user,null);
+    }
 
+    GetEventByEnt(entid:string): Observable<Event[]> {
+
+        return this.httpClient.get<Event[]>(environment.backend_url + 'enterpriseevent/geteventbyent?entid=' + entid );
+    }
+
+    
+    DeleteEvent(EEid:number) : Observable<{}>
+    {
+    return this.httpClient.delete(environment.backend_url+ 'enterpriseevent/deleteevent?EEid='+ EEid);
+    }
 
 
 

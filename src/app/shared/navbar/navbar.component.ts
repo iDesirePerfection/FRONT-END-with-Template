@@ -10,6 +10,8 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
+    public x = localStorage.getItem("entid"); 
+
     constructor(public location: Location, private element : ElementRef) {
         this.sidebarVisible = false;
     }

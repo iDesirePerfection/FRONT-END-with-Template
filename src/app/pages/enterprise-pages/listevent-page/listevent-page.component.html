@@ -8,9 +8,31 @@
                             <h3 class="title-uppercase"><small>our Enterprises offer you some Events and Workshops</small></h3>
                         </div>
                     </div>
+
+                    <!--search-->
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+                                <form role="search" class="form-inline search-form">
+                                    <div class="input-group no-border">
+                                      <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                      <input type="text" class="form-control input-xtreme no-border" placeholder="Find Event" aria-describedby="basic-addon1" name="search" [(ngModel)]="searchText" autocomplete="off">
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+    
+                    <!--search-->
+    
+
                     <div class="article">
                         <div class="row">
-                            <div class="col-md-8 ml-auto mr-auto" *ngFor="let e of events;index as i">
+                            <div class="col-md-8 ml-auto mr-auto" *ngFor="let e of collection.events | filter:searchText | paginate: config;index as i">
                                 <div class="card card-blog card-plain text-center">
                                     <div class="container2">
                                         
@@ -43,23 +65,32 @@
                     
                     
                     <hr />
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="pull-left">
-                                <button class="btn btn-link btn-default btn-move-left btn-sm"> <i class="fa fa-angle-left"></i> Older Posts</button>
-                            </div>
-                            <div class="pull-right">
-                                <button class="btn btn-link btn-default btn-move-right btn-sm">Newer Posts  <i class="fa fa-angle-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
     
         </div>
     </div>
     
-    
+
+    <!--pagination-->
+    <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                    
+                </div>
+                <div class="col-md-4">
+                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                </div>
+                <div class="col-md-4">
+                    
+                </div>
+                
+            </div>
+    </div>
+
+
+    <!--footer-->
     <footer class="footer footer-black">
             <div class="container">
                 <div class="row">

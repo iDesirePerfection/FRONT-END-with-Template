@@ -28,18 +28,39 @@
 <!--search-->
 
 
+<!--experience-->
+<div class="card card-refine ">
+    <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
+        <ngb-panel id="config-panel-one">
+            <ng-template ngbPanelTitle>
+                <h5 class="mb-0 panel-title">
+                <a class="collapsed">
+                    Experience
+                    <i class="nc-icon nc-minimal-down"></i>
+                </a>
+                </h5>
+            </ng-template>
+        <ng-template ngbPanelContent>
+            <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="10" [step]="1" [(ngModel)]="exp" [tooltips]="true" (change)="getJobofferByExp()"></nouislider>                                </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+</div>    
 <!-- section -->
 <div class="section section-blog">
         
         <div class="container">
              <div class="row">
-                <div class="col-md-4" *ngFor="let j of joboffers  | slice:0:6 | filter:searchText; index as i">
+                <div class="col-md-4" *ngFor="let j of collection.joboffers   | filter:searchText | paginate: config; index as i">
                     <div class="card card-blog" >
-                     <div class="card-image">
-                         <a href="javascript:void(0)">
-                             <img class="img img-raised" src="./assets/img/sections/miguel-perales.jpg">
-                         </a>
-                     </div>
+                            <div class="container2">
+                                        
+                                    <img src="./assets/img/sections/bruno-abatti.jpg" alt="Norway" style="width:100%;">
+                                    <div class="text-block">
+                                            <button _ngcontent-nna-c4="" class="btn btn-outline-danger mr-1" type="button">Register</button>
+                                          </div>
+                                    
+                                
+                            </div>
                      <div class="card-body">
                          <h6 class="card-category text-info">{{j.jodate}}</h6>
                          <h5 class="card-title">
@@ -75,7 +96,20 @@
     </div>
 </div><!-- section -->
 
-
+<div class="container">
+        <div class="row">
+           <div class="col-md-4">
+                
+            </div>
+            <div class="col-md-4">
+                <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+            
+        </div>
+</div>
 <!--trending-->
 
 <div class="features-2">

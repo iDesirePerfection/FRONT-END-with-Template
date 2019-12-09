@@ -1,0 +1,106 @@
+<div class="page-header page-header-small" style="background-image: url('./assets/img/sections/gerrit-vermeulen.jpg');">
+    <div class="filter filter-danger"></div>
+    <div class="content-center">
+        <div class="container">
+            <h1> Add New Enterprise </h1>
+        </div>
+    </div>
+</div>
+ 
+ 
+<div class="wrapper">
+        <div class="main">
+            <div class="section">
+                <div class="container">
+                    <h3>Add New Enterprise</h3>
+                    <form #addformm="ngForm" (ngSubmit)="addEnterprise()">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5">
+                                <h6>Enterprise Image</h6>
+                                <app-image-upload></app-image-upload>
+                                </div>
+    
+                            <div class="col-md-7 col-sm-7">
+                                <div class="form-group">
+                                    <h6>Name <span class="icon-danger">*</span></h6>
+                                    <input type="text" class="form-control border-input"placeholder="Name" name="ename" [(ngModel)]="addform.ename" #ename="ngModel" required>
+                                    <div class="alert alert-danger" role="alert" *ngIf="ename.errors && (ename.touched || ename.dirty)">              
+                                            Name required 
+                                          </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Domain <span class="icon-danger">*</span></h6>
+                                    <input type="text" class="form-control border-input"placeholder="Domain" name="edomain" [(ngModel)]="addform.edomain" #edomain="ngModel">
+                                </div>
+                                <div class="row price-row">
+                                  <div class="col-md-6">
+                                    <h6>Location
+                                      <span class="icon-danger">*</span>
+                                    </h6>
+                                    <div class="input-group border-input">
+                                      <input type="text" class="form-control border-input" placeholder="Location" name="elocation" [(ngModel)]="addform.elocation" #elocation="ngModel">
+                                      <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-euro"></i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <h6>Employees number</h6>
+                                    <div class="input-group border-input">
+                                      <input type="text" class="form-control border-input" placeholder="Number" name="employeesnumber" [(ngModel)]="addform.employeesnumber" #employeesnumber="ngModel" >
+                                      <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Description</h6>
+                                            <textarea class="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="13" maxlength="150" name="edescription" [(ngModel)]="addform.edescription" #edescription="ngModel"></textarea>
+                                    <h5><small><span id="textarea-limited-message" class="pull-right">150 characters left</span></small></h5>
+                                </div>
+                                             <div class="form-check">
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                        <div class="row buttons-row">
+                            <div class="col-md-4 col-sm-4">
+                                <button class="btn btn-outline-danger btn-block btn-round">Cancel</button>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <button type="submit" class="btn btn-outline-primary btn-block btn-round" >Save</button>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <button class="btn btn-primary btn-block btn-round">Save & Publish </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ 
+ 
+ <!--footer-->
+ <footer class="footer section-dark">
+        <div class="container">
+            <div class="row">
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                        <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                        <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                    </ul>
+                </nav>
+                <div class="credits ml-auto">
+                    <span class="copyright">
+                        © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+

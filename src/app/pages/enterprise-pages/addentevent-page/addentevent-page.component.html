@@ -1,0 +1,118 @@
+
+  <div class="wrapper">
+        <div class="main">
+            <div class="section">
+                <div class="container">
+                    <h3>Add New Event</h3>
+                    <form #addformm="ngForm" (ngSubmit)="addEvent()">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5">
+                                <h6>Event Image</h6>
+                                <app-image-upload></app-image-upload>
+                                </div>
+    
+                            <div class="col-md-7 col-sm-7">
+                                <div class="form-group">
+                                    <h6>Title <span class="icon-danger">*</span></h6>
+                                    <input type="text" class="form-control border-input"placeholder="Title" name="EEtitle" [(ngModel)]="addform.EEtitle" #EEtitle="ngModel" required>
+                                    <div class="alert alert-danger" role="alert" *ngIf="EEtitle.errors && (EEtitle.touched || EEtitle.dirty)">              
+                                        Title required 
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Place <span class="icon-danger">*</span></h6>
+                                    <input type="text" class="form-control border-input"placeholder="Place" name="EEplace" [(ngModel)]="addform.EEplace" #EEplace="ngModel">
+                                </div>
+                                <div class="row price-row">
+                                  <div class="col-md-6">
+                                    <h6>Start Date
+                                      <span class="icon-danger">*</span>
+                                    </h6>
+                                    <div class='input-group date'>
+                                            <input class="form-control" placeholder=""
+                                                 name="EESdate" [(ngModel)]="addform.EESdate"  #EESdate="ngModel" type="date" >
+                                                 <div class="input-group-append">
+                                   <span class="input-group-text">
+                                     <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                   </span>
+                                 </div>
+                              </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <h6>End Date</h6>
+                                    <div class='input-group date'>
+                                            <input class="form-control" placeholder=""
+                                                 name="EEEdate" [(ngModel)]="addform.EEEdate"  #EEEdate="ngModel" type="date" >
+                                                 <div class="input-group-append">
+                                   <span class="input-group-text">
+                                     <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                   </span>
+                                 </div>
+                              </div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Description</h6>
+                                            <textarea class="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="13" maxlength="150" name="EEdescription" [(ngModel)]="addform.EEdescription" #EEdescription="ngModel"></textarea>
+                                    <h5><small><span id="textarea-limited-message" class="pull-right">150 characters left</span></small></h5>
+                                </div>
+                                <div class="row price-row">
+                                        <div class="col-md-6">
+                                          <h6>min part
+                                            <span class="icon-danger">*</span>
+                                          </h6>
+                                          <div class="input-group border-input">
+                                            <input type="text" class="form-control border-input" placeholder="" name="EEminparticipants" [(ngModel)]="addform.EEminparticipants" #EEminparticipants="ngModel">
+                                            <div class="input-group-append">
+                                              <span class="input-group-text"><i class="fa fa-euro"></i></span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <h6>max part</h6>
+                                          <div class="input-group border-input">
+                                            <input type="text" class="form-control border-input" placeholder="" name="EEmaxparticipants" [(ngModel)]="addform.EEmaxparticipants" #EEmaxparticipants="ngModel" >
+                                            <div class="input-group-append">
+                                              <span class="input-group-text">%</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>       
+                                      <div class="row price-row">
+                                            <div class="col-md-6">
+                                              <h6>price
+                                                <span class="icon-danger">*</span>
+                                              </h6>
+                                              <div class="input-group border-input">
+                                                <input type="text" class="form-control border-input" placeholder="" name="EEprice" [(ngModel)]="addform.EEprice" #EEprice="ngModel">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text"><i class="fa fa-euro"></i></span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            
+                                          </div>       
+                                      
+                            </div>
+                        </div>
+    
+    
+                        <div class="row buttons-row">
+                            <div class="col-md-4 col-sm-4">
+                                <button class="btn btn-outline-danger btn-block btn-round">Cancel</button>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <button type="submit" class="btn btn-outline-primary btn-block btn-round" >Save</button>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <button class="btn btn-primary btn-block btn-round">Save & Publish </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ 
+

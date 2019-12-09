@@ -9,6 +9,7 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AgmCoreModule } from '@agm/core';
 
 import { ImageUploadModule } from '../shared/image-upload/image-upload.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ExamplesComponent } from './examples.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
@@ -36,6 +37,9 @@ import { ListeventPageComponent } from './enterprise-pages/listevent-page/listev
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { AddjobofferPageComponent } from './enterprise-pages/addjoboffer-page/addjoboffer-page.component';
+import { AddenterprisePageComponent } from './enterprise-pages/addenterprise-page/addenterprise-page.component';
+import { AddenteventPageComponent } from './enterprise-pages/addentevent-page/addentevent-page.component';
 
 
 @NgModule({
@@ -53,7 +57,10 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
         ImageUploadModule,
         FormsModule,
         Ng2SearchPipeModule,
-        RouterModule
+        RouterModule,
+        NgxPaginationModule,
+        
+        
     ],
     declarations: [
         ExamplesComponent,
@@ -79,12 +86,16 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
-        MyjobofferlistPageComponent
+        MyjobofferlistPageComponent,
+        AddjobofferPageComponent,
+        AddenterprisePageComponent,
+        AddenteventPageComponent
     ],
     exports: [
         
         Ng2SearchPipeModule,
-        RouterModule
+        RouterModule,
+        NgxPaginationModule
     ]
 })
 export class ExamplesModule { }

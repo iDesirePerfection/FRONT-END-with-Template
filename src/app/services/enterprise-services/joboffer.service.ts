@@ -30,5 +30,27 @@ export class JobofferService {
         return this.httpClient.put<Joboffer>(environment.backend_url + 'joboffer/updatejoboffer?JOid='+JOid+'&JOtitle='+JOtitle+'&JOarea='+JOarea+'&JOdescription='+JOdescription+'&JOexperience='+JOexperience+'&interests='+interests,null );
     }
 
+    DeleteJoboffer(JOid:number) : Observable<{}>
+    {
+    return this.httpClient.delete(environment.backend_url+ 'joboffer/deletejoboffer?JOid='+ JOid);
+    }
+
+    AddJoboffer(entid:string,JOtitle:string,JOarea:string,JOdescription:string,JOexperience:number,interests:string) :Observable<Joboffer> {
+
+        return this.httpClient.post<Joboffer>(environment.backend_url + 'joboffer/addjoboffer?JOtitle='+JOtitle+'&JOarea='+JOarea+'&JOdescription='+JOdescription+'&JOexperience='+JOexperience+'&interests='+interests+'&entid='+entid,null );
+    }
+
+    ValidateJoboffer(JOid:string) :Observable<Joboffer> {
+
+        return this.httpClient.put<Joboffer>(environment.backend_url + 'joboffer/validatejoboffer?JOid='+JOid,null );
+    }
+
+    GetJobofferByExp(JOexperience:number) :Observable<Joboffer[]> {
+
+        return this.httpClient.get<Joboffer[]>(environment.backend_url + 'joboffer/getjobofferbyexp?JOexperience=' + JOexperience );
+    }
+
+
+
 
 }
