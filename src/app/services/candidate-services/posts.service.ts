@@ -12,18 +12,7 @@ export class PostsService {
     constructor(private httpClient: HttpClient) { }
 
     getPosts(): Observable<Post[]> {
-        // return this.httpClient.get<Experience>(environment.backend_url + 'candidate/getAllExperience?id=' + id).pipe(
-        //     map(exp => {
-        //         return [exp];
-        //     })
-        // )
         return this.httpClient.get<Post[]>(environment.backend_url + 'post/myposts');
-
-        // return of([
-        //     {
-        //         'designation': 'web development'
-        //     }
-        // ] as Experience[])
     }
 
     addPost(content:string): Observable<Post> {

@@ -5,7 +5,7 @@ import { ReactionsService } from 'app/services/candidate-services/reactions.serv
 import { Post } from 'app/services/candidate-services/models/posts.model';
 import { Comment } from 'app/services/candidate-services/models/comment.model';
 import { Reaction } from 'app/services/candidate-services/models/reaction.model';
-
+import { NotificationComponent } from 'app/components/notification/notification.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { threadId } from 'worker_threads';
 
@@ -22,9 +22,12 @@ export class PostsPageComponent implements OnInit {
 interval: any;
 liked: boolean = false;
 posts:any[]=[];
-unlikedId:number = -1;
+mylike: boolean=false;
+mydislike: boolean=false;
+reactionId:number=0;
 likes: number = 0;
-removed: number= 0;
+likeremoved: number= 0;
+dislikeremoved: number= 0;
 closeResult: string;
 public post:Post={content:''};
 public comment:Comment={idPost:0,content:''};
@@ -32,15 +35,16 @@ public reaction:Reaction={idPost:0,type:''};
 
 
 constructor(private postsService: PostsService,private commentsService: CommentsService,
-private reactionsService: ReactionsService,private modalService: NgbModal) { }
+private reactionsService: ReactionsService,private modalService: NgbModal,private notifService:NotificationComponent) { }
 ngOnInit() {
     this.postsService.getPosts().subscribe(posts => {
-      this.posts=posts;
-    });
+          this.posts=posts;
+});
 }
 
     ngOnDestroy() {
     }
+
 
   refreshData(){
     this.postsService.getPosts().subscribe(posts => {
@@ -60,39 +64,104 @@ ngOnInit() {
     });
 
   }
-
-  addReaction(post: Post) {
-    if (this.didLike(post)) {
-    this.deleteReaction(post.reactions[0].id);
-      this.removed = 1;
-      this.unlikedId = post.id;
+  addLike(post: Post) {
+          this.refreshData();
+        if (this.didLike(post)) {
+      console.log('you have a like at this point and you clicked like');
+      this.getReactionId(post)
+      this.deleteReaction(this.reactionId);console.log('fasakht like after 1s');
       this.refreshData();
-      console.log('POST UNLIKED ? ' + this.unlikedId + ' ' + post.id);
-    //console.log('new likes : ' + this.likes);
+      this.likeremoved = 1;
+    }
+      else if (this.didDislike(post)) {
+      console.log('you have a dislike at this point and you clicked like');
+      this.getReactionId(post)
+      this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s,adding like!');
+      this.refreshData();
+      this.dislikeremoved = 1;
+      setTimeout(function(){ this.addLike(post);console.log('zedna like after 1s,refreshing!');this.refreshData(); }.bind(this), 100);
     }
     else {
-    this.reactionsService.addReaction(post.id, 'Like').subscribe(Post=>{
-      this.removed = 0;
-      this.unlikedId=-1;
+      setTimeout(function(){this.reactionsService.addReaction(post.id, 'Like').subscribe(Post=>{
+    this.dislikeremoved = 0;
+      this.likeremoved = 0;
       this.refreshData();
-          console.log('issou?');
-    });
+          console.log('adding 1 like from null');
+    }); }.bind(this), 100);
     }
   }
-
+    getReactionId(post:Post):number {
+          post.reactions.forEach((r) => {
+          if(r.reactingUser.id === 6 )
+          {
+            this.reactionId = r.id;
+          }
+    });
+    }
+  addDislike(post: Post) {
+      this.refreshData();
+    if (this.didDislike(post)){
+      console.log('you have a dislike at this point and you clicked dislike');
+      this.getReactionId(post)
+      this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s');
+      this.dislikeremoved = 1;
+      this.refreshData();
+    }
+      else if (this.didLike(post)) {
+      console.log('you have a like at this point and you clicked dislike');
+      this.getReactionId(post)
+      this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s,adding like!');
+      this.refreshData();
+      this.likeremoved = 1;
+      setTimeout(function(){ this.addDislike(post);console.log('add dislike after 1s,refreshing!');this.refreshData(); }.bind(this), 100);
+    }
+    else {
+      setTimeout(function(){this.reactionsService.addReaction(post.id, 'Dislike').subscribe(Post=>{
+      this.dislikeremoved = 0;
+      this.likeremoved = 0;
+      this.refreshData();
+          console.log('adding 1 dislike from null');
+    });}.bind(this), 100);
+    }
+  }
     didLike(post: Post) {
+        this.mylike=false;
       if (typeof(post.reactions[0]) === 'undefined') {
         return false;
       } else {
-        if(this.removed === 1)
+        if(this.likeremoved === 1)
         {
           return false;
         }
-        if(post.reactions[0].reactedPost.id === post.id)
-        {
-        console.log('already liked ====> should remove like');
+        post.reactions.forEach((r) => {
+          console.log(r.reactingUser.id);
+          if(r.reactingUser.id === 6 && r.type === 'Like')
+          {
+            this.mylike=true;
+
+          }
+        });
+          return(this.mylike);
       }
-      return(post.reactions[0].reactedPost.id === post.id);
+  }
+
+  didDislike(post: Post) {
+        this.mydislike=false;
+      if (typeof(post.reactions[0]) === 'undefined') {
+        return false;
+      } else {
+        if(this.dislikeremoved === 1)
+        {
+          return false;
+        }
+        post.reactions.forEach((r) => {
+          if(r.reactingUser.id === 6 && r.type === 'Dislike')
+          {
+            this.mydislike=true;
+            console.log('logged user have a dislike on current post');
+          }
+        });
+      return(this.mydislike);
       }
   }
   removePost(id:number) {
@@ -113,14 +182,28 @@ getDislikes(reactions:any[]) {
       return reactions.filter(r => (r.type) === 'Dislike');
 }
 
+
 private likesNumber(post:Post[]) {
-   return (post.reactions.length);
-   
+   return (post.reactions.filter(r => (r.type) === 'Like')).length;
+}
+private dislikesNumber(post:Post[]) {
+   return (post.reactions.filter(r => (r.type) === 'Dislike')).length;
 }
 likesNumberAfterUnlike(post:Post[]) {
-   console.log('len == ' + post.reactions.length);
-   return (post.reactions.length) - this.removed;
-   
+   if(post.reactions.filter(r => (r.type) === 'Like').length - this.likeremoved < 0 ){
+     return 0;
+   }
+   else {
+     return((post.reactions.filter(r => (r.type) === 'Like')).length - this.likeremoved);
+   }
+}
+dislikesNumberAfterUndislike(post:Post[]) {
+   if(post.reactions.filter(r => (r.type) === 'Dislike').length - this.dislikeremoved < 0 ){
+     return 0;
+   }
+   else {
+     return((post.reactions.filter(r => (r.type) === 'Dislike')).length - this.dislikeremoved);
+   }
 }
 
 delete(id:number){
@@ -161,4 +244,5 @@ delete(id:number){
             return  `with: ${reason}`;
         }
     }
+    
 }

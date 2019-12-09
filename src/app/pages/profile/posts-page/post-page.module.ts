@@ -4,6 +4,8 @@ import { PostsPageComponent } from './post-page.component';
 import { MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NotificationComponent } from 'app/components/notification/notification.component';
+
 
 
 @NgModule({
@@ -13,6 +15,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
+    NotificationComponent,
     MatInputModule,
     MatSelectModule,
     AngularFontAwesomeModule,

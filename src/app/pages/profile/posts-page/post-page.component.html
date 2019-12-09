@@ -38,21 +38,28 @@
 
                     <div class="media-footer">
 
-                        <label *ngIf="unlikedId == post.id; else elseN">
-
-                            <a href="javascript:void(0)" id=Post{{i}} [ngClass]="{'btn-danger':didLike(post)}" class="btn btn-link " (click)="addReaction(post)">
+                        <label *ngIf="unlikedId == post.id; else elseLike">
+                            
+                            <a href="javascript:void(0)" id=Like{{i}} class="btn btn-link " (click)="addLike(post)">
                                 <i class="fa fa-thumbs-up " aria-hidden="true "></i> {{likesNumberAfterUnlike(post)}}
                             </a>
                         </label>
-                        <ng-template #elseN>
-
-                            <a href="javascript:void(0)" id=Post{{i}} [ngClass]="{'btn-danger':didLike(post)}" class="btn btn-link " (click)="addReaction(post)">
+                        <ng-template #elseLike>
+                            <a href="javascript:void(0)" id=Like{{i}} [ngClass]="{'btn-danger':didLike(post)}" class="btn btn-link " (click)="addLike(post)">
                                 <i class="fa fa-thumbs-up " aria-hidden="true "></i> {{likesNumber(post)}}
                             </a>
                         </ng-template>
-                        <a href="javascript:void(0)" class="btn btn-link">
-                            <i class="fa fa-thumbs-down" aria-hidden="true"></i> 2
-                        </a>
+                        <label *ngIf="unlikedId == post.id; else elseDislike">
+                            <a href="javascript:void(0)" id=Dislike{{i}}  class="btn btn-link " (click)="addDislike(post)">
+                                <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumberAfterUndislike(post)}}
+                            </a>
+                            </label>
+                        <ng-template #elseDislike>
+                            <a href="javascript:void(0)" id=Dislike{{i}} [ngClass]="{'btn-primary':didDislike(post)}" class="btn btn-link " (click)="addDislike(post)">
+                                <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumber(post)}}
+                            </a>
+                        </ng-template>
+
                         <a href="javascript:void(0) " class="btn btn-link ">
                                  Follow &middot;
                             </a>
@@ -215,6 +222,20 @@
 
         </div>
 
+        <div *ngFor="let alert of alerts">
+            <ngb-alert [type]="alert.type" [dismissible]="alert.dismissible" (close)="closeAlert(alert)">
+                <div class="container">
+                    <div class="alert-wrapper">
+                        <div class="message">
+                            <ng-container *ngIf="alert.icon">
+                                <i class="nc-icon {{alert.icon}}"></i>
+                            </ng-container>
+                            {{ alert.message }}
+                        </div>
+                    </div>
+                </div>
+            </ngb-alert>
+        </div>
 
         <!-- end media -->
     </div>
