@@ -13,11 +13,13 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { AddExperienceFormComponent } from './pages/add-experience-form/add-experience-form.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -30,9 +32,12 @@ import { HttpClientModule } from '@angular/common/http';
         ComponentsModule,
         ExamplesModule,
         HttpClientModule,
-        
+
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+    ],
+    bootstrap: [AppComponent],
+    
+
 })
 export class AppModule { }

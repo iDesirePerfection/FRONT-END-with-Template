@@ -1,0 +1,44 @@
+<form #userForm="ngForm" >
+        <div class=" form-group">
+            <label for="inputDesignation"> Designation </label>
+            <input aria-describedby="DesignationHelp" class=" form-control" id="inputDesignation"
+                placeholder="Enter Designation" type="text" name="designation" [(ngModel)]="data.designation"/>
+        </div>
+        <div class=" form-group">
+            <label for="startDate"> Start Date </label>
+            <div class=" input-group date" id="startDate">
+                <input  class="form-control" placeholder="Start Date"  ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()" name="startDate"  [(ngModel)]="data.startDate"/>
+                <div class=" input-group-append">
+                    <span class=" input-group-text">
+                        <span class=" glyphicon glyphicon-calendar">
+                            <i aria-hidden="true" class=" fa fa-calendar"> </i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class=" form-group">
+            <label for="endDate"> End Date </label>
+            <div class=" input-group date" id="endDate">
+                <input class="form-control" placeholder="End Date" name="endDate" ngbDatepicker #end="ngbDatepicker"
+                    (click)="end.toggle()" name="endDate" [(ngModel)]="data.endDate">
+    
+                <div class=" input-group-append">
+                    <span class=" input-group-text">
+                        <span class=" glyphicon glyphicon-calendar">
+                            <i aria-hidden="true" class=" fa fa-calendar"> </i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class=" form-group">
+            <label for="Type"> Type </label>
+            <select class=" form-control" id="Type" name="type" [(ngModel)]="data.type">
+              <option>Professional</option>
+              <option>Educational</option>
+            </select>
+          </div>
+    
+        <button class=" btn btn-primary" type="submit" [mat-dialog-close]="data">Submit</button>
+    </form>

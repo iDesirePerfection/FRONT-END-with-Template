@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { NouisliderModule } from 'ng2-nouislider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -44,6 +44,17 @@ import { ShowPackDetailsComponent } from './pack-admin-pages/show-pack-details/s
 
 
 
+
+import { ExperienceComponent } from './experience/experience.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddExperienceFormComponent } from './add-experience-form/add-experience-form.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EditExperienceFormComponent } from './edit-experience-form/edit-experience-form.component';
+import { SkillComponent } from './skill/skill.component';
+import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -60,7 +71,15 @@ import { ShowPackDetailsComponent } from './pack-admin-pages/show-pack-details/s
         
         FormsModule,
         Ng2SearchPipeModule,
-        RouterModule
+        RouterModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        BrowserAnimationsModule,
+
+
+        
+        
+        
     ],
     declarations: [
         ExamplesComponent,
@@ -91,12 +110,23 @@ import { ShowPackDetailsComponent } from './pack-admin-pages/show-pack-details/s
         MyjobofferlistPageComponent,
         PackAdminComponent,
         EditPackAdminComponent,
-        ShowPackDetailsComponent
+        ShowPackDetailsComponent,
+        ExperienceComponent,
+        SkillComponent,
+        AddExperienceFormComponent,
+        EditExperienceFormComponent,
+        AddSkillFormComponent
     ],
     exports: [
         
         Ng2SearchPipeModule,
-        RouterModule
+        RouterModule,
+       
+    ],
+    entryComponents: [
+        AddExperienceFormComponent,
+        EditExperienceFormComponent,
+        AddSkillFormComponent
     ]
 })
 export class ExamplesModule { }
