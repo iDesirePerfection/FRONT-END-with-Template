@@ -20,6 +20,8 @@ export class ListeventPageComponent implements OnInit {
   searchText;
   collection = { count: null, events: [] };
   config:any;
+  hidden1=true;
+ 
 
   constructor(private eventService:EventService, private toastr: ToastrService) { }
 
@@ -35,11 +37,22 @@ export class ListeventPageComponent implements OnInit {
         navbar.classList.add('bg-danger');
 
 
+ 
 
-    this.eventService.GetAllEvent().subscribe(e => {
-      this.collection.events = e;
-      console.log(e);
-    });
+
+
+        this.eventService.GetAllEvent().subscribe(e => {
+          this.collection.events = e;
+          for(let i=0;i<e.length;i++){
+          this.eventService.GetUniquePart(e[i]['eeid'],localStorage.getItem('id')).subscribe(p => {
+            if (p['status']==='ok'){ this.hidden1=false;}
+            else{this.hidden1=true;}
+             console.log(p);
+             this.participations =p;
+           })
+          console.log(e);
+        }
+        });
 
     this.config = {
       itemsPerPage: 4,
@@ -60,13 +73,31 @@ ngOnDestroy(){
 Participate(id){
   this.idSelected=id;
   this.eventService.AddParticipation(id,localStorage.getItem('id')).subscribe(p => {
+    this.toastr.success('check your email for ridaction code!', 'Success!',
+    {timeOut: 2000});;
+    this.load(id);
     console.log(p);
     this.participations =p;
-    this.toastr.success('Hello world!', 'Toastr fun!',
-    {timeOut: 2000});;
   })
+}
+
+load(id){
+  this.eventService.GetAllEvent().subscribe(e => {
+    this.collection.events = e;
+    this.eventService.GetUniquePart(id,localStorage.getItem('id')).subscribe(p => {
+      if (p['status']=='ok'){ this.hidden1=false;}
+      else{this.hidden1=true;}
+      
+       console.log(p);
+       this.participations =p;
+     })
+    console.log(e);
+  
+  });
 
 }
+
+
 
 
 pageChanged(event){

@@ -36,6 +36,11 @@ export class EventService {
     return this.httpClient.delete(environment.backend_url+ 'enterpriseevent/deleteevent?EEid='+ EEid);
     }
 
+    GetUniquePart(eventId:number,userid:string): Observable<Participation[]> {
+
+        return this.httpClient.get<Participation[]>(environment.backend_url + 'enterpriseevent/geteventbyent?eventId=' + eventId+'&userid='+userid );
+    }
+
 
 
 }

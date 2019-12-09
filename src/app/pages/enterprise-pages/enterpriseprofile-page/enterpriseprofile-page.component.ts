@@ -6,7 +6,7 @@ import { stringify } from 'querystring';
 import { NgbModal, ModalDismissReasons, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { EntprofilePageComponent } from '../entprofile-page/entprofile-page.component';
 import { ActivatedRoute, Event } from '@angular/router';
-
+import {DomSanitizer} from '@angular/platform-browser';
 import { EventService } from 'app/services/enterprise-services/event.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -31,7 +31,8 @@ export class EnterpriseprofilePageComponent implements OnInit {
 
   
 
-  constructor(private entprofileService : EntprofileService , private eventService : EventService,private modalService: NgbModal , private route: ActivatedRoute, private toastr: ToastrService) { }
+  constructor(private entprofileService : EntprofileService , private eventService : EventService,private modalService: NgbModal 
+    ,private route: ActivatedRoute, private toastr: ToastrService,private sanitizer:DomSanitizer) { }
 
 
   ngOnInit() {
@@ -89,7 +90,6 @@ Opena(content,id,name,domain,location,employeesnumber,description) {
       return  `with: ${reason}`;
     }
   }
-
 updateEntProfile(){
   this.entprofileService.UpdateEntProfile(this.entId,this.updateform.ename,this.updateform.edomain,this.updateform.elocation,this.updateform.employeesnumber,this.updateform.edescription).subscribe(p => {
     this.toastr.success('Validated with Success!', 'Validation!',

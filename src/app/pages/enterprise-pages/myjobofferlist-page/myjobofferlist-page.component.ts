@@ -101,6 +101,8 @@ OpenDelete(content,id) {
         this.Reload();
         this.toastr.success('Validated with Success!', 'Validation!',
         {timeOut: 3000});;
+        this.toastr.info('Sending notification to interested candidate!', 'Notification!',
+        {timeOut: 3000});;
         console.log(j);
        });
 

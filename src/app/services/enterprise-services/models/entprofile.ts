@@ -5,6 +5,7 @@ export interface Entprofile{
     elocation?:string;
     employeesnumber?:number;
     edescription?:string;
+    filename?:string;
 }
 
 

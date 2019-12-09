@@ -57,7 +57,8 @@
                                         <h6 class="card-category text-info" ><i class="fa fa-map-marker"></i>location : {{e.eeplace}}</h6>
                                         <h6 class="title-uppercase">{{e.eesdate}} To {{e.eeedate}}</h6>
                                     </div>
-                                    <button class="btn btn-danger btn-round btn-sm" (click)="Participate(e.eeid)">Participate</button>
+                                    <button class="btn btn-danger btn-round btn-sm"  (click)="Participate(e.eeid)" *ngIf="hidden1">Participate</button>
+                                    <button class="btn btn-success btn-round mr-1"  *ngIf="hidden1 === false">Already Participated</button>
                                 </div>
                             </div>
                         </div>

@@ -27,13 +27,8 @@ export class EntprofileService {
      }
 
 
-     AddEnterprise(userid:string,Ename:string,Edomain:string,Elocation:string,Employeesnumber:number,Edescription:string): Observable<Entprofile> {
-        return this.httpClient.post<Entprofile>(environment.backend_url+ 'enterprise/addenterprise?Ename='+Ename+'&Edomain='+Edomain+'&Elocation='+Elocation+'&Employeesnumber='+Employeesnumber+'&Edescription='+Edescription+'&userid='+userid,null);
+     AddEnterprise(userid:string,Ename:string,Edomain:string,Elocation:string,Employeesnumber:number,Edescription:string,filename:string): Observable<Entprofile> {
+        return this.httpClient.post<Entprofile>(environment.backend_url+ 'enterprise/addenterprise?Ename='+Ename+'&Edomain='+Edomain+'&Elocation='+Elocation+'&Employeesnumber='+Employeesnumber+'&Edescription='+Edescription+'&userid='+userid+'&file='+filename,null);
      }
-
-
-     
-
-
 
 }
