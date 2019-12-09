@@ -20,6 +20,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SearchComponent } from './pages/search/search.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { HeaderComponent } from './pages/header/header.component';
 import { TwitterComponent } from './pages/twitter/twitter.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { Page422Component } from './pages/page422/page422.component';
@@ -52,6 +53,7 @@ const routes: Routes =[
     { path: 'pages/register',    component: RegisterComponent },
     { path: 'pages/search',      component: SearchComponent },
     { path: 'pages/settings',    component: SettingsComponent },
+    { path: 'pages/header',      component: HeaderComponent },
     { path: 'pages/twitter',     component: TwitterComponent },
     { path: 'pages/page404',     component: Page404Component },
     { path: 'pages/page422',     component: Page422Component },

@@ -45,7 +45,6 @@ ngOnInit() {
     ngOnDestroy() {
     }
 
-
   refreshData(){
     this.postsService.getPosts().subscribe(posts => {
       this.posts=posts;

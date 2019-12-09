@@ -9,8 +9,11 @@ import { SectionsModule } from './sections/sections.module';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './pages/examples.module';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { HeaderComponent } from './pages/header/header.component';
+
 
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +26,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     declarations: [
         AppComponent,
         NavbarComponent,
+        HeaderComponent,
     ],
     imports: [
         BrowserAnimationsModule,
