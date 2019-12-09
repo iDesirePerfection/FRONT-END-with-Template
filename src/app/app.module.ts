@@ -10,9 +10,10 @@ import { ExamplesModule } from './pages/examples.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'environments/environment';
+import { NgxAgoraModule } from 'ngx-agora';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
         ComponentsModule,
         ExamplesModule,
         HttpClientModule,
+        NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
         
     ],
     providers: [],

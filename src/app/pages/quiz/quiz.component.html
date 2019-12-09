@@ -6,10 +6,10 @@
         <div class="section section-gray">
             <div class="container tim-container">
                 <div [ngStyle]="hello" style="text-align: center;">
-                    Quiz
+                    <strong>Quiz</strong>
                     <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="switchState"
                         (changeState)="show()">
-                    </bSwitch>interviews
+                    </bSwitch> <strong>interviews</strong>
                 </div>
                 <div class="row" [hidden]="switchState">
                     <div class="col-md-8 ml-auto mr-auto">
@@ -38,11 +38,10 @@
                                                 (click)="setInterview(l)" class="btn btn-info btn-link btn-sm">
                                                 <i class="fa fa-user"></i>
                                             </button>
-                                            <button type="button" ngbTooltip="Edit Profile"
+                                            <button type="button" ngbTooltip="Edit Profile" (click)="opena(quest,l)"
                                                 class="btn btn-success btn-link btn-sm">
-                                                <a [routerLink]="['/pages/quizSpace/interviews',l.id]">
                                                     <i class="fa fa-edit"></i>
-                                                </a>
+                                                
                                             </button>
                                             <button type="button" ngbTooltip="Remove"
                                                 class="btn btn-danger btn-link btn-sm" (click)="cancelQuiz(l.id)">
@@ -65,6 +64,7 @@
                     </div>
                 </div>
                 <h2 [hidden]="!switchState" class="text-center creators">Interviews</h2>
+                <div [hidden]="!switchState" style="text-align: right;"><button type="button" class="btn btn-info" (click)="chooseEmployee()">Complete the selection process <i class="fa fa-chevron-right"></i></button></div>
         <div class="row" [hidden]="!switchState"  >
             <div class="col-md-4" *ngFor="let l of list" >
                 <div class="card card-profile card-plain">
@@ -94,7 +94,6 @@
         </div>
     </div>
 </div>
-
 <footer class="footer section-black">
     <div class="container">
         <div class="row">
@@ -113,3 +112,19 @@
         </div>
     </div>
 </footer>
+
+<ng-template #quest let-modal1>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal1-basic-title">Questions</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    
+        <div class="modal-body">
+            <div *ngFor="let n of arr">
+                helloSir <br>
+            </div>
+    
+        </div>
+</ng-template>

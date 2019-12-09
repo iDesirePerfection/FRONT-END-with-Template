@@ -22,4 +22,7 @@ export class QuestionService {
     assignAnswer(idQ: number, idA: number): Observable<{}> {
         return this.httpClient.put<Question>(environment.backend_url + 'questions/assignAnswer?idQ=' + idQ + '&idA=' + idA, null);
     }
+    getQuestions():Observable<Question[]>{
+        return  this.httpClient.get<Question[]>(environment.backend_url + 'questions/getQuestions');
+    }
 }

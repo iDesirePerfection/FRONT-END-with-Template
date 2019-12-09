@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'environments/environment';
 import { map, catchError } from 'rxjs/operators';
 import { Interview } from './models/interview';
+import { Quiz } from './models/quiz';
 
 @Injectable({ providedIn: 'root' })
 export class InterviewService {
@@ -20,7 +21,7 @@ export class InterviewService {
     setScore(id: number, score: number): Observable<{}> {
         return this.httpClient.put<Interview>(environment.backend_url + 'interviews/setScore?idI=' + id + '&score=' + score, null);
     }
-    chooseWinner(id: number,): Observable<{}> {
-        return this.httpClient.put<Interview>(environment.backend_url + 'interviews/chooseWinner?idJo=' + id, null);
+    chooseWinner(id: number,): Observable<Quiz> {
+        return this.httpClient.put<Quiz>(environment.backend_url + 'interviews/chooseWinner?idJo=' + id, null);
     }
 }

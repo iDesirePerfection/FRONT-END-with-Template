@@ -1,9 +1,8 @@
-<div class="wrapper">
-    <div class="page-header page-header-xs"
-        style="background-image: url('./assets/img/sections/interview.jpg');">
+<div  class="wrapper">
+    <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/interview.jpg');">
         <div class="filter"></div>
     </div>
-    <div class="main">
+    <div [hidden]="!show" class="main">
 
         <div class="section">
             <div class="container">
@@ -15,21 +14,30 @@
                     <div class="col-md-4 col-sm-4">
                         <h5>{{quiz.candidate.firstName}} {{quiz.candidate.lastName}} </h5>
                         <p class="price"><strong>{{quiz.interview.state}}</strong></p>
-                        <p> the interview date is {{quiz.interview.date | date: "longDate"}} <br>and starts at {{quiz.interview.time}} </p>
+                        <p> the interview date is {{quiz.interview.date | date: "longDate"}} <br>and starts at
+                            {{quiz.interview.time}} </p>
                         <br />
-                        <button class="btn btn-danger btn-round"> start video interview</button>
+                        <button (click)="livechat()" class="btn btn-info btn-round"> start video interview</button>
                     </div>
                     <div class="col-md-3 ml-auto col-sm-4">
-                        <img src="./assets/img/pending.png" alt="Rounded Image"
-                            class="img-rounded img-responsive">
+                        <img src="./assets/img/pending.png" alt="Rounded Image" class="img-rounded img-responsive">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div [hidden]="show">
+    <div [id]="localCallId" class="local">
 
+    </div>
 
+    <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
+    </div><br>
+    <div style="text-align: center;">
+        <button (click)="livechat()" class="btn btn-info btn-round">End Call</button>
+    </div>
+</div>
 <footer class="footer section-black">
     <div class="container">
         <div class="row">

@@ -10,7 +10,7 @@ export class AnswerService {
     constructor(private httpClient: HttpClient) { }
     addAnswer(answer: string): Observable<Answer> {
 
-        return this.httpClient.post<Answer>(environment.backend_url + 'anwsers/addAnswer?answer=' +answer,null);
+        return this.httpClient.post<Answer>(environment.backend_url + 'answers/addAnswer?answer=' +answer,null);
     }
     deleteExperience(id:number) : Observable<{}>
     {
@@ -22,10 +22,13 @@ export class AnswerService {
     }
     setCorrect(id:number): Observable<{}>
     {
-        return this.httpClient.put<Answer>(environment.backend_url + 'anwsers/setCorrect?id=' +id,null);
+        return this.httpClient.put<Answer>(environment.backend_url + 'answers/setCorrect?id=' +id,null);
     }
     updateAnswer(id:number,answer:string): Observable<{}>
     {
         return this.httpClient.put<Answer>(environment.backend_url + 'anwsers/setCorrect?id=' +id+'&answer='+answer,null);
+    }
+    getAnswers():Observable<Answer[]>{
+        return  this.httpClient.get<Answer[]>(environment.backend_url + 'answers/getAnswers');
     }
 }

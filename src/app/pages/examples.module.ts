@@ -39,6 +39,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
 import { InterviewComponent } from './interview/interview.component';
+import { StarRatingModule } from 'angular-star-rating';
+import { NgxAgoraModule } from 'ngx-agora';
+import { environment } from 'environments/environment';
+import { QuestionComponent } from './question/question.component';
 
 
 @NgModule({
@@ -56,7 +60,10 @@ import { InterviewComponent } from './interview/interview.component';
         ImageUploadModule,
         FormsModule,
         Ng2SearchPipeModule,
-        RouterModule
+        RouterModule,
+        StarRatingModule.forRoot(),
+        NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
+
     ],
     declarations: [
         ExamplesComponent,
@@ -85,7 +92,8 @@ import { InterviewComponent } from './interview/interview.component';
         ListjobofferPageComponent,
         ListeventPageComponent,
         MyjobofferlistPageComponent,
-        InterviewComponent
+        InterviewComponent,
+        QuestionComponent
     ],
     exports: [
         
