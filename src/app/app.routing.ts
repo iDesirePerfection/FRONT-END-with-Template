@@ -47,6 +47,7 @@ import { JobofferdetailPageComponent } from './pages/enterprise-pages/jobofferde
 import { PackAdminComponent } from './pages/pack-admin-pages/pack-admin/pack-admin.component';
 import { EditPackAdminComponent } from './pages/pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
 import { ShowPackDetailsComponent } from './pages/pack-admin-pages/show-pack-details/show-pack-details.component';
+import { PaymentAdminComponent } from './pages/payment/payment-admin/payment-admin.component';
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -83,6 +84,8 @@ const routes: Routes =[
     { path: 'pages/pack-admin-pages/packAdmin',  component: PackAdminComponent },
     { path: 'pages/pack-admin-pages/editPackAdmin/:packId',   component: EditPackAdminComponent },
     { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
+    { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
+    { path: 'pages/admin/payment/:paymentId',   component: PaymentAdminComponent },
     { path: '', redirectTo: 'presentation', pathMatch: 'full' },
     { path: 'pages/enterprise-pages/entprofile-page',       component: EntprofilePageComponent },
     { path: 'pages/enterprise-pages/enterpriseprofile-page/:entId',       component: EnterpriseprofilePageComponent },

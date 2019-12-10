@@ -69,6 +69,10 @@ import { ViewJobComponent } from './view-job/view-job.component';
 import { InterviewTrainingComponent } from './interview-training/interview-training.component';
 import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { PaymentAdminComponent } from './payment/payment-admin/payment-admin.component';
+import { PaymentClientComponent } from './payment/payment-client/payment-client.component';
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -85,7 +89,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         
         FormsModule,
         Ng2SearchPipeModule,
-        RouterModule,
+        RouterModule, 
         MatDialogModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
@@ -144,10 +148,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         AddjobofferPageComponent,
         AddenterprisePageComponent,
         AddenteventPageComponent,
-        JobofferdetailPageComponent
-        
-        
-
+        JobofferdetailPageComponent,
+        PaymentAdminComponent,
+        PaymentClientComponent
+       
     ],
     exports: [
         

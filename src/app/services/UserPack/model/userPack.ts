@@ -5,7 +5,7 @@ import { User } from "app/services/user-services/models/user";
 
 export interface UserPack{
     id:number;
-    user:User;
+    user?:User;
     pack:Pack;
     daysLeft:number;
     isValid:boolean;

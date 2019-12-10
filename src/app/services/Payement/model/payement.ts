@@ -1,9 +1,11 @@
+import { UserPack } from "app/services/UserPack/model/userPack";
+
 export interface Payement{
     id:number;
-    numCard:number;
+    numCard:string;
     cvv:number;
     cardExpirationDate:Date;
-    validation:boolean;
     canceled:boolean;
-    userPack:any[];
+    validation:boolean;
+    userPack:UserPack;
 }

@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Pack } from './models/pack';
 import { ThrowStmt } from '@angular/compiler';
+import { User } from '../user-services/model/user';
+import { UserPack } from '../UserPack/model/userPack';
 
 
 @Injectable({ providedIn: 'root' })
@@ -16,9 +18,10 @@ export class PackService {
     getUsersByPack(idPack: number): Observable<string[]> {
         return this.httpClient.get<string[]>(environment.backend_url + 'pack/user/'+idPack);
     }
-    getUsersPremium():Observable<string[]>{
-        return this.httpClient.get<string[]>(environment.backend_url+'pack/user');
+    getUsersPremium(id:number):Observable<UserPack[]>{
+        return this.httpClient.get<UserPack[]>(environment.backend_url+'pack/userByPack/'+id);
     }
+    
     addPack(titre:string,description:string,prix:number,type:string):Observable<Pack>{
         return this.httpClient.post<Pack>(environment.backend_url +'pack/addPack?titre='+titre+'&description='+description+'&prix='+prix+'&type'+type ,null)
     }
