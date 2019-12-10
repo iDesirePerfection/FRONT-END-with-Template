@@ -13,7 +13,7 @@ import { Injectable } from '@angular/core';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent extends ChatAdapter implements IChatGroupAdapter ,OnInit {
+export class ChatComponent extends ChatAdapter implements OnInit {
 
   mockedParticipants: IChatParticipant[] = [
     {
@@ -139,7 +139,7 @@ friends:any;
     console.log(obj[0].gender)
     obj.forEach(element => {
       element.avatar = element.interests;
-      delete obj.interests;
+      delete element.interests;
       element.displayName = element.username;
       delete element.username;
       element.status = element.lastName;
@@ -150,15 +150,11 @@ friends:any;
 console.log('new shit');
 console.log(obj);
 
-    return of(obj.forEach(user => {
+    return of(obj.map(user => {
       console.log(user);
       const participantResponse = new ParticipantResponse();
 
       participantResponse.participant = user;
-      participantResponse.metadata = {
-        totalUnreadMessages: Math.floor(Math.random() * 10)
-      }
-
       return participantResponse;
     }));
   }
@@ -219,7 +215,5 @@ console.log(obj);
       this.onFriendsListChanged(response);
     });
   }
-
-
 
 }
