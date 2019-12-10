@@ -43,8 +43,9 @@
 
                     </div>
                     <p (click)='toggleShowInput()' [hidden]=!showInput>{{post.content}}</p>
+
                     <input [hidden]=showInput type="text " value=" " placeholder=" " class="form-control " [(ngModel)]="post.content" />
-                    <button type="button" (click)='toggleShowInput();updatePost(post.id,post.content)' [hidden]=showInput class="btn btn-info btn-link">Save</button>
+                    <button type="button" (click)='toggleShowInput();updatePost(post.id,post.content);' [hidden]=showInput class="btn btn-info btn-link">Save</button>
                     <button type="button" (click)='toggleShowInput()' [hidden]=showInput class="btn btn-info btn-link">Cancel</button>
                     <div class="media-footer">
 
@@ -129,7 +130,7 @@
                         </div>
                         <div class="modal-body text-center ">
                             <h6 class="text-muted ">Confirm</h6>
-                            <h5>Do you want to remove your post? </h5>
+                            <h5>Do you want to share this post? </h5>
                         </div>
                         <div class="modal-footer ">
                             <div class="left-side ">
@@ -137,7 +138,7 @@
                             </div>
                             <div class="divider "></div>
                             <div class="right-side ">
-                                <button type="button " (click)=deleteComment(comment?.id) (click)="c( 'Close click ') " class="btn btn-danger btn-link ">Yes</button>
+                                <button type="button " (click)=shareAction(post.id) (click)="c( 'Close click ') " class="btn btn-danger btn-link ">Yes</button>
                             </div>
                         </div>
                     </ng-template>

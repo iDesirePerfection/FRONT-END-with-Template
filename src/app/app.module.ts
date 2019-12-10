@@ -14,7 +14,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { NgChatModule } from 'ng-chat';
-
+ 
+import { ToastrModule } from 'ngx-toastr';
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
@@ -38,6 +39,8 @@ import { ChatComponent } from './chat/chat.component';
         AppRoutingModule,
         PresentationModule,
         SectionsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
         ComponentsModule,
         ExamplesModule,
         AngularFontAwesomeModule,

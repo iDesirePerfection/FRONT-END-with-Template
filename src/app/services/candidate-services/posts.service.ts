@@ -29,6 +29,10 @@ export class PostsService {
         return this.httpClient.put<Post>(environment.backend_url + 'post/update?id=' + id + '&content=' + content, null );
     }
 
+    sharePost(id:number):Observable<Post> {
+        return this.httpClient.post<Post>(environment.backend_url + 'post/share?post=' + id,null);
+    }
+
 
 getTotalPosts(): Observable<string> {
 let totalQuestions:number;

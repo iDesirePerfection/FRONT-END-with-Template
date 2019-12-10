@@ -8,6 +8,8 @@ import { Reaction } from 'app/services/candidate-services/models/reaction.model'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'app/services/user-services/user.service';
 import { Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -16,6 +18,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./post-page.component.scss']
 })
 export class PostsPageComponent implements OnInit {
+
 
 
 interval: any;
@@ -27,6 +30,7 @@ reactionId:number=0;
 likes: number = 0;
 likeremoved: number= 0;
 showInput = true;
+emptyInput:boolean = false;
 myContent = 'This is the content';
 dislikeremoved: number= 0;
 closeResult: string;
@@ -37,12 +41,17 @@ public reaction:Reaction={idPost:0,type:''};
 
 
 constructor(private postsService: PostsService,private commentsService: CommentsService,
-private reactionsService: ReactionsService,private modalService: NgbModal,private userService : UserService) { }
+private reactionsService: ReactionsService,private modalService: NgbModal,
+private userService : UserService,private toastr: ToastrService) { }
 
+
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
 
 ngOnInit() {
     this.postsService.getPosts().subscribe(posts => {
-          this.posts=posts;
+          this.posts=posts.reverse();
 });
 }
 
@@ -52,18 +61,26 @@ ngOnInit() {
 
   refreshData(){
     this.postsService.getPosts().subscribe(posts => {
-      this.posts=posts;
+      this.posts=posts.reverse();
     });
 }
-
 
 toggleShowInput = function()
      {
          this.showInput = !this.showInput;
-         console.log('changed');
      }
   addPost() {
     this.postsService.addPost(this.post.content).subscribe(post=>{
+      this.refreshData();
+       const options = {
+'positionClass': 'toast-bottom',
+  };
+      this.toastr.info(null, 'your post was shared!');
+    });
+  this.emptyInput=!this.emptyInput;
+  }
+    shareAction(id :number) {
+    this.postsService.sharePost(id).subscribe(update=>{
       this.refreshData();
     });
   }
@@ -71,7 +88,22 @@ toggleShowInput = function()
     this.postsService.updatePost(id, content).subscribe(post=>{
       this.refreshData();
     });
+      this.toastr.info(null, 'your post was updated!');
   }
+   removePost(id:number) {
+   this.postsService.deletePost(id).subscribe(post=>{
+    });
+      setTimeout(function(){ this.refreshData(); }.bind(this), 400);
+      this.toastr.error(null, 'you deleted your post');
+
+  }
+    deleteComment(id:number) {
+          this.commentsService.deleteComment(id).subscribe();
+  }
+      deleteReaction(id:number) {
+      this.reactionsService.deleteReaction(id).subscribe();
+  }
+
 
   addComment(idPost: number) {
     this.commentsService.addComment(idPost,this.comment.content).subscribe(post=>{
@@ -174,22 +206,12 @@ toggleShowInput = function()
           if(r.reactingUser.id == localStorage.getItem('id') && r.type === 'Dislike')
           {
             this.mydislike=true;
-            console.log('logged user have a dislike on current post');
           }
         });
       return(this.mydislike);
       }
   }
-  removePost(id:number) {
-          this.postsService.deletePost(id).subscribe();
-  }
-    deleteComment(id:number) {
-          this.commentsService.deleteComment(id).subscribe();
-  }
-      deleteReaction(id:number) {
-      this.reactionsService.deleteReaction(id).subscribe();
-  }
-
+ 
 getLikes(reactions:any[]) {
       return reactions.filter(r => (r.type) === 'Like');
 }
