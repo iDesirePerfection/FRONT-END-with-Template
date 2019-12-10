@@ -36,6 +36,7 @@ import { ListeventPageComponent } from './enterprise-pages/listevent-page/listev
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { PostsPageComponent } from './profile/posts-page/post-page.component';
 
 
 
@@ -87,6 +88,7 @@ import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component
         LoginComponent,
         ProductpageComponent,
         ProfileComponent,
+        PostsPageComponent,
         RegisterComponent,
         SearchComponent,
         SettingsComponent,
