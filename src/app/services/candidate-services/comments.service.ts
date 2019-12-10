@@ -17,7 +17,7 @@ export class CommentsService {
     }
 
     updateComment(id:number,content:string):Observable<Post> {
-        return this.httpClient.put<Comment>(environment.backend_url + 'post/update?id=' + id + '&content=' + content, null );
+        return this.httpClient.put<Comment>(environment.backend_url + 'comment/update?id=' + id + '&content=' + content, null );
     }
     deleteComment(id:number): Observable<{}>
     {
