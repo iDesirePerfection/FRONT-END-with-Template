@@ -32,7 +32,7 @@ export class EnterpriseprofilePageComponent implements OnInit {
   
 
   constructor(private entprofileService : EntprofileService , private eventService : EventService,private modalService: NgbModal 
-    ,private route: ActivatedRoute, private toastr: ToastrService,private sanitizer:DomSanitizer) { }
+    ,private route: ActivatedRoute, private toastr: ToastrService) { }
 
 
   ngOnInit() {
