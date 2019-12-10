@@ -26,6 +26,8 @@ import { Page404Component } from './pages/page404/page404.component';
 import { Page422Component } from './pages/page422/page422.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import { ClaimsComponent } from './pages/claims/claims.component';
+import { PackComponent } from './pages/pack/pack.component';
 import { EntprofilePageComponent } from './pages/enterprise-pages/entprofile-page/entprofile-page.component';
 import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
 import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
@@ -42,6 +44,9 @@ import { AddjobofferPageComponent } from './pages/enterprise-pages/addjoboffer-p
 import { AddenterprisePageComponent } from './pages/enterprise-pages/addenterprise-page/addenterprise-page.component';
 import { AddenteventPageComponent } from './pages/enterprise-pages/addentevent-page/addentevent-page.component';
 import { JobofferdetailPageComponent } from './pages/enterprise-pages/jobofferdetail-page/jobofferdetail-page.component';
+import { PackAdminComponent } from './pages/pack-admin-pages/pack-admin/pack-admin.component';
+import { EditPackAdminComponent } from './pages/pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
+import { ShowPackDetailsComponent } from './pages/pack-admin-pages/show-pack-details/show-pack-details.component';
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -72,7 +77,17 @@ const routes: Routes =[
     { path: 'pages/page404',     component: Page404Component },
     { path: 'pages/page422',     component: Page422Component },
     { path: 'pages/page500',     component: Page500Component },
+<<<<<<< HEAD
     { path: '', redirectTo: 'presentation', pathMatch: 'full' }, 
+=======
+    { path: 'pages/claims',   component: ClaimsComponent },
+    { path: 'pages/pack',   component: PackComponent },
+    { path: 'pages/pack-admin-pages/packAdmin',  component: PackAdminComponent },
+    { path: 'pages/pack-admin-pages/editPackAdmin/:packId',   component: EditPackAdminComponent },
+    { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
+    { path: '', redirectTo: 'presentation', pathMatch: 'full' },
+  
+>>>>>>> origin/mouhibBranch
     { path: 'pages/enterprise-pages/entprofile-page',       component: EntprofilePageComponent },
     { path: 'pages/enterprise-pages/enterpriseprofile-page/:entId',       component: EnterpriseprofilePageComponent },
     { path: 'pages/enterprise-pages/listjoboffer-page',       component: ListjobofferPageComponent },

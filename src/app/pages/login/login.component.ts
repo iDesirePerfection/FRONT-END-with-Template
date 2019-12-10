@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'app/services/user-services/models/user';
+
 import { UserService } from 'app/services/user-services/user.service';
 import { environment } from 'environments/environment';
+import { User } from 'app/services/user-services/model/user';
 
 @Component({
     selector: 'app-login',
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
         navbar.classList.remove('navbar-transparent');
     }
 
+<<<<<<< HEAD
     onSubmit(form) {
         this.userService.login(this.usern, this.passw).subscribe(u => {
             this.user = u;
@@ -73,6 +75,11 @@ export class LoginComponent implements OnInit {
         });
 
 
+=======
+    onSubmit(form)
+    {
+        this.userService.login(this.usern,this.passw).subscribe(u=>this.user=u);
+>>>>>>> origin/mouhibBranch
         console.log(this.user);
     }
 

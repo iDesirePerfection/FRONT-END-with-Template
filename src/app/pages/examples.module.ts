@@ -30,6 +30,8 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { Page404Component } from './page404/page404.component';
 import { Page422Component } from './page422/page422.component';
 import { Page500Component } from './page500/page500.component';
+import { ClaimsComponent } from './claims/claims.component';
+import { PackComponent } from './pack/pack.component';
 import { EntprofilePageComponent } from './enterprise-pages/entprofile-page/entprofile-page.component';
 import { EnterpriseprofilePageComponent } from './enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
 import { ListjobofferPageComponent } from './enterprise-pages/listjoboffer-page/listjoboffer-page.component';
@@ -42,6 +44,9 @@ import { AddjobofferPageComponent } from './enterprise-pages/addjoboffer-page/ad
 import { AddenterprisePageComponent } from './enterprise-pages/addenterprise-page/addenterprise-page.component';
 import { AddenteventPageComponent } from './enterprise-pages/addentevent-page/addentevent-page.component';
 import { JobofferdetailPageComponent } from './enterprise-pages/jobofferdetail-page/jobofferdetail-page.component';
+import { PackAdminComponent } from './pack-admin-pages/pack-admin/pack-admin.component';
+import { EditPackAdminComponent } from './pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
+import { ShowPackDetailsComponent } from './pack-admin-pages/show-pack-details/show-pack-details.component';
 
 
 
@@ -77,6 +82,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
             apiKey: 'NO_API_KEY'
         }),
         ImageUploadModule,
+        
         FormsModule,
         Ng2SearchPipeModule,
         RouterModule,
@@ -114,11 +120,16 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         Page404Component,
         Page422Component,
         Page500Component,
+        ClaimsComponent,
+        PackComponent,
         EntprofilePageComponent,
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
         MyjobofferlistPageComponent,
+        PackAdminComponent,
+        EditPackAdminComponent,
+        ShowPackDetailsComponent,
         ExperienceComponent,
         SkillComponent,
         AddExperienceFormComponent,
