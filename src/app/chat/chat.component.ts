@@ -92,7 +92,7 @@ friends:any;
 
     mockedHistory: Array<Message> = [
       {
-        fromId: 9,
+        fromId: 6,
         toId: 999,
         message: 'Hi there, just type any message bellow to test this Angular module.',
         dateSent: new Date()
@@ -138,7 +138,6 @@ friends:any;
 }
   constructor() {
     super();
-
   }
     listFriends(): Observable<ParticipantResponse[]> {
      const xmlHttp = new XMLHttpRequest();
@@ -174,19 +173,30 @@ console.log(obj);
   getMessageHistory(destinataryId: any): Observable<Message[]> {
      this.mockedHistory = [];
      const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( 'GET', environment.backend_url + 'message/mymessages', false ); // false for synchronous request
+    xmlHttp.open( 'GET', environment.backend_url + 'message/all', false ); // false for synchronous request
     xmlHttp.send( null );
     const json =JSON.parse(xmlHttp.responseText);
-    let obj = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(json, this.replacer))));
+    let obj = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(json))));
+    console.log(obj);
     obj.map(msg => {
       console.log(msg);
       let message = {fromId:msg.sender.id,
       toId:msg.recipient,
       message:msg.body,
       dateSent:new Date()};
+      console.log('from : ' + message.fromId);
+      console.log('to : ' + message.toId);
+      console.log('logged : ' + localStorage.getItem('id'));
+      console.log('2' + message.fromId == localStorage.getItem('id'));
+      if(message.toId == localStorage.getItem('id') || message.fromId == localStorage.getItem('id'))
+      {
+        console.log('pushing');
       this.mockedHistory.push(message);
+      }
       });
     return of(this.mockedHistory).pipe(delay(2000));
+
+
   }
 
   sendMessage(message: Message): void {
