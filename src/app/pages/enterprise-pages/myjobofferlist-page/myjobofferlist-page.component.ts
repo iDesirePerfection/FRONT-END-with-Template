@@ -35,6 +35,7 @@ export class MyjobofferlistPageComponent implements OnInit {
     this.jobofferService.GetJobofferByEnt(localStorage.getItem('entid')).subscribe(jo => {
       this.myjoboffers = jo;
       console.log(jo);
+      console.log(localStorage.getItem('entid'));
     });
   }
 

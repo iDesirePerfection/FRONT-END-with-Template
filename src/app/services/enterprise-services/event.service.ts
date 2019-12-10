@@ -21,8 +21,8 @@ export class EventService {
     }
 
     AddEvent(EEtitle:string,EEplace:string,EESdate:Date,EEEdate:Date,EEdescription:string,EEminparticipants:number,
-        EEmaxparticipants:number,EEprice:number,user:string): Observable<Event>{
-        return this.httpClient.post<Event>(environment.backend_url + 'enterpriseevent/addevent?EEtitle='+EEtitle+'&EEplace='+EEplace+'&EESdate='+EESdate+'&EEEdate='+EEEdate+'&EEdescription='+EEdescription+'&EEminparticipants='+EEminparticipants+'&EEmaxparticipants='+EEmaxparticipants+'&EEprice='+EEprice+'&user='+user,null);
+        EEmaxparticipants:number,EEprice:number,user:string,filename:string): Observable<Event>{
+        return this.httpClient.post<Event>(environment.backend_url + 'enterpriseevent/addevent?EEtitle='+EEtitle+'&EEplace='+EEplace+'&EESdate='+EESdate+'&EEEdate='+EEEdate+'&EEdescription='+EEdescription+'&EEminparticipants='+EEminparticipants+'&EEmaxparticipants='+EEmaxparticipants+'&EEprice='+EEprice+'&user='+user+'&file='+filename,null);
     }
 
     GetEventByEnt(entid:string): Observable<Event[]> {

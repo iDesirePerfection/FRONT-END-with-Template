@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { UserService } from 'app/services/user-services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -12,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
     public x = localStorage.getItem("entid"); 
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element : ElementRef,private userservice: UserService,private router:Router) {
         this.sidebarVisible = false;
     }
 
@@ -65,4 +67,30 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+
+
+    logout()
+    {
+      
+      this.userservice.logout(localStorage.getItem('id')).subscribe(
+        (data) =>
+        {
+            localStorage.removeItem('id');
+        localStorage.removeItem('email');
+        localStorage.removeItem('firstname');
+        localStorage.removeItem('lastname');
+        localStorage.removeItem('password');
+        localStorage.removeItem('username');
+        localStorage.removeItem('role');
+        localStorage.removeItem('interests');
+        localStorage.removeItem('entid');
+         
+           this.router.navigate(['/pages/login']);
+
+        }
+      )
+    }
+
+
 }

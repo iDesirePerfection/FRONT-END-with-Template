@@ -14,8 +14,8 @@ export class ListjobofferPageComponent implements OnInit {
   joboffers:Joboffer[]=[];
   hotjoboffers:Joboffer[]=[];
   searchText;
-  
- exp=0;
+  public joid;
+  exp=0;
 
  collection = { count: null, joboffers: [] };
  config:any;

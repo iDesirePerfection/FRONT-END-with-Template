@@ -15,14 +15,9 @@
                     <h3>Add Job Offer</h3>
                     <form #addformm="ngForm" (ngSubmit)="addJoboffer()">
                         <div class="row">
-                            <div class="col-md-5 col-sm-5">
-                                <h6>Joboffer Image</h6>
-                                <app-image-upload></app-image-upload>
-                                <h6>Tags</h6>
-                                <tag-input [(ngModel)]='addform.interests'   #interests="ngModel" theme='regular-theme' name="interests"></tag-input>
-                            </div>
+                            
     
-                            <div class="col-md-7 col-sm-7">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h6>Title <span class="icon-danger">*</span></h6>
                                     <input type="text" class="form-control border-input" placeholder="title" name="JOtitle" [(ngModel)]="addform.JOtitle" #JOtitle="ngModel" required >
@@ -51,9 +46,12 @@
                                     </div>
                                   </div>
                                   <div class="col-md-6">
-                                   
+                                        <h6>Tags</h6>
+                                        <tag-input [(ngModel)]='addform.interests'   #interests="ngModel" theme='regular-theme' name="interests"></tag-input>
                                   </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h6>Description</h6>
                                             <textarea class="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="13" maxlength="150" name="JOdescription" [(ngModel)]="addform.JOdescription" #JOdescription="ngModel"></textarea>
@@ -62,18 +60,19 @@
                                              <div class="form-check">
                                 </div>
                             </div>
+                            
                         </div>
     
     
                         <div class="row buttons-row">
                             <div class="col-md-4 col-sm-4">
-                                <button class="btn btn-outline-danger btn-block btn-round">Cancel</button>
+                                <button class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/pages/enterprise-pages/myjobofferlist-page']">Cancel</button>
                             </div>
                             <div class="col-md-4 col-sm-4">
-                                <button type="submit" class="btn btn-outline-primary btn-block btn-round" >Save</button>
+                                
                             </div>
                             <div class="col-md-4 col-sm-4">
-                                <button class="btn btn-primary btn-block btn-round">Save & Publish </button>
+                                <button type="submit" class="btn btn-primary btn-block btn-round">Save</button>
                             </div>
                         </div>
                     </form>

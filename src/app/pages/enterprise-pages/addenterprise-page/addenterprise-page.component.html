@@ -19,7 +19,8 @@
                                 <h6>Enterprise Image</h6>
                                 <app-image-upload  (change)="fileChange($event)"></app-image-upload>
                                 <p> FILENAME : {{filename}} </p>
-
+                            </div>
+                            <div class="col-md-7 col-sm-7">
                                 <div class="form-group">
                                     <h6>Name <span class="icon-danger">*</span></h6>
                                     <input type="text" class="form-control border-input"placeholder="Name" name="ename" [(ngModel)]="addform.ename" #ename="ngModel" required>
@@ -29,7 +30,12 @@
                                 </div>
                                 <div class="form-group">
                                     <h6>Domain <span class="icon-danger">*</span></h6>
+                                    <div class="input-group border-input">
                                     <input type="text" class="form-control border-input"placeholder="Domain" name="edomain" [(ngModel)]="addform.edomain" #edomain="ngModel">
+                                    <div class="input-group-append">
+                                    <span  class="input-group-text"><i class="fa fa-wrench"></i></span>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="row price-row">
                                   <div class="col-md-6">
@@ -39,7 +45,7 @@
                                     <div class="input-group border-input">
                                       <input type="text" class="form-control border-input" placeholder="Location" name="elocation" [(ngModel)]="addform.elocation" #elocation="ngModel">
                                       <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fa fa-euro"></i></span>
+                                        <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                                       </div>
                                     </div>
                                   </div>
@@ -48,7 +54,7 @@
                                     <div class="input-group border-input">
                                       <input type="text" class="form-control border-input" placeholder="Number" name="employeesnumber" [(ngModel)]="addform.employeesnumber" #employeesnumber="ngModel" >
                                       <div class="input-group-append">
-                                        <span class="input-group-text">%</span>
+                                        <span class="input-group-text"></span>
                                       </div>
                                     </div>
                                   </div>
@@ -69,10 +75,10 @@
                                 <button class="btn btn-outline-danger btn-block btn-round">Cancel</button>
                             </div>
                             <div class="col-md-4 col-sm-4">
-                                <button type="submit" class="btn btn-outline-primary btn-block btn-round" >Save</button>
+                                
                             </div>
                             <div class="col-md-4 col-sm-4">
-                                <button class="btn btn-primary btn-block btn-round">Save & Publish </button>
+                                <button  type="submit" class="btn btn-primary btn-block btn-round">Save & Publish </button>
                             </div>
                         </div>
                     </form>

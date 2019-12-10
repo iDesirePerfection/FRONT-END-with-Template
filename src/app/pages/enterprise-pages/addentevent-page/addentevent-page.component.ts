@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddenteventPageComponent implements OnInit {
 
 
+  public x = localStorage.getItem("entid"); 
 
   public addform:Event={EEtitle:'',EEplace:'',EESdate:null,EEEdate:null,EEdescription:'',EEminparticipants:null,
     EEmaxparticipants:null,EEprice:''}
@@ -20,8 +21,19 @@ export class AddenteventPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  filename: string = '';
+  fileChange(event) {
+    this.filename = 'assets/img/' + event;
+  }
+  getFilename(filename)
+  {
+    console.log(filename);
+  }
+
+
+
   addEvent(){
-    this.eventService.AddEvent(this.addform.EEtitle,this.addform.EEplace,this.addform.EESdate,this.addform.EEEdate,this.addform.EEdescription,this.addform.EEminparticipants,this.addform.EEmaxparticipants,this.addform.EEprice,localStorage.getItem('id')).subscribe(e => {
+    this.eventService.AddEvent(this.addform.EEtitle,this.addform.EEplace,this.addform.EESdate,this.addform.EEEdate,this.addform.EEdescription,this.addform.EEminparticipants,this.addform.EEmaxparticipants,this.addform.EEprice,localStorage.getItem('id'),this.filename).subscribe(e => {
       this.toastr.success('Added with Success!', 'Saving!',
       {timeOut: 3000});;
       console.log(e);

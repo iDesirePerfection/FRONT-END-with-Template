@@ -13,6 +13,10 @@ export class UserService {
         return this.httpClient.get<User>(environment.backend_url + 'user/authenticate?username=' +username+'&password='+password );
     }
 
+    logout(id) {
+
+        return this.httpClient.put<User>(environment.backend_url + 'user/logout?id=' +id,null );
+    }
 
     
 

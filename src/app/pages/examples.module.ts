@@ -40,6 +40,7 @@ import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-p
 import { AddjobofferPageComponent } from './enterprise-pages/addjoboffer-page/addjoboffer-page.component';
 import { AddenterprisePageComponent } from './enterprise-pages/addenterprise-page/addenterprise-page.component';
 import { AddenteventPageComponent } from './enterprise-pages/addentevent-page/addentevent-page.component';
+import { JobofferdetailPageComponent } from './enterprise-pages/jobofferdetail-page/jobofferdetail-page.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { AddenteventPageComponent } from './enterprise-pages/addentevent-page/ad
         MyjobofferlistPageComponent,
         AddjobofferPageComponent,
         AddenterprisePageComponent,
-        AddenteventPageComponent
+        AddenteventPageComponent,
+        JobofferdetailPageComponent
     ],
     exports: [
         

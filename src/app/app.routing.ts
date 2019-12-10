@@ -33,6 +33,7 @@ import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjoboffer
 import { AddjobofferPageComponent } from './pages/enterprise-pages/addjoboffer-page/addjoboffer-page.component';
 import { AddenterprisePageComponent } from './pages/enterprise-pages/addenterprise-page/addenterprise-page.component';
 import { AddenteventPageComponent } from './pages/enterprise-pages/addentevent-page/addentevent-page.component';
+import { JobofferdetailPageComponent } from './pages/enterprise-pages/jobofferdetail-page/jobofferdetail-page.component';
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -66,6 +67,7 @@ const routes: Routes =[
     { path: 'pages/enterprise-pages/addjoboffer-page',       component: AddjobofferPageComponent },
     { path: 'pages/enterprise-pages/addenterprise-page',       component: AddenterprisePageComponent },
     { path: 'pages/enterprise-pages/addentevent-page',       component: AddenteventPageComponent },
+    { path: 'pages/enterprise-pages/jobofferdetail-page/:joid',       component: JobofferdetailPageComponent },
 ];
 
 @NgModule({

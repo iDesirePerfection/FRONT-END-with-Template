@@ -54,9 +54,7 @@
                                 <td class="td-actions text-right">
                                         <button *ngIf="j.isValid=='0'" (click)="validateJoboffer(j.joid)" class="badge badge-pill badge-danger">Unvalid</button>
                                         <span *ngIf="j.isValid=='1'" class="badge badge-pill badge-success mr-1">Valid</span>
-                                    <button type="button" ngbTooltip="View Profile" class="btn btn-info btn-link btn-sm">
-                                        <i class="fa fa-user"></i>
-                                    </button>
+                                    
                                     <button (click)="Opena(ajout,j.joid,j.jotitle,j.joarea,j.jodescription,j.joexperience,j.interests)" type="button" ngbTooltip="Edit joboffer" class="btn btn-success btn-link btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </button>

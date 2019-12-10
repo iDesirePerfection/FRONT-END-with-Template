@@ -50,7 +50,10 @@ export class JobofferService {
         return this.httpClient.get<Joboffer[]>(environment.backend_url + 'joboffer/getjobofferbyexp?JOexperience=' + JOexperience );
     }
 
+    GetJobofferById(JOid:number) :Observable<Joboffer[]> {
 
+        return this.httpClient.get<Joboffer[]>(environment.backend_url + 'joboffer/getjobofferbyid?JOid=' + JOid );
+    }
 
 
 }
