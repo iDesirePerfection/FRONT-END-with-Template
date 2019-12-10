@@ -142,18 +142,13 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         
         Ng2SearchPipeModule,
         RouterModule,
-<<<<<<< HEAD
-       
+        NgxPaginationModule,
     ],
     entryComponents: [
         AddExperienceFormComponent,
         EditExperienceFormComponent,
         AddSkillFormComponent,
-        NgxPaginationModule,
         EditProfileFormComponent
-=======
-
->>>>>>> origin/ziedBranch
     ]
 })
 export class ExamplesModule { }

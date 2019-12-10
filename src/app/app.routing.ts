@@ -31,7 +31,6 @@ import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpr
 import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
 import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/listevent-page.component';
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
-<<<<<<< HEAD
 import { PostsPageComponent } from './pages/profile/posts-page/post-page.component';
 
 import { DiscoverNetworkComponent } from './pages/discover-network/discover-network.component';
@@ -39,12 +38,10 @@ import { DiscoverCompaniesComponent } from './pages/discover-companies/discover-
 import { ViewProfileComponent } from './pages/view-profile/view-profile.component';
 import { ViewJobComponent } from './pages/view-job/view-job.component';
 import { InterviewTrainingComponent } from './pages/interview-training/interview-training.component';
-=======
 import { AddjobofferPageComponent } from './pages/enterprise-pages/addjoboffer-page/addjoboffer-page.component';
 import { AddenterprisePageComponent } from './pages/enterprise-pages/addenterprise-page/addenterprise-page.component';
 import { AddenteventPageComponent } from './pages/enterprise-pages/addentevent-page/addentevent-page.component';
 import { JobofferdetailPageComponent } from './pages/enterprise-pages/jobofferdetail-page/jobofferdetail-page.component';
->>>>>>> origin/ziedBranch
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -81,14 +78,11 @@ const routes: Routes =[
     { path: 'pages/enterprise-pages/listjoboffer-page',       component: ListjobofferPageComponent },
     { path: 'pages/enterprise-pages/listevent-page',       component: ListeventPageComponent },
     { path: 'pages/enterprise-pages/myjobofferlist-page',       component: MyjobofferlistPageComponent },
-<<<<<<< HEAD
     { path : 'pages/comments/test' , component: PostsPageComponent},
-=======
     { path: 'pages/enterprise-pages/addjoboffer-page',       component: AddjobofferPageComponent },
     { path: 'pages/enterprise-pages/addenterprise-page',       component: AddenterprisePageComponent },
     { path: 'pages/enterprise-pages/addentevent-page',       component: AddenteventPageComponent },
     { path: 'pages/enterprise-pages/jobofferdetail-page/:joid',       component: JobofferdetailPageComponent },
->>>>>>> origin/ziedBranch
 ];
 
 @NgModule({

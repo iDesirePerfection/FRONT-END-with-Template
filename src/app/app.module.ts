@@ -18,7 +18,6 @@ import { NgChatModule } from 'ng-chat';
 import { ToastrModule } from 'ngx-toastr';
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { AddExperienceFormComponent } from './pages/add-experience-form/add-experience-form.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -28,10 +27,6 @@ import { EditProfileFormComponent } from './pages/edit-profile-form/edit-profile
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-=======
-import { ToastrModule } from 'ngx-toastr';
-
->>>>>>> origin/ziedBranch
 
 @NgModule({
     declarations: [
@@ -56,11 +51,7 @@ import { ToastrModule } from 'ngx-toastr';
         AngularFontAwesomeModule,
         NgChatModule,
         HttpClientModule,
-<<<<<<< HEAD
         CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-=======
-        ToastrModule.forRoot() 
->>>>>>> origin/ziedBranch
         
 
     ],
