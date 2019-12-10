@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
         navbar.classList.remove('navbar-transparent');
     }
 
-<<<<<<< HEAD
     onSubmit(form) {
         this.userService.login(this.usern, this.passw).subscribe(u => {
             this.user = u;
@@ -75,11 +74,6 @@ export class LoginComponent implements OnInit {
         });
 
 
-=======
-    onSubmit(form)
-    {
-        this.userService.login(this.usern,this.passw).subscribe(u=>this.user=u);
->>>>>>> origin/mouhibBranch
         console.log(this.user);
     }
 

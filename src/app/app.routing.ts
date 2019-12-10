@@ -77,17 +77,13 @@ const routes: Routes =[
     { path: 'pages/page404',     component: Page404Component },
     { path: 'pages/page422',     component: Page422Component },
     { path: 'pages/page500',     component: Page500Component },
-<<<<<<< HEAD
     { path: '', redirectTo: 'presentation', pathMatch: 'full' }, 
-=======
     { path: 'pages/claims',   component: ClaimsComponent },
     { path: 'pages/pack',   component: PackComponent },
     { path: 'pages/pack-admin-pages/packAdmin',  component: PackAdminComponent },
     { path: 'pages/pack-admin-pages/editPackAdmin/:packId',   component: EditPackAdminComponent },
     { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
     { path: '', redirectTo: 'presentation', pathMatch: 'full' },
-  
->>>>>>> origin/mouhibBranch
     { path: 'pages/enterprise-pages/entprofile-page',       component: EntprofilePageComponent },
     { path: 'pages/enterprise-pages/enterpriseprofile-page/:entId',       component: EnterpriseprofilePageComponent },
     { path: 'pages/enterprise-pages/listjoboffer-page',       component: ListjobofferPageComponent },
