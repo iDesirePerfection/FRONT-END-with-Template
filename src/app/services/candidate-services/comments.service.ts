@@ -16,6 +16,9 @@ export class CommentsService {
        return this.httpClient.post<Comment>(environment.backend_url + 'comment/add?post=' + idpost + '&content=' + content,null);
     }
 
+    updateComment(id:number,content:string):Observable<Post> {
+        return this.httpClient.put<Comment>(environment.backend_url + 'post/update?id=' + id + '&content=' + content, null );
+    }
     deleteComment(id:number): Observable<{}>
     {
         console.log(environment.backend_url + 'comment/delete?id=' + id);

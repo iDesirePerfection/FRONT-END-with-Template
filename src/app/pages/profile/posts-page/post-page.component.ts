@@ -30,6 +30,7 @@ reactionId:number=0;
 likes: number = 0;
 likeremoved: number= 0;
 showInput = true;
+showInputCom = true;
 emptyInput:boolean = false;
 myContent = 'This is the content';
 dislikeremoved: number= 0;
@@ -69,6 +70,10 @@ toggleShowInput = function()
      {
          this.showInput = !this.showInput;
      }
+     toggleShowInputCom = function()
+     {
+         this.showInputCom = !this.showInputCom;
+     }
   addPost() {
     this.postsService.addPost(this.post.content).subscribe(post=>{
       this.refreshData();
@@ -90,6 +95,12 @@ toggleShowInput = function()
     });
       this.toastr.info(null, 'your post was updated!');
   }
+     updateComment(id:number,content:string) {
+    this.commentsService.updateComment(id, content).subscribe(post=>{
+      this.refreshData();
+    });
+      this.toastr.info(null, 'your comment was updated!');
+  }
    removePost(id:number) {
    this.postsService.deletePost(id).subscribe(post=>{
     });
@@ -97,8 +108,12 @@ toggleShowInput = function()
       this.toastr.error(null, 'you deleted your post');
 
   }
-    deleteComment(id:number) {
-          this.commentsService.deleteComment(id).subscribe();
+     deleteComment(id:number) {
+  this.commentsService.deleteComment(id).subscribe(com=>{
+    });
+      setTimeout(function(){ this.refreshData(); }.bind(this), 400);
+      this.toastr.error(null, 'you deleted your comment');
+
   }
       deleteReaction(id:number) {
       this.reactionsService.deleteReaction(id).subscribe();

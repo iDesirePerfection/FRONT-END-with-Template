@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { Location, PopStateEvent } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { DemoAdapter } from './demo-adapter';
 import { ChatComponent } from './chat/chat.component';
 import { UserService } from './services/user-services/user.service';
 import { ChatAdapter } from 'ng-chat';
