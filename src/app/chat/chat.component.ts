@@ -13,7 +13,7 @@ import { Injectable } from '@angular/core';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent extends ChatAdapter implements OnInit,IChatGroupAdapter {
+export class ChatComponent extends ChatAdapter implements OnInit {
 
     public static mockedParticipants: IChatParticipant[] = [
     {
@@ -217,17 +217,6 @@ http.send();
     }, 1000);
   }
 
-  groupCreated(group: Group): void {
-    this.mockedParticipants.push(group);
-
-    this.mockedParticipants = this.mockedParticipants.sort((first, second) =>
-      second.displayName > first.displayName ? -1 : 1
-    );
-
-    // Trigger update of friends list
-    this.listFriends().subscribe(response => {
-      this.onFriendsListChanged(response);
-    });
-  }
+  
 
 }
