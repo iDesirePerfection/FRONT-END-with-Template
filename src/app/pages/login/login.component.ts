@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('interests', u.interests.toString());
         localStorage.setItem('entid', u.enterprise.eid.toString());
         });
-
+        this.userService.All();
+        console.log(localStorage.getItem('id'));
     }
 
 }

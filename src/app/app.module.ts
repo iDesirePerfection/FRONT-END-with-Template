@@ -13,7 +13,7 @@ import { ExamplesModule } from './pages/examples.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HeaderComponent } from './pages/header/header.component';
-
+import { NgChatModule } from 'ng-chat';
 
 import { PresentationModule } from './presentation/presentation.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -39,6 +39,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
         ComponentsModule,
         ExamplesModule,
         AngularFontAwesomeModule,
+        NgChatModule,
         HttpClientModule,
 
     ],

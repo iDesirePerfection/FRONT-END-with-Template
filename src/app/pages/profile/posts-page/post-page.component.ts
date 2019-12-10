@@ -6,7 +6,8 @@ import { Post } from 'app/services/candidate-services/models/posts.model';
 import { Comment } from 'app/services/candidate-services/models/comment.model';
 import { Reaction } from 'app/services/candidate-services/models/reaction.model';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { UserService } from 'app/services/user-services/user.service';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./post-page.component.scss']
 })
 export class PostsPageComponent implements OnInit {
+
 
 interval: any;
 liked: boolean = false;
@@ -28,18 +30,22 @@ showInput = true;
 myContent = 'This is the content';
 dislikeremoved: number= 0;
 closeResult: string;
+test:number;
 public post:Post={content:''};
 public comment:Comment={idPost:0,content:''};
 public reaction:Reaction={idPost:0,type:''};
 
 
 constructor(private postsService: PostsService,private commentsService: CommentsService,
-private reactionsService: ReactionsService,private modalService: NgbModal) { }
+private reactionsService: ReactionsService,private modalService: NgbModal,private userService : UserService) { }
+
+
 ngOnInit() {
     this.postsService.getPosts().subscribe(posts => {
           this.posts=posts;
 });
 }
+
 
     ngOnDestroy() {
     }
@@ -49,6 +55,8 @@ ngOnInit() {
       this.posts=posts;
     });
 }
+
+
 toggleShowInput = function()
      {
          this.showInput = !this.showInput;

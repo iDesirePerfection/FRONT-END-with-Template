@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { Post } from './models/posts.model';
 import { environment } from "environments/environment";
 import { map, catchError } from 'rxjs/operators';
@@ -28,5 +28,21 @@ export class PostsService {
     updatePost(id:number,content:string):Observable<Post> {
         return this.httpClient.put<Post>(environment.backend_url + 'post/update?id=' + id + '&content=' + content, null );
     }
+
+
+getTotalPosts(): Observable<string> {
+let totalQuestions:number;
+const subject = new Subject<string>();
+this.getPosts().subscribe(items => {
+    items.map(item => {
+      totalQuestions=item.id;
+      console.log(totalQuestions);
+      subject.next(totalQuestions.toString());
+    });
+  }
+);
+  return subject.asObservable();
+}
+
 
 }
