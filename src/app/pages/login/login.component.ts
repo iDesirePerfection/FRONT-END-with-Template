@@ -38,18 +38,19 @@ export class LoginComponent implements OnInit {
 
     onSubmit(form)
     {
-        this.userService.login(this.usern,this.passw).subscribe(u=>this.user=u);
-        
-        localStorage.setItem('id', this.user.id.toString());
-        localStorage.setItem('email', this.user.email.toString());
-        localStorage.setItem('firstname', this.user.firstName.toString());
-        localStorage.setItem('lastname', this.user.lastName.toString());
-        localStorage.setItem('password', this.user.password.toString());
-        localStorage.setItem('username', this.user.username.toString());
-        localStorage.setItem('role', this.user.role.toString());
-        localStorage.setItem('interests', this.user.interests.toString());
-        localStorage.setItem('entid', this.user.enterprise.eid.toString());
-        console.log(this.user.id);
+        console.log('test');
+        this.userService.login(this.usern,this.passw).subscribe(u=>{
+        localStorage.setItem('id', u.id.toString());
+        localStorage.setItem('email', u.email.toString());
+        localStorage.setItem('firstname', u.firstName.toString());
+        localStorage.setItem('lastname', u.lastName.toString());
+        localStorage.setItem('password', u.password.toString());
+        localStorage.setItem('username', u.username.toString());
+        localStorage.setItem('role', u.role.toString());
+        localStorage.setItem('interests', u.interests.toString());
+        localStorage.setItem('entid', u.enterprise.eid.toString());
+        });
+
     }
 
 }

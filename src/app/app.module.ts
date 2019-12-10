@@ -26,7 +26,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     declarations: [
         AppComponent,
         NavbarComponent,
-        HeaderComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserAnimationsModule,

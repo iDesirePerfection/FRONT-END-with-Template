@@ -25,4 +25,8 @@ export class PostsService {
     return this.httpClient.delete(environment.backend_url + 'post/delete?id='+ id.toString());
     }
 
+    updatePost(id:number,content:string):Observable<Post> {
+        return this.httpClient.put<Post>(environment.backend_url + 'post/update?id=' + id + '&content=' + content, null );
+    }
+
 }

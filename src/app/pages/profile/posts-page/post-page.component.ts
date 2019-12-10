@@ -5,10 +5,7 @@ import { ReactionsService } from 'app/services/candidate-services/reactions.serv
 import { Post } from 'app/services/candidate-services/models/posts.model';
 import { Comment } from 'app/services/candidate-services/models/comment.model';
 import { Reaction } from 'app/services/candidate-services/models/reaction.model';
-import { NotificationComponent } from 'app/components/notification/notification.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { threadId } from 'worker_threads';
-
 
 
 
@@ -27,6 +24,8 @@ mydislike: boolean=false;
 reactionId:number=0;
 likes: number = 0;
 likeremoved: number= 0;
+showInput = true;
+myContent = 'This is the content';
 dislikeremoved: number= 0;
 closeResult: string;
 public post:Post={content:''};
@@ -35,7 +34,7 @@ public reaction:Reaction={idPost:0,type:''};
 
 
 constructor(private postsService: PostsService,private commentsService: CommentsService,
-private reactionsService: ReactionsService,private modalService: NgbModal,private notifService:NotificationComponent) { }
+private reactionsService: ReactionsService,private modalService: NgbModal) { }
 ngOnInit() {
     this.postsService.getPosts().subscribe(posts => {
           this.posts=posts;
@@ -50,9 +49,18 @@ ngOnInit() {
       this.posts=posts;
     });
 }
-
+toggleShowInput = function()
+     {
+         this.showInput = !this.showInput;
+         console.log('changed');
+     }
   addPost() {
     this.postsService.addPost(this.post.content).subscribe(post=>{
+      this.refreshData();
+    });
+  }
+    updatePost(id:number,content:string) {
+    this.postsService.updatePost(id, content).subscribe(post=>{
       this.refreshData();
     });
   }
@@ -68,17 +76,18 @@ ngOnInit() {
         if (this.didLike(post)) {
       console.log('you have a like at this point and you clicked like');
       this.getReactionId(post)
-      this.deleteReaction(this.reactionId);console.log('fasakht like after 1s');
-      this.refreshData();
-      this.likeremoved = 1;
+      setTimeout(function(){ this.deleteReaction(this.reactionId);console.log('fasakht like after 1s');}.bind(this), 100);
+      setTimeout(function(){ this.refreshData(); }.bind(this), 500);
+     this.likeremoved = 1;
     }
       else if (this.didDislike(post)) {
       console.log('you have a dislike at this point and you clicked like');
       this.getReactionId(post)
       this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s,adding like!');
       this.refreshData();
+      setTimeout(function(){ this.addLike(post);console.log('zedna like after 1s,refreshing!');}.bind(this), 100);
+      setTimeout(function(){ this.refreshData(); }.bind(this), 500);
       this.dislikeremoved = 1;
-      setTimeout(function(){ this.addLike(post);console.log('zedna like after 1s,refreshing!');this.refreshData(); }.bind(this), 100);
     }
     else {
       setTimeout(function(){this.reactionsService.addReaction(post.id, 'Like').subscribe(Post=>{
@@ -89,9 +98,9 @@ ngOnInit() {
     }); }.bind(this), 100);
     }
   }
-    getReactionId(post:Post):number {
+    getReactionId(post:Post) {
           post.reactions.forEach((r) => {
-          if(r.reactingUser.id === 6 )
+          if(r.reactingUser.id == localStorage.getItem('id') )
           {
             this.reactionId = r.id;
           }
@@ -100,11 +109,11 @@ ngOnInit() {
   addDislike(post: Post) {
       this.refreshData();
     if (this.didDislike(post)){
-      console.log('you have a dislike at this point and you clicked dislike');
       this.getReactionId(post)
-      this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s');
+      setTimeout(function(){ this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s');}.bind(this), 100);
+      setTimeout(function(){ this.refreshData(); }.bind(this), 500);
+      console.log('you have a dislike at this point and you clicked dislike');
       this.dislikeremoved = 1;
-      this.refreshData();
     }
       else if (this.didLike(post)) {
       console.log('you have a like at this point and you clicked dislike');
@@ -133,8 +142,8 @@ ngOnInit() {
           return false;
         }
         post.reactions.forEach((r) => {
-          console.log(r.reactingUser.id);
-          if(r.reactingUser.id === 6 && r.type === 'Like')
+          console.log(localStorage.getItem('id'));
+          if(r.reactingUser.id == localStorage.getItem('id') && r.type === 'Like')
           {
             this.mylike=true;
 
@@ -154,7 +163,7 @@ ngOnInit() {
           return false;
         }
         post.reactions.forEach((r) => {
-          if(r.reactingUser.id === 6 && r.type === 'Dislike')
+          if(r.reactingUser.id == localStorage.getItem('id') && r.type === 'Dislike')
           {
             this.mydislike=true;
             console.log('logged user have a dislike on current post');
@@ -182,13 +191,13 @@ getDislikes(reactions:any[]) {
 }
 
 
-private likesNumber(post:Post[]) {
+private likesNumber(post:Post) {
    return (post.reactions.filter(r => (r.type) === 'Like')).length;
 }
-private dislikesNumber(post:Post[]) {
+private dislikesNumber(post:Post) {
    return (post.reactions.filter(r => (r.type) === 'Dislike')).length;
 }
-likesNumberAfterUnlike(post:Post[]) {
+likesNumberAfterUnlike(post:Post) {
    if(post.reactions.filter(r => (r.type) === 'Like').length - this.likeremoved < 0 ){
      return 0;
    }
@@ -196,7 +205,7 @@ likesNumberAfterUnlike(post:Post[]) {
      return((post.reactions.filter(r => (r.type) === 'Like')).length - this.likeremoved);
    }
 }
-dislikesNumberAfterUndislike(post:Post[]) {
+dislikesNumberAfterUndislike(post:Post) {
    if(post.reactions.filter(r => (r.type) === 'Dislike').length - this.dislikeremoved < 0 ){
      return 0;
    }
@@ -243,5 +252,5 @@ delete(id:number){
             return  `with: ${reason}`;
         }
     }
-    
+
 }
