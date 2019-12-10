@@ -44,6 +44,10 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-chips": "2.0.2",
     "ngx-gallery": "5.10.0",
+<<<<<<< HEAD
+=======
+    "ngx-pagination": "^5.0.0",
+>>>>>>> origin/ziedBranch
     "ngx-toastr": "^11.2.1",
     "nouislider": "9.2.0",
     "popper.js": "1.15.0",

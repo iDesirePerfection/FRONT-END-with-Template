@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('username', this.user.username.toString());
             localStorage.setItem('role', this.user.role.toString());
             localStorage.setItem('interests', this.user.interests.toString());
+            localStorage.setItem('entid', this.user.enterprise.eid.toString());
+
             if (u.role == "Candidate") {
                 if(this.user.biography!=null)
                 localStorage.setItem('Biography', this.user.biography.toString());
@@ -73,5 +75,10 @@ export class LoginComponent implements OnInit {
 
         console.log(this.user);
     }
+
+
+
+ 
+
 
 }

@@ -26,5 +26,6 @@ export class RegisterComponent implements OnInit {
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.remove('navbar-transparent');
     }
+    
 
 }

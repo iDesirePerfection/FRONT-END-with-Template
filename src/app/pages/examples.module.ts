@@ -9,6 +9,7 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AgmCoreModule } from '@agm/core';
 
 import { ImageUploadModule } from '../shared/image-upload/image-upload.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ExamplesComponent } from './examples.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
@@ -37,6 +38,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
 import { PostsPageComponent } from './profile/posts-page/post-page.component';
+import { AddjobofferPageComponent } from './enterprise-pages/addjoboffer-page/addjoboffer-page.component';
+import { AddenterprisePageComponent } from './enterprise-pages/addenterprise-page/addenterprise-page.component';
+import { AddenteventPageComponent } from './enterprise-pages/addentevent-page/addentevent-page.component';
+import { JobofferdetailPageComponent } from './enterprise-pages/jobofferdetail-page/jobofferdetail-page.component';
 
 
 
@@ -78,6 +83,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         MatDialogModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
+        NgxPaginationModule,
         CalendarMonthModule
        
         
@@ -124,6 +130,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         ViewProfileComponent,
         ViewJobComponent,
         InterviewTrainingComponent,
+        AddjobofferPageComponent,
+        AddenterprisePageComponent,
+        AddenteventPageComponent,
+        JobofferdetailPageComponent
         
         
 
@@ -132,13 +142,18 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         
         Ng2SearchPipeModule,
         RouterModule,
+<<<<<<< HEAD
        
     ],
     entryComponents: [
         AddExperienceFormComponent,
         EditExperienceFormComponent,
         AddSkillFormComponent,
+        NgxPaginationModule,
         EditProfileFormComponent
+=======
+
+>>>>>>> origin/ziedBranch
     ]
 })
 export class ExamplesModule { }

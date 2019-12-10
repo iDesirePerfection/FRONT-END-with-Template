@@ -14,4 +14,9 @@ export class UserService {
         All(): Observable<any> {
        return this.httpClient.get<User[]>(environment.backend_url + 'user/all');
     }
+
+    logout(id) {
+
+        return this.httpClient.put<User>(environment.backend_url + 'user/logout?id=' +id,null );
+    }
 }

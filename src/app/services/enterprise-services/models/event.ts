@@ -11,6 +11,7 @@ export interface Event{
     EEtickets?:number;
     EEvues?:number;
     EEstate?:number;
+    filename?:string;
 
     enterprise?:any;
 

@@ -7,10 +7,26 @@
     </div>
 </div>
 
+<div _ngcontent-fku-c14="" class="subscribe-line">
+    <div _ngcontent-fku-c14="" class="container">
+        <div _ngcontent-fku-c14="" class="row">
+            <div _ngcontent-fku-c14="" class="col-md-9 col-sm-8">
+                <form _ngcontent-fku-c14="" class="ng-untouched ng-pristine ng-valid" novalidate="">
+                   <div class="input-group no-border">
+                                  <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                  <input type="text" class="form-control input-xtreme no-border" placeholder="Find a joboffer" aria-describedby="basic-addon1" name="search" [(ngModel)]="searchText" autocomplete="off">
+                                </div>
+                </form>
+            </div>
+            <div _ngcontent-fku-c14="" class="col-md-3 col-sm-4">
+                <button _ngcontent-fku-c14="" class="btn btn-danger btn-block btn-lg" type="button" [routerLink]="['/pages/enterprise-pages/addjoboffer-page']">Add new Joboffer</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-<h4>Our Enterprise Joboffer List</h4>
+<h4 style="text-align:center">Our Enterprise Joboffer List</h4>
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
                 <h4 class="title">
@@ -22,29 +38,30 @@
                             <tr>
                               <th class="text-center">#</th>
                               <th class="text-center">Title</th>
-                              <th>date</th>
-                              <th >description</th>
+                              <th>Date</th>
+                              <th >Description</th>
                               <th class="text-right">area</th>
-                              <th class="text-right">action</th>
+                              <th class="text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let j of myjoboffers ; index as i">
+                            <tr *ngFor="let j of myjoboffers | filter:searchText; index as i">
                                     <td class="text-center">{{j.joid}}</td>
                                 <td class="text-center">{{j.jotitle}}</td>
                                 <td>{{j.jodate}}</td>
                                 <td>{{j.jodescription}}</td>
                                 <td class="text-right" > {{j.joarea}}</td>
                                 <td class="td-actions text-right">
-                                    <button type="button" ngbTooltip="View Profile" class="btn btn-info btn-link btn-sm">
-                                        <i class="fa fa-user"></i>
-                                    </button>
+                                        <button *ngIf="j.isValid=='0'" (click)="validateJoboffer(j.joid)" class="badge badge-pill badge-danger">Unvalid</button>
+                                        <span *ngIf="j.isValid=='1'" class="badge badge-pill badge-success mr-1">Valid</span>
+                                    
                                     <button (click)="Opena(ajout,j.joid,j.jotitle,j.joarea,j.jodescription,j.joexperience,j.interests)" type="button" ngbTooltip="Edit joboffer" class="btn btn-success btn-link btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </button>
-                                    <button type="button" ngbTooltip="Remove" class="btn btn-danger btn-link btn-sm">
+                                    <button (click)="OpenDelete(delete,j.joid)" type="button" ngbTooltip="Remove" class="btn btn-danger btn-link btn-sm">
                                         <i class="fa fa-times"></i>
                                     </button>
+                                
                                 </td>
                             </tr>
                         </tbody>
@@ -55,7 +72,25 @@
             </div>
         </div>
 
-
+        <!--footer-->
+        <footer class="footer section-dark">
+                <div class="container">
+                    <div class="row">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                                <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                                <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                            </ul>
+                        </nav>
+                        <div class="credits ml-auto">
+                            <span class="copyright">
+                                © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
 
 
 
@@ -136,3 +171,39 @@
         </div>
       </ng-template>
 
+
+
+<!--delete popup-->
+<ng-template #delete let-modal1>
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      <h4 class="modal-title" id="modal1-basic-title">are you sure you want to delete this joboffer?</h4>
+    </div>
+    <div class="modal-body">
+
+
+           
+                            <div class="container">
+                                <div class="row buttons-row" >
+                                    <div class="col-md-4 col-sm-4">
+                                        <button class="btn btn-outline-danger btn-block btn-round" (click)="modal1.dismiss('Cross click')">Cancel</button>
+                                    </div>
+                                    <div>
+                                        ___________________
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <button (click)="deleteJoboffer(); modal1.dismiss('Cross click')" type="submit" class="btn btn-outline-primary btn-block btn-round">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                     
+                
+    </div>
+  </ng-template>
+
+
+
+
+  

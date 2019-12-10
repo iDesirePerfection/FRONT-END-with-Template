@@ -6,6 +6,7 @@ export interface Entprofile{
     employeesnumber?:number;
     edescription?:string;
     subscribed?:string;
+    filename?:string;
 }
 
 
