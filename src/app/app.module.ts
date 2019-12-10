@@ -20,13 +20,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { AddExperienceFormComponent } from './pages/add-experience-form/add-experience-form.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
-        HeaderComponent
+        HeaderComponent,
+        ChatComponent
     ],
     imports: [
         BrowserAnimationsModule,

@@ -1,18 +1,21 @@
+import { Component, OnInit } from '@angular/core';
 import { ChatAdapter, IChatGroupAdapter, User, Group, Message,
 ChatParticipantStatus, ParticipantResponse, ParticipantMetadata, ChatParticipantType, IChatParticipant } from 'ng-chat';
 import { Observable, of } from 'rxjs';
-import { User as U } from './services/user-services/models/user';
-import { UserService } from './services/user-services/user.service';
+import { User as U } from 'app/services/user-services/models/user';
+import { UserService } from 'app/services/user-services/user.service';
 import { delay } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+@Component({
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss']
+})
+export class ChatComponent extends ChatAdapter implements IChatGroupAdapter ,OnInit {
 
-export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter{
-
-
-
-  public static mockedParticipants: IChatParticipant[] = [
+  mockedParticipants: IChatParticipant[] = [
     {
       participantType: ChatParticipantType.User,
       id: 1,
@@ -83,16 +86,73 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter{
       avatar: "https://thumbnail.myheritageimages.com/502/323/78502323/000/000114_884889c3n33qfe004v5024_C_64x64C.jpg",
       status: ChatParticipantStatus.Away
     }];
-  httpClient: any;
+
+users:any;
+friends:any;
 
 
-  constructor(public userService :UserService) {
-    super();
-    this.userService.All();
+  ngOnInit(): void {
+    throw new Error("Method not implemented.");
   }
-  listFriends(): Observable<ParticipantResponse[]> {
-    return of(DemoAdapter.mockedParticipants.map(user => {
-      let participantResponse = new ParticipantResponse();
+
+    replacer(key:string,value:string){
+      console.log('heeeeeeeyyyyyyy');
+    if (key == 'reactions') {console.log('deleted reactions');return undefined;}
+    else if (key == 'comments'){return undefined;}
+    else if (key == 'email'){return undefined;}
+    else if (key == 'password'){return undefined;}
+    else if (key == 'comments'){return undefined;}
+    else if (key == 'recieveMailNotifs'){return undefined;}
+    else if (key == 'gender'){return ChatParticipantType.User;}
+    else if (key == 'enable'){return undefined;}
+    else if (key == 'confirm'){return undefined;}
+    else if (key == 'address'){return undefined;}
+    else if (key == 'token'){return undefined;}
+    else if (key == 'role'){return undefined;}
+    else if (key == 'claimOn'){return undefined;}
+    else if (key == 'birthDate'){return undefined;}
+    else if (key == 'whoclaim'){return undefined;}
+    else if (key == 'messages'){return undefined;}
+    else if (key == 'accountCreationDate'){return undefined;}
+    else if (key == 'enterprise'){return undefined;}
+    else if (key == 'notifications'){return undefined;}
+    else if (key == 'firstName'){return undefined;}
+    else if (key == 'interests'){return null;}
+    else if (key == 'lastName'){return ChatParticipantStatus.Online;}
+
+    return value;
+}
+  constructor() {
+    super();
+
+  }
+    listFriends(): Observable<ParticipantResponse[]> {
+     const xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( 'GET', environment.backend_url + 'user/all', false ); // false for synchronous request
+    xmlHttp.send( null );
+
+    const json =JSON.parse(xmlHttp.responseText);
+    
+    let obj = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(json, this.replacer))));
+    console.log(obj[0]);
+    console.log(obj[0].username);
+    console.log(obj[0].gender)
+    obj.forEach(element => {
+      element.avatar = element.interests;
+      delete obj.interests;
+      element.displayName = element.username;
+      delete element.username;
+      element.status = element.lastName;
+      delete element.lastName;
+      element.participantType = element.gender;
+      delete element.gender;
+    });
+console.log('new shit');
+console.log(obj);
+
+    return of(obj.forEach(user => {
+      console.log(user);
+      const participantResponse = new ParticipantResponse();
 
       participantResponse.participant = user;
       participantResponse.metadata = {
@@ -126,7 +186,7 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter{
       replyMessage.dateSent = new Date();
 
       if (isNaN(message.toId)) {
-        let group = DemoAdapter.mockedParticipants.find(x => x.id == message.toId) as Group;
+        let group = this.mockedParticipants.find(x => x.id == message.toId) as Group;
 
         // Message to a group. Pick up any participant for this
         let randomParticipantIndex = Math.floor(Math.random() * group.chattingTo.length);
@@ -140,7 +200,7 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter{
         replyMessage.fromId = message.toId;
         replyMessage.toId = message.fromId;
 
-        let user = DemoAdapter.mockedParticipants.find(x => x.id == replyMessage.fromId);
+        let user = this.mockedParticipants.find(x => x.id == replyMessage.fromId);
 
         this.onMessageReceived(user, replyMessage);
       }
@@ -148,9 +208,9 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter{
   }
 
   groupCreated(group: Group): void {
-    DemoAdapter.mockedParticipants.push(group);
+    this.mockedParticipants.push(group);
 
-    DemoAdapter.mockedParticipants = DemoAdapter.mockedParticipants.sort((first, second) =>
+    this.mockedParticipants = this.mockedParticipants.sort((first, second) =>
       second.displayName > first.displayName ? -1 : 1
     );
 
@@ -160,29 +220,6 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter{
     });
   }
 
-    replacer(key:string,value:string){
-    if (key == 'reactions') {console.log('deleted reactions');return undefined;}
-    else if (key == 'comments'){return undefined;}
-    else if (key == 'email'){return undefined;}
-    else if (key == 'password'){return undefined;}
-    else if (key == 'comments'){return undefined;}
-    else if (key == 'recieveMailNotifs'){return undefined;}
-    else if (key == 'gender'){return ChatParticipantType.User;}
-    else if (key == 'enable'){return undefined;}
-    else if (key == 'confirm'){return undefined;}
-    else if (key == 'address'){return undefined;}
-    else if (key == 'token'){return undefined;}
-    else if (key == 'role'){return undefined;}
-    else if (key == 'claimOn'){return undefined;}
-    else if (key == 'birthDate'){return undefined;}
-    else if (key == 'whoclaim'){return undefined;}
-    else if (key == 'messages'){return undefined;}
-    else if (key == 'accountCreationDate'){return undefined;}
-    else if (key == 'enterprise'){return undefined;}
-    else if (key == 'notifications'){return undefined;}
-    else if (key == 'firstName'){return undefined;}
-    else if (key == 'interests'){return null;}
-    return value;
-}
+
 
 }

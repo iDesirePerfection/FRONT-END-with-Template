@@ -4,10 +4,10 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { Location, PopStateEvent } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { ChatAdapter } from 'ng-chat';
 import { DemoAdapter } from './demo-adapter';
-import { SignalRAdapter } from './adapter';
+import { ChatComponent } from './chat/chat.component';
 import { UserService } from './services/user-services/user.service';
+import { ChatAdapter } from 'ng-chat';
 
 
 var didScroll;
@@ -21,7 +21,7 @@ var navbarHeight = 0;
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    public adapter: ChatAdapter = new DemoAdapter();
+    public adapter: ChatAdapter = new ChatComponent();
     title = 'app';
     userId = localStorage.getItem('id');
     private _router: Subscription;
