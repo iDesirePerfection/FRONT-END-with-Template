@@ -1,6 +1,28 @@
 <div class="wrapper">
-    <div class="page-header page-header-small" style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg');">
+    <div class="page-header page-header-small"
+        style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg'); height: 1rem !important;">
         <div class="filter"></div>
+    </div>
+    <div class="container" >
+        <div class="row">
+            <form class="form-inline ml-auto" style="margin-top:1rem;">
+                <input autocomplete="off"  name="criteria" [(ngModel)]="criteria"  (input)="clearJobs()" (focus)="startSearch()" class="form-control mr-sm-2 no-border" type="text"
+                    placeholder="Search Jobs" style="border:2px solid black !important;">
+                <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i
+                        class="nc-icon nc-zoom-split"></i></button>
+            </form>
+        </div>
+        <div *ngIf="searchStarted">
+            <div  class="row" *ngFor="let job of jobOffersEmpty | slice:0:6 | filter:criteria;" style="margin-top:2px;">
+                <button (click)=viewJob(job.joid) placement="left" ngbTooltip="{{job.interests}}" style="width:183px;  border:1px solid black;"
+                    class="btn btn-secondary ml-auto">
+                    <span class="pull-left">{{job.jotitle}}</span>
+                    <span class="pull-right">{{job.vuesNumber}} <i class="fa fa-eye"></i></span>
+
+                </button>
+                <div style="width:48px;"></div>
+            </div>
+        </div>
     </div>
     <div class="profile-content section">
         <div class="container">
@@ -8,14 +30,25 @@
                 <div class="profile-picture">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-new img-no-padding">
-                            <img src="./assets/img/faces/joe-gardner-2.jpg" alt="...">
+                            <img src="{{basicCandidate.imageUrl}}" alt="...">
+                            <!-- <app-image-upload [image]="candidateImage"></app-image-upload> -->
                         </div>
                         <div class="name">
-                            <h4 class="title text-center">Chet Faker<br /><small>Music Producer</small></h4>
+                            <h4 class="title text-center">{{basicCandidate.firstName}}
+                                {{basicCandidate.lastName}}<br /><small>{{basicCandidate.title}}</small></h4>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 ml-auto mr-auto text-center">
+                    <p>{{basicCandidate.bio}}</p>
+                    <br />
+                    <button (click)="editProfile()" class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i>
+                        Settings</button>
+                </div>
+            </div>
+            <br />
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
@@ -90,13 +123,33 @@
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
-                                            <li>
+
+                                            <h3 class="text-muted">Not follows anyone yet :(</h3>
+                                            <br>
+                                            <button class="btn btn-warning btn-round">Find artists</button>
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Following">
+                            <ng-template ngbTabContent>
+                                <div class="row following" id="follows">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <ul class="list-unstyled follows">
+                                            <li *ngFor="let con of contacts; index as i;">
                                                 <div class="row">
                                                     <div class="col-md-2 col-3">
                                                         <img src="./assets/img/faces/clem-onojeghuo-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-4">
-                                                        <h6>Lincoln<br /><small>Car Producer</small></h6>
+                                                        <h6>{{con.firstName}}
+                                                            {{con.lastName}}<br /><small>{{con.email}}</small></h6>
                                                     </div>
                                                     <div class="col-md-3 col-2">
                                                         <div class="unfollow">
@@ -133,6 +186,7 @@
                                                     </div>
                                                 </div>
                                             </li>
+
                                         </ul>
 
                                     </div>
@@ -156,6 +210,8 @@
     </div>
 </div>
 <app-posts-page></app-posts-page>
+<h1>hello</h1>
+<mwl-calendar-month-view [viewDate]="viewDate" [events]="events"></mwl-calendar-month-view>
 <footer class="footer section-dark">
     <div class="container">
         <div class="row">

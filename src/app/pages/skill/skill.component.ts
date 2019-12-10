@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SkillService } from 'app/services/candidate-services/skill.service';
 import { Skill } from 'app/services/candidate-services/models/skill.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,10 +13,11 @@ export class SkillComponent implements OnInit {
 
   skills: Skill[] = [];
   sk:any={};
+  @Input() isViewing: boolean;
   constructor(private skillService: SkillService,public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.skillService.getSkillsByCandidateId('1').subscribe(skills => {
+    this.skillService.getSkillsByCandidateId(localStorage.getItem('id')).subscribe(skills => {
       console.log(skills);
       this.skills = skills;
     });
@@ -30,7 +31,7 @@ export class SkillComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       
-    this.skillService.addSkillToCandidate(result.designation,result.rating,1).subscribe(exp=>{
+    this.skillService.addSkillToCandidate(result.designation,result.rating,parseInt(localStorage.getItem('id'))).subscribe(exp=>{
       console.log(exp);
       this.skills.push(exp);
     });
@@ -50,7 +51,7 @@ export class SkillComponent implements OnInit {
         }
     }
 
-    this.skillService.deleteSkill(id.toString(),'1').subscribe();
+    this.skillService.deleteSkill(id.toString(),localStorage.getItem('id')).subscribe();
 
   }
 

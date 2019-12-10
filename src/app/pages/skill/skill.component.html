@@ -1,8 +1,8 @@
 
-<button (click)="addSkill()" class=" btn btn-primary btn-round" type="button">
+<button *ngIf="!isViewing" (click)="addSkill()" class=" btn btn-primary btn-round" type="button">
         <i class=" fa fa-plus"> </i> Add Skill
 </button>
-<hr>
+<hr *ngIf="!isViewing">
 <div class=" progress-container progress-primary" *ngFor="let skill of skills;index as i">
     
             <h6 class="skill-designation">{{skill.designation}}</h6>
@@ -10,7 +10,7 @@
       <ngb-progressbar style="flex-grow:2; margin-top:12px; margin-right:1rem;" [type]="'primary'" [value]="skill.rating">
         <span class=" progress-value"> {{skill.rating}}% </span>
       </ngb-progressbar>
-      <button class=" btn btn-accent btn-just-icon" (click)='deleteSkill(skill.id)'>
+      <button *ngIf="!isViewing" class=" btn btn-accent btn-just-icon" (click)='deleteSkill(skill.id)'>
         <i class=" fa fa-times"> </i>
     </button>
     </div>

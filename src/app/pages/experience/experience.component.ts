@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Experience } from 'app/services/candidate-services/models/experience.model';
@@ -18,10 +18,11 @@ export class ExperienceComponent implements OnInit {
   name: string;
   exp:any={};
   experiences: Experience[] = [];
+  @Input() isViewing: boolean;
   constructor(public dialog: MatDialog,private experiencesService: ExperiencesService) { }
 
   ngOnInit() {
-    this.experiencesService.getExperiencesByCandidateId('1').subscribe(exps => {
+    this.experiencesService.getExperiencesByCandidateId(localStorage.getItem('id')).subscribe(exps => {
       this.experiences = exps;
     });
   }
@@ -34,7 +35,7 @@ export class ExperienceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       
-    this.experiencesService.addExperienceToCandidate(result.designation,result.type,result.startDate,result.endDate,1).subscribe(exp=>{
+    this.experiencesService.addExperienceToCandidate(result.designation,result.type,result.startDate,result.endDate,parseInt(localStorage.getItem('id'))).subscribe(exp=>{
       console.log(exp);
       this.experiences.push(exp);
     });
@@ -78,7 +79,7 @@ export class ExperienceComponent implements OnInit {
         }
     }
 
-    this.experiencesService.deleteExperience(id.toString(),'1').subscribe();
+    this.experiencesService.deleteExperience(id.toString(),localStorage.getItem('id')).subscribe();
   }
 
   test() {

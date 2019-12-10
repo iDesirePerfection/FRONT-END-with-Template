@@ -1,0 +1,95 @@
+<div class="wrapper">
+    <div class="main">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+                        <h2 class="discover-title"><small>See latest artwork</small></h2>
+                        <form role="search" class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-input"
+                                    placeholder="Search...">&nbsp;&nbsp;
+                            </div>
+                            <button type="submit" class="btn btn-just-icon"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row items-row">
+                    <div *ngFor="let ent of enterprises | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;" class="col-md-3 col-sm-4">
+                        <div class="card" data-color="purple" data-background="color">
+                            <div class="card-body text-center">
+                                <h6 class="card-category">
+                                    <i class="fa fa-dribbble" aria-hidden="true"></i> {{ent.ename}}
+                                </h6>
+                                <h5 class="card-title">
+                                    {{ent.domain}}
+                                </h5>
+                                <p class="card-description">
+                                    {{ent.edescription}}
+                                </p>
+                                <p>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    {{ent.elocation}}
+                                </p>
+
+                                <div class="card-footer text-center" style="padding:1rem;">
+                                    <button *ngIf="ent.subscribed=='Subscribe'" class="btn btn-neutral btn-round"
+                                        (click)="subscribe(ent.eid)"><i class="fa fa-newspaper-o"></i>
+                                        {{ent.subscribed}} </button>
+                                    <button *ngIf="ent.subscribed=='Unsubscribe'" class="btn btn-neutral btn-round"
+                                        (click)="unsubscribe(ent.eid)"><i class="fa fa-newspaper-o"></i>
+                                        {{ent.subscribed}} </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+
+                <div *ngIf="loading" class="row">
+                    <div class="col-md-4 text-center ml-auto mr-auto">
+                        <div class="preloader">
+                            <div class='uil-reload-css' style=''>
+                                <div></div>
+                            </div>
+                            <h5>Loading </h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                        <ngb-pagination
+                        [(page)]="page"
+                        [pageSize]="pageSize"
+                        [collectionSize]="enterprises.length"></ngb-pagination>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

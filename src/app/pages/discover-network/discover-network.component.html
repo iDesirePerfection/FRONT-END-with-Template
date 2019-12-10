@@ -1,0 +1,77 @@
+<div class="wrapper">
+    <div class="main">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+                        <h2 class="discover-title"><small>Find Candidates</small></h2>
+                        <form (ngSubmit)="onSubmit()" role="search" class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-input" (input)="onSubmit()"
+                                    name="criteria" [(ngModel)]="criteria" placeholder="Search...">&nbsp;&nbsp;
+                            </div>
+                            <button type="submit" class="btn btn-just-icon"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row items-row">
+                    <div *ngFor="let can of candidates; index as i;" class="col-md-3 col-sm-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar border-white">
+                                <a (click)="onSelect(can.id)">
+                                    <img src="./assets/img/faces/{{can.imageUrl}}" alt="..." />
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{can.firstName}} {{can.lastName}}</h4>
+                                <h6 class="card-category">{{can.title}}</h6>
+                                <p class="card-description">
+                                    {{can.biography}}
+                                </p>
+                                <div class="card-footer text-center">
+
+                                    <button *ngIf="can.follow=='Unfollow'" (click)="unfollowCandidate(can.id)"
+                                        class="btn btn-icon btn-outline-default btn-border btn-round"><i
+                                            class="fa fa-check"></i> {{can.follow}} </button>
+                                    <button *ngIf="can.follow=='Follow'" (click)="followCandidate(can.id)"
+                                        class="btn btn-icon btn-outline-default btn-border btn-round"> {{can.follow}} </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-center ml-auto mr-auto">
+                        <div class="preloader">
+                            <div class='uil-reload-css' style=''>
+                                <div></div>
+                            </div>
+                            <h5>Loading More </h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

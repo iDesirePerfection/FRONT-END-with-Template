@@ -17,6 +17,7 @@ export interface User{
     role:string;
     interests:string;
     accountCreationDate:Date;
+
     // TODO:change any to their types
     enterprise:Entprofile;
     Posts:any[];
@@ -28,6 +29,21 @@ export interface User{
     Whoclaim:any[];
     claimOn:any[];
     packs:any[];
+
+    //candidate de plus 
+    biography?: string;
+    title?:string;
+    rating?: number;
+    cv?: string;
+    imageUrl?:string;
+    experiences?: any[];
+    certifications?: any[];
+    activities?: any[];
+    skills?: any[];
+    contacts?: any[];
+    views?: any[];
+    subscriptions?: any[];
+    jobApplications?: any[];
     
 
 }

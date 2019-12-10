@@ -33,6 +33,11 @@ import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
 import { PostsPageComponent } from './pages/profile/posts-page/post-page.component';
 
+import { DiscoverNetworkComponent } from './pages/discover-network/discover-network.component';
+import { DiscoverCompaniesComponent } from './pages/discover-companies/discover-companies.component';
+import { ViewProfileComponent } from './pages/view-profile/view-profile.component';
+import { ViewJobComponent } from './pages/view-job/view-job.component';
+import { InterviewTrainingComponent } from './pages/interview-training/interview-training.component';
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -50,6 +55,11 @@ const routes: Routes =[
     { path: 'pages/login',       component: LoginComponent },
     { path: 'pages/productpage', component: ProductpageComponent },
     { path: 'pages/profile',     component: ProfileComponent },
+    { path: 'pages/ViewProfile/:id',     component: ViewProfileComponent },
+    { path: 'pages/ViewJob/:id',     component: ViewJobComponent },
+    { path: 'pages/DiscoverNetwork',     component: DiscoverNetworkComponent },
+    { path: 'pages/DiscoverCompanies',     component: DiscoverCompaniesComponent },
+    { path: 'pages/InterviewTraining',     component: InterviewTrainingComponent },
     { path: 'pages/register',    component: RegisterComponent },
     { path: 'pages/search',      component: SearchComponent },
     { path: 'pages/settings',    component: SettingsComponent },

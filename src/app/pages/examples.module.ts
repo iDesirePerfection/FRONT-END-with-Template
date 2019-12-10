@@ -50,6 +50,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { EditExperienceFormComponent } from './edit-experience-form/edit-experience-form.component';
 import { SkillComponent } from './skill/skill.component';
 import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component';
+import { EditProfileFormComponent } from './edit-profile-form/edit-profile-form.component';
+import { ImageUploadComponent } from 'app/shared/image-upload/image-upload.component';
+import { DiscoverNetworkComponent } from './discover-network/discover-network.component';
+import { DiscoverCompaniesComponent } from './discover-companies/discover-companies.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ViewJobComponent } from './view-job/view-job.component';
+import { InterviewTrainingComponent } from './interview-training/interview-training.component';
+import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 @NgModule({
     imports: [
         CommonModule,
@@ -69,6 +78,9 @@ import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component
         MatDialogModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
+        CalendarMonthModule
+       
+        
 
 
         
@@ -105,7 +117,16 @@ import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component
         SkillComponent,
         AddExperienceFormComponent,
         EditExperienceFormComponent,
-        AddSkillFormComponent
+        AddSkillFormComponent,
+        EditProfileFormComponent,
+        DiscoverNetworkComponent,
+        DiscoverCompaniesComponent,
+        ViewProfileComponent,
+        ViewJobComponent,
+        InterviewTrainingComponent,
+        
+        
+
     ],
     exports: [
         
@@ -116,7 +137,8 @@ import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component
     entryComponents: [
         AddExperienceFormComponent,
         EditExperienceFormComponent,
-        AddSkillFormComponent
+        AddSkillFormComponent,
+        EditProfileFormComponent
     ]
 })
 export class ExamplesModule { }

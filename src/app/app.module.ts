@@ -23,6 +23,10 @@ import { AddExperienceFormComponent } from './pages/add-experience-form/add-expe
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ChatComponent } from './chat/chat.component';
 
+import { EditProfileFormComponent } from './pages/edit-profile-form/edit-profile-form.component';
+import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
     declarations: [
@@ -30,6 +34,7 @@ import { ChatComponent } from './chat/chat.component';
         NavbarComponent,
         HeaderComponent,
         ChatComponent
+
     ],
     imports: [
         BrowserAnimationsModule,
@@ -46,6 +51,8 @@ import { ChatComponent } from './chat/chat.component';
         AngularFontAwesomeModule,
         NgChatModule,
         HttpClientModule,
+        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+        
 
     ],
     providers: [
