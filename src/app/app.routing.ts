@@ -33,11 +33,13 @@ import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
 import { InterviewComponent } from './pages/interview/interview.component';
 import { QuestionComponent } from './pages/question/question.component';
+import { CandidateQuizComponent } from './pages/candidate-quiz/candidate-quiz.component';
 
 const routes: Routes = [
     { path: 'presentation', component: PresentationComponent },
     { path: 'pages/quizSpace', component: QuizComponent },
     { path: 'pages/Question&AnswersSpace', component: QuestionComponent },
+    { path: 'pages/CandidateQuizSpace', component: CandidateQuizComponent },
     { path: 'pages/quizSpace/interviews/:id', component: InterviewComponent },
     { path: 'components', component: ComponentsComponent },
     { path: 'sections', component: SectionsComponent },

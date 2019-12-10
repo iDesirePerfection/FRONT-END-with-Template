@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { NouisliderModule } from 'ng2-nouislider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -43,6 +43,8 @@ import { StarRatingModule } from 'angular-star-rating';
 import { NgxAgoraModule } from 'ngx-agora';
 import { environment } from 'environments/environment';
 import { QuestionComponent } from './question/question.component';
+import { CandidateInterviewComponent } from './candidate-interview/candidate-interview.component';
+import { CandidateQuizComponent } from './candidate-quiz/candidate-quiz.component';
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { QuestionComponent } from './question/question.component';
         FormsModule,
         Ng2SearchPipeModule,
         RouterModule,
+        ReactiveFormsModule,
         StarRatingModule.forRoot(),
         NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
 
@@ -93,7 +96,9 @@ import { QuestionComponent } from './question/question.component';
         ListeventPageComponent,
         MyjobofferlistPageComponent,
         InterviewComponent,
-        QuestionComponent
+        QuestionComponent,
+        CandidateInterviewComponent,
+        CandidateQuizComponent
     ],
     exports: [
         

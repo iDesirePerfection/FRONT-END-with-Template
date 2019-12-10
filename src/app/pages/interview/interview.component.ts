@@ -6,6 +6,7 @@ import { Quiz } from 'app/services/interview-services/models/quiz';
 import { Interview } from 'app/services/interview-services/models/interview';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxAgoraService, AgoraClient, Stream, ClientEvent, StreamEvent } from 'ngx-agora';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -19,15 +20,34 @@ export class InterviewComponent implements OnInit {
     this.uid = Math.floor(Math.random() * 100);
   }
 id:number;
+time={'hour':'','minute':'','second':''};
 quiz:Quiz=null;
 closeResult;
 localCallId = 'agora_local';
 remoteCalls: string[] = [];
-
+date={'year':'',month:'',day:''};
 private client: AgoraClient;
 private localStream: Stream;
 private uid: number;
+intId:number;
+joId:number;
+caId:number;
 show:boolean=true;
+rating:boolean=true;
+score = new FormControl(null, Validators.required);
+showScore:boolean=true;
+setScore(){
+  console.log(this.quiz.interview.score);
+  this.showScore=!this.showScore;
+  this.interviewService.setScore(this.quiz.interview.id,this.score.value).subscribe(i=>this.reload);
+  console.log(this.quiz.interview.score);
+  console.log(this.score.value);
+}
+rate(){
+  this.rating=!this.rating;
+  this.showScore=!this.showScore;
+  this.show=!this.show;
+}
 livechat(){
   this.show=!this.show;
   this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' });
@@ -42,9 +62,13 @@ livechat(){
     this.quizService.displayQuiz(this.id).subscribe(q=>this.quiz=q);
      }
 
-  opena(content) {
-
-  
+  open(content,idI:number,idC:number,idJo:number) {
+    this.intId=idI;
+    this.joId=idJo;
+    this.caId=idC;
+    this.ctrl.setValue(this.quiz.interview.time);
+    console.log(this.ctrl.value);
+  console.log(this.intId,this.joId,this.caId);
     this.modalService.open(content, {ariaLabelledBy: 'modal1-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -142,6 +166,33 @@ livechat(){
       },
       err => console.error('getUserMedia failed', err)
     );
+  }
+  ctrl = new FormControl('', (control: FormControl) => {
+    const value = control.value;
+
+    if (!value) {
+      return null;
+    }
+
+    if (value.hour < 9) {
+      return {tooEarly: true};
+    }
+    if (value.hour > 18) {
+      return {tooLate: true};
+    }
+
+    return null;
+  });
+  reload(){
+    this.activatedroute.paramMap.subscribe(result => this.id = Number(result.get('id')));
+    this.quizService.displayQuiz(this.id).subscribe(q=>this.quiz=q);
+  }
+  showInfo(){
+    console.log(this.date.year+"-"+this.date.month+"-"+this.date.day);
+    
+    //console.log(this.time.hour+":"+this.time.minute+":00");
+    this.interviewService.setTime(this.quiz.interview.id,this.ctrl.value.hour+":"+this.ctrl.value.minute+":00").subscribe(u=>this.reload);
+    this.interviewService.setDate(this.intId,this.date.year+"-"+this.date.month+"-"+this.date.day,this.caId,this.joId).subscribe(t=>this.reload);
   }
 
 }

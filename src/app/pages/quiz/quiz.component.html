@@ -40,8 +40,8 @@
                                             </button>
                                             <button type="button" ngbTooltip="Edit Profile" (click)="opena(quest,l)"
                                                 class="btn btn-success btn-link btn-sm">
-                                                    <i class="fa fa-edit"></i>
-                                                
+                                                <i class="fa fa-edit"></i>
+
                                             </button>
                                             <button type="button" ngbTooltip="Remove"
                                                 class="btn btn-danger btn-link btn-sm" (click)="cancelQuiz(l.id)">
@@ -64,31 +64,35 @@
                     </div>
                 </div>
                 <h2 [hidden]="!switchState" class="text-center creators">Interviews</h2>
-                <div [hidden]="!switchState" style="text-align: right;"><button type="button" class="btn btn-info" (click)="chooseEmployee()">Complete the selection process <i class="fa fa-chevron-right"></i></button></div>
-        <div class="row" [hidden]="!switchState"  >
-            <div class="col-md-4" *ngFor="let l of list" >
-                <div class="card card-profile card-plain">
-                    <div class="card-body">
-                        <div class="card-avatar">
-                            <a href="#avatar">
-                                <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="...">
-                                <h4 class="card-title"> {{l.candidate.firstName}} {{l.candidate.lastName}} </h4>
-                            </a>
+                <div [hidden]="!switchState" style="text-align: right;"><button type="button" class="btn btn-info"
+                        (click)="chooseEmployee()">Complete the selection process <i
+                            class="fa fa-chevron-right"></i></button></div>
+                <div class="row" [hidden]="!switchState">
+                    <div class="col-md-4" *ngFor="let l of list">
+                        <div class="card card-profile card-plain">
+                            <div class="card-body">
+                                <div class="card-avatar">
+                                    <a href="#avatar">
+                                        <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="...">
+                                        <h4 class="card-title"> {{l.candidate.firstName}} {{l.candidate.lastName}} </h4>
+                                    </a>
+                                </div>
+                                <h4> {{l.candidate.firstName}} {{l.candidate.lastName}} </h4>
+                                <p class="card-description text-center">
+                                    Time: {{l.interview.date | date: "longDate"}} <strong style="font-size: xx-large;">
+                                        . </strong>{{l.interview.time}} <br> State {{l.interview.state}}
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn btn-info btn-round mr-1"><a style="color: white; font-weight: bold;"
+                                        [routerLink]="['/pages/quizSpace/interviews',l.id]">Details</a></button>
+                            </div>
                         </div>
-                        <h4> {{l.candidate.firstName}} {{l.candidate.lastName}} </h4>
-                        <p class="card-description text-center">
-                            Time:    {{l.interview.date | date: "longDate"}} <strong style="font-size: xx-large;"> . </strong>{{l.interview.time}} <br> State {{l.interview.state}}   
-                        </p>
                     </div>
-                    <div class="card-footer text-center">
-                        <button class="btn btn-info btn-round mr-1" ><a style="color: white; font-weight: bold;" [routerLink]="['/pages/quizSpace/interviews',l.id]">Details</a></button>
-                    </div>
+
+
+
                 </div>
-            </div>
-
-
-
-        </div>
 
             </div>
         </div>
@@ -114,17 +118,32 @@
 </footer>
 
 <ng-template #quest let-modal1>
-        <div class="modal-header">
-            <h4 class="modal-title" id="modal1-basic-title">Questions</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    
-        <div class="modal-body">
-            <div *ngFor="let n of arr">
-                helloSir <br>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal1-basic-title">Questions</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div *ngIf="selectedQuiz.questions.length!=0">
+            <h4>the questions of this quiz</h4> <br>
+            <div *ngFor="let qz of selectedQuiz.questions">
+                    <li>
+                            <strong style="font-weight: bolder;font-size: larger; color: brown;"> {{qz.question}} </strong>
+                        </li>
+                        <br>
             </div>
-    
         </div>
+        <h4>assign more questions</h4> <br>
+        <div *ngFor="let n of questions">
+            <li>
+                <strong style="font-weight: bolder;font-size: larger; color: brown;"> {{n.question}} </strong>
+                <button class="btn btn-info btn-round mr-1" >
+                    Assign </button>
+            </li>
+            <br>
+        </div>
+
+    </div>
 </ng-template>

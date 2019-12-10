@@ -1,0 +1,100 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/quiz.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="container">
+        <div style="text-align: center;">
+            <h1>Quiz Space</h1>
+        </div>
+        <div class="section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let q of list">
+                        <div class="card card-blog">
+                            <div *ngIf="q.score===0 && q.state==='Pending'" class="card-image" style="text-align: center;">
+                                <button (click)="open(passQuiz,q)" class="btn btn-info btn-round mr-1"> Take Quiz</button>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-category text-info"> {{q.jobOffer.enterprise.ename}} </h6>
+                                <h5 class="card-title">
+                                    <a href="javascript:void(0)">{{q.jobOffer.jotitle}}</a>
+                                </h5>
+                                <p class="card-description">
+                                    {{q.jobOffer.jodescription}}
+                                </p>
+                                <hr>
+                                <div class="card-footer">
+                                    <div class="author">
+                                        <a href="javascript:void(0)">
+                                            <span>Score: {{q.score}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="stats">
+                                        State: {{q.state}}
+                                    </div>
+                                    <div *ngIf="q.state==='Failed'" style="text-align: center;">
+                                        <button class="btn btn-info btn-round mr-1">Find more offers</button>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer section-black">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<ng-template #passQuiz let-modal1>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal1-basic-title">Questions</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div *ngIf="selectedQuiz.questions.length===0">
+            <h4>the company has yet to assaign questoins to the quiz come back later</h4> <br>
+        </div>
+        
+        <div *ngIf="selectedQuiz.questions.length!=0">
+                <form (ngSubmit)="onSubmit($event,selectedQuiz)">
+            <ol >
+                <li *ngFor="let qz of selectedQuiz.questions;index as i">
+                    <strong style="font-weight: bolder;font-size: larger; color: brown;"> {{qz.question}} </strong>
+                    <ol >
+                        <li *ngFor="let an of qz.answers">
+                            <input type="radio" (change)="show(i)" name="q{{i}}" value={{an.id}}> {{an.answer}} </li>
+                    </ol>
+                </li>
+                <br>
+            </ol>
+            <div style="text-align: center;">
+                <button class="btn btn-info btn-round mr-1" type="submit"> submit</button>
+            </div>
+        </form>
+        </div>
+    
+    </div>
+</ng-template>
