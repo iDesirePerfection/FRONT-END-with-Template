@@ -13,82 +13,96 @@ import { Injectable } from '@angular/core';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent extends ChatAdapter implements OnInit {
+export class ChatComponent extends ChatAdapter implements OnInit,IChatGroupAdapter {
 
-  mockedParticipants: IChatParticipant[] = [
+    public static mockedParticipants: IChatParticipant[] = [
     {
-      participantType: ChatParticipantType.User,
-      id: 1,
-      displayName: "Arya Stark",
-      avatar: "https://66.media.tumblr.com/avatar_9dd9bb497b75_128.pnj",
-      status: ChatParticipantStatus.Online
+        participantType: ChatParticipantType.User,
+        id: 1,
+        displayName: "Arya Stark",
+        avatar: "https://66.media.tumblr.com/avatar_9dd9bb497b75_128.pnj",
+        status: ChatParticipantStatus.Online
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 2,
-      displayName: "Cersei Lannister",
-      avatar: null,
-      status: ChatParticipantStatus.Online
+        participantType: ChatParticipantType.User,
+        id: 2,
+        displayName: "Cersei Lannister",
+        avatar: null,
+        status: ChatParticipantStatus.Online
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 3,
-      displayName: "Daenerys Targaryen",
-      avatar: "https://68.media.tumblr.com/avatar_d28d7149f567_128.png",
-      status: ChatParticipantStatus.Busy
+        participantType: ChatParticipantType.User,
+        id: 3,
+        displayName: "Daenerys Targaryen",
+        avatar: "https://68.media.tumblr.com/avatar_d28d7149f567_128.png",
+        status: ChatParticipantStatus.Busy
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 4,
-      displayName: "Eddard Stark",
-      avatar: "https://pbs.twimg.com/profile_images/600707945911844864/MNogF757_400x400.jpg",
-      status: ChatParticipantStatus.Offline
+        participantType: ChatParticipantType.User,
+        id: 4,
+        displayName: "Eddard Stark",
+        avatar: "https://pbs.twimg.com/profile_images/600707945911844864/MNogF757_400x400.jpg",
+        status: ChatParticipantStatus.Offline
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 5,
-      displayName: "Hodor",
-      avatar: "https://pbs.twimg.com/profile_images/378800000449071678/27f2e27edd119a7133110f8635f2c130.jpeg",
-      status: ChatParticipantStatus.Offline
+        participantType: ChatParticipantType.User,
+        id: 5,
+        displayName: "Hodor",
+        avatar: "https://pbs.twimg.com/profile_images/378800000449071678/27f2e27edd119a7133110f8635f2c130.jpeg",
+        status: ChatParticipantStatus.Offline
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 6,
-      displayName: "Jaime Lannister",
-      avatar: "https://pbs.twimg.com/profile_images/378800000243930208/4fa8efadb63777ead29046d822606a57.jpeg",
-      status: ChatParticipantStatus.Busy
+        participantType: ChatParticipantType.User,
+        id: 6,
+        displayName: "Jaime Lannister",
+        avatar: "https://pbs.twimg.com/profile_images/378800000243930208/4fa8efadb63777ead29046d822606a57.jpeg",
+        status: ChatParticipantStatus.Busy
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 7,
-      displayName: "John Snow",
-      avatar: "https://pbs.twimg.com/profile_images/3456602315/aad436e6fab77ef4098c7a5b86cac8e3.jpeg",
-      status: ChatParticipantStatus.Busy
+        participantType: ChatParticipantType.User,
+        id: 7,
+        displayName: "John Snow",
+        avatar: "https://pbs.twimg.com/profile_images/3456602315/aad436e6fab77ef4098c7a5b86cac8e3.jpeg",
+        status: ChatParticipantStatus.Busy
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 8,
-      displayName: "Lorde Petyr 'Littlefinger' Baelish",
-      avatar: "http://68.media.tumblr.com/avatar_ba75cbb26da7_128.png",
-      status: ChatParticipantStatus.Offline
+        participantType: ChatParticipantType.User,
+        id: 8,
+        displayName: "Lorde Petyr 'Littlefinger' Baelish",
+        avatar: "http://68.media.tumblr.com/avatar_ba75cbb26da7_128.png",
+        status: ChatParticipantStatus.Offline
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 9,
-      displayName: "Sansa Stark",
-      avatar: "http://pm1.narvii.com/6201/dfe7ad75cd32130a5c844d58315cbca02fe5b804_128.jpg",
-      status: ChatParticipantStatus.Online
+        participantType: ChatParticipantType.User,
+        id: 9,
+        displayName: "Sansa Stark",
+        avatar: "http://pm1.narvii.com/6201/dfe7ad75cd32130a5c844d58315cbca02fe5b804_128.jpg",
+        status: ChatParticipantStatus.Online
     },
     {
-      participantType: ChatParticipantType.User,
-      id: 10,
-      displayName: "Theon Greyjoy",
-      avatar: "https://thumbnail.myheritageimages.com/502/323/78502323/000/000114_884889c3n33qfe004v5024_C_64x64C.jpg",
-      status: ChatParticipantStatus.Away
+        participantType: ChatParticipantType.User,
+        id: 10,
+        displayName: "Theon Greyjoy",
+        avatar: "https://thumbnail.myheritageimages.com/502/323/78502323/000/000114_884889c3n33qfe004v5024_C_64x64C.jpg",
+        status: ChatParticipantStatus.Away
     }];
 
 users:any;
 friends:any;
+
+    mockedHistory: Array<Message> = [
+      {
+        fromId: 9,
+        toId: 999,
+        message: 'Hi there, just type any message bellow to test this Angular module.',
+        dateSent: new Date()
+      },{
+        fromId: 1,
+        toId: 999,
+        message: 'okey bro',
+        dateSent: new Date()
+      }
+    ];
 
 
   ngOnInit(): void {
@@ -130,9 +144,7 @@ friends:any;
      const xmlHttp = new XMLHttpRequest();
     xmlHttp.open( 'GET', environment.backend_url + 'user/all', false ); // false for synchronous request
     xmlHttp.send( null );
-
     const json =JSON.parse(xmlHttp.responseText);
-    
     let obj = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(json, this.replacer))));
     console.log(obj[0]);
     console.log(obj[0].username);
@@ -160,46 +172,38 @@ console.log(obj);
   }
 
   getMessageHistory(destinataryId: any): Observable<Message[]> {
-    let mockedHistory: Array<Message>;
-
-    mockedHistory = [
-      {
-        fromId: 1,
-        toId: 999,
-        message: "Hi there, just type any message bellow to test this Angular module.",
-        dateSent: new Date()
-      }
-    ];
-
-    return of(mockedHistory).pipe(delay(2000));
+     this.mockedHistory = [];
+     const xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( 'GET', environment.backend_url + 'message/mymessages', false ); // false for synchronous request
+    xmlHttp.send( null );
+    const json =JSON.parse(xmlHttp.responseText);
+    let obj = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(json, this.replacer))));
+    obj.map(msg => {
+      console.log(msg);
+      let message = {fromId:msg.sender.id,
+      toId:msg.recipient,
+      message:msg.body,
+      dateSent:new Date()};
+      this.mockedHistory.push(message);
+      });
+    return of(this.mockedHistory).pipe(delay(2000));
   }
 
   sendMessage(message: Message): void {
+
     setTimeout(() => {
       let replyMessage = new Message();
 
       replyMessage.message = "You have typed '" + message.message + "'";
       replyMessage.dateSent = new Date();
-
-      if (isNaN(message.toId)) {
-        let group = this.mockedParticipants.find(x => x.id == message.toId) as Group;
-
-        // Message to a group. Pick up any participant for this
-        let randomParticipantIndex = Math.floor(Math.random() * group.chattingTo.length);
-        replyMessage.fromId = group.chattingTo[randomParticipantIndex].id;
-
-        replyMessage.toId = message.toId;
-
-        this.onMessageReceived(group, replyMessage);
-      }
-      else {
+      console.log(message.toId);
+      console.log(message.message);
+const http = new XMLHttpRequest();
+http.open('POST', environment.backend_url + 'message/send?to=' + message.toId + '&content=' + message.message , true);
+http.send();
         replyMessage.fromId = message.toId;
         replyMessage.toId = message.fromId;
 
-        let user = this.mockedParticipants.find(x => x.id == replyMessage.fromId);
-
-        this.onMessageReceived(user, replyMessage);
-      }
     }, 1000);
   }
 
