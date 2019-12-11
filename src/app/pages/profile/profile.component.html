@@ -59,7 +59,7 @@
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
                                             <li>
-                                                <app-experience></app-experience>
+                                                <app-experience [id]="id"></app-experience>
 
                                             </li>
 
@@ -75,7 +75,7 @@
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
                                             <li>
-                                                <app-skill></app-skill>
+                                                <app-skill [id]="id"></app-skill>
 
 
                                             </li>
@@ -118,25 +118,7 @@
                             </ng-template>
                         </ngb-tab>
                         <!-- follows -->
-                        <ngb-tab title="Follows">
-                            <ng-template ngbTabContent>
-                                <div class="row following" id="follows">
-                                    <div class="col-md-6 ml-auto mr-auto">
-                                        <ul class="list-unstyled follows">
-
-                                            <h3 class="text-muted">Not follows anyone yet :(</h3>
-                                            <br>
-                                            <button class="btn btn-warning btn-round">Find artists</button>
-
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-
-                            </ng-template>
-                        </ngb-tab>
+                    
                         <ngb-tab title="Following">
                             <ng-template ngbTabContent>
                                 <div class="row following" id="follows">
@@ -196,11 +178,13 @@
 
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Following">
+                        <ngb-tab title="Calendar">
                             <ng-template ngbTabContent>
-                                <h3 class="text-muted">Not following anyone yet :(</h3>
-                                <br>
-                                <button class="btn btn-warning btn-round">Find artists</button>
+                                <!-- <mwl-calendar-month-view [viewDate]="viewDate" [events]="events"></mwl-calendar-month-view> -->
+                                <mwl-demo-component [events]="events"></mwl-demo-component>
+                                 <button (click)="addEvent()" class="btn btn-primary">
+                                    Add New Event
+                                </button> 
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>
@@ -210,8 +194,6 @@
     </div>
 </div>
 <app-posts-page></app-posts-page>
-<h1>hello</h1>
-<mwl-calendar-month-view [viewDate]="viewDate" [events]="events"></mwl-calendar-month-view>
 <footer class="footer section-dark">
     <div class="container">
         <div class="row">

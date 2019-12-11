@@ -12,6 +12,9 @@
     },
     "private": true,
     "dependencies": {
+        "angularx-flatpickr": "^6.1.1",
+        "flatpickr": "^4.6.3",
+        "zone.js": "0.9.1",
         "@agm/core": "1.0.0-beta.7",
         "@angular/animations": "^8.1.2",
         "@angular/cdk": "~8.2.3",
@@ -28,6 +31,8 @@
         "@angular/router": "8.1.2",
         "@ng-bootstrap/ng-bootstrap": "5.1.0",
         "ajv": "6.10.2",
+        "agora-rtc-sdk": "2.6.1",
+        "ngx-agora": "^1.5.13",
         "ajv-keywords": "3.4.1",
         "angular-calendar": "^0.28.2",
         "angular-font-awesome": "^3.1.2",
@@ -54,9 +59,11 @@
         "rellax": "1.10.0",
         "rxjs": "6.5.2",
         "rxjs-compat": "6.5.2",
-        "zone.js": "0.9.1"
+        "zone.js": "0.9.1",
+        "angular-star-rating": "^4.0.0-beta.3"
     },
     "devDependencies": {
+        "css-star-rating": "^1.2.4",
         "@angular-devkit/build-angular": "0.801.2",
         "@angular/cli": "8.1.2",
         "@angular/compiler-cli": "8.1.2",

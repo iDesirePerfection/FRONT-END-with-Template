@@ -65,6 +65,22 @@ export class CandidateService  {
      getTraining(): Observable<Training[]> {
         return this.httpClient.get<Training[]>(environment.backend_url + 'training/getTraining');
     }
+
+    addNewEvent(designation: string,date:Date,candidateId:string): Observable<any>
+    {
+        return this.httpClient.post<any>(environment.backend_url + 'candidate/addActivity?designation=' + designation+"&Date="+this.convertDateToString(date)+"&candidateID="+candidateId,null);
+    }
+    convertDateToString(d:any)
+    {
+        var toReturn:string;
+        toReturn=d.year.toString();
+        toReturn=toReturn.concat("-");
+        toReturn=toReturn.concat(d.month.toString());
+        toReturn=toReturn.concat("-");
+        toReturn=toReturn.concat(d.day.toString());
+        console.log(toReturn);
+        return toReturn;
+    }
  
 
 

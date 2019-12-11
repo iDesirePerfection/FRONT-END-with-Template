@@ -12,6 +12,8 @@ import { ExamplesModule } from './pages/examples.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { environment } from 'environments/environment';
+import { NgxAgoraModule } from 'ngx-agora';
 import { HeaderComponent } from './pages/header/header.component';
 import { NgChatModule } from 'ng-chat';
  
@@ -27,8 +29,6 @@ import { EditProfileFormComponent } from './pages/edit-profile-form/edit-profile
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { environment } from 'environments/environment';
-import { NgxAgoraModule } from 'ngx-agora';
 
 @NgModule({
     declarations: [
@@ -53,8 +53,8 @@ import { NgxAgoraModule } from 'ngx-agora';
         AngularFontAwesomeModule,
         NgChatModule,
         HttpClientModule,
-        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
         NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
+        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
         
 
     ],

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgModel,ReactiveFormsModule  } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { NouisliderModule } from 'ng2-nouislider';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AgmCoreModule } from '@agm/core';
 
@@ -30,10 +30,10 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { Page404Component } from './page404/page404.component';
 import { Page422Component } from './page422/page422.component';
 import { Page500Component } from './page500/page500.component';
-import { ClaimsComponent } from './claims/claims.component';
-import { PackComponent } from './pack/pack.component';
 import { AnswersComponent } from './answers/answers.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { ClaimsComponent } from './claims/claims.component';
+import { PackComponent } from './pack/pack.component';
 import { EntprofilePageComponent } from './enterprise-pages/entprofile-page/entprofile-page.component';
 import { EnterpriseprofilePageComponent } from './enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
 import { ListjobofferPageComponent } from './enterprise-pages/listjoboffer-page/listjoboffer-page.component';
@@ -41,6 +41,13 @@ import { ListeventPageComponent } from './enterprise-pages/listevent-page/listev
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { InterviewComponent } from './interview/interview.component';
+import { StarRatingModule } from 'angular-star-rating';
+import { NgxAgoraModule } from 'ngx-agora';
+import { environment } from 'environments/environment';
+import { QuestionComponent } from './question/question.component';
+import { CandidateInterviewComponent } from './candidate-interview/candidate-interview.component';
+import { CandidateQuizComponent } from './candidate-quiz/candidate-quiz.component';
 import { PostsPageComponent } from './profile/posts-page/post-page.component';
 import { AddjobofferPageComponent } from './enterprise-pages/addjoboffer-page/addjoboffer-page.component';
 import { AddenterprisePageComponent } from './enterprise-pages/addenterprise-page/addenterprise-page.component';
@@ -69,15 +76,13 @@ import { DiscoverCompaniesComponent } from './discover-companies/discover-compan
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ViewJobComponent } from './view-job/view-job.component';
 import { InterviewTrainingComponent } from './interview-training/interview-training.component';
-import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule } from 'angular-calendar';
+import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule, CalendarModule } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AddEventComponent } from './add-event/add-event.component';
+import { DemoComponent } from './demo/demo.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
 import { PaymentAdminComponent } from './payment/payment-admin/payment-admin.component';
 import { PaymentClientComponent } from './payment/payment-client/payment-client.component';
-import { InterviewComponent } from './interview/interview.component';
-import { StarRatingModule } from 'angular-star-rating';
-import { NgxAgoraModule } from 'ngx-agora';
-import { environment } from 'environments/environment';
-import { QuestionComponent } from './question/question.component';
 
 
 @NgModule({
@@ -95,16 +100,31 @@ import { QuestionComponent } from './question/question.component';
         ImageUploadModule,
         FormsModule,
         Ng2SearchPipeModule,
+        RouterModule,
+        ReactiveFormsModule,
+        StarRatingModule.forRoot(),
+        NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
+
         RouterModule, 
         MatDialogModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
+        CalendarMonthModule,
+        NgbModalModule,
+        FlatpickrModule.forRoot(),
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory
+          }),
         NgxPaginationModule,
         CalendarMonthModule,
         RouterModule,
         StarRatingModule.forRoot(),
         NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
 
+        
+        
+        
     ],
     declarations: [
         ExamplesComponent,
@@ -127,15 +147,19 @@ import { QuestionComponent } from './question/question.component';
         Page404Component,
         Page422Component,
         Page500Component,
-        ClaimsComponent,
-        PackComponent,
         AnswersComponent,
         QuizComponent,
+        ClaimsComponent,
+        PackComponent,
         EntprofilePageComponent,
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
         MyjobofferlistPageComponent,
+        InterviewComponent,
+        QuestionComponent,
+        CandidateInterviewComponent,
+        CandidateQuizComponent,
         PackAdminComponent,
         EditPackAdminComponent,
         ShowPackDetailsComponent,
@@ -150,14 +174,15 @@ import { QuestionComponent } from './question/question.component';
         ViewProfileComponent,
         ViewJobComponent,
         InterviewTrainingComponent,
+        AddEventComponent,
+        DemoComponent,
         AddjobofferPageComponent,
         AddenterprisePageComponent,
         AddenteventPageComponent,
         JobofferdetailPageComponent,
         PaymentAdminComponent,
-        PaymentClientComponent,
-        InterviewComponent,
-        QuestionComponent
+        PaymentClientComponent
+       
     ],
     exports: [
         
@@ -169,7 +194,8 @@ import { QuestionComponent } from './question/question.component';
         AddExperienceFormComponent,
         EditExperienceFormComponent,
         AddSkillFormComponent,
-        EditProfileFormComponent
+        EditProfileFormComponent,
+        AddEventComponent
     ]
 })
 export class ExamplesModule { }

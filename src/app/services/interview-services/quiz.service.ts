@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'environments/environment';
 import { map, catchError } from 'rxjs/operators';
@@ -40,5 +40,18 @@ export class QuizService {
     }
     OfferForFailedCandidate(idQ: number): Observable<{}> {
         return this.httpClient.put<Quiz>(environment.backend_url + 'quiz/moreoffers?idQ=' + idQ, null);
+    }
+    CandidateQuiz(id:number):Observable<Quiz[]>{
+        let params= new HttpParams().set("idCandidate",id.toString());
+        return this.httpClient.get<Quiz[]>(environment.backend_url + 'quiz/candidateQuiz',{params});
+
+    }
+    takeQuiz(id:number,listAn:number[]):Observable<{}>{
+        let params= new HttpParams().set("idQuiz",id.toString());
+        listAn.forEach((idA:number)=>{
+            params=params.append('list',idA.toString());
+        });
+        return this.httpClient.put<Quiz>(environment.backend_url + 'quiz/passQuiz',null,{params});
+
     }
 }

@@ -26,14 +26,18 @@ import { Page404Component } from './pages/page404/page404.component';
 import { Page422Component } from './pages/page422/page422.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 import { ClaimsComponent } from './pages/claims/claims.component';
 import { PackComponent } from './pages/pack/pack.component';
-import { QuizComponent } from './pages/quiz/quiz.component';
 import { EntprofilePageComponent } from './pages/enterprise-pages/entprofile-page/entprofile-page.component';
 import { EnterpriseprofilePageComponent } from './pages/enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
 import { ListjobofferPageComponent } from './pages/enterprise-pages/listjoboffer-page/listjoboffer-page.component';
 import { ListeventPageComponent } from './pages/enterprise-pages/listevent-page/listevent-page.component';
 import { MyjobofferlistPageComponent } from './pages/enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
+import { InterviewComponent } from './pages/interview/interview.component';
+import { QuestionComponent } from './pages/question/question.component';
+import { CandidateQuizComponent } from './pages/candidate-quiz/candidate-quiz.component';
+import { CandidateInterviewComponent } from './pages/candidate-interview/candidate-interview.component';
 import { PostsPageComponent } from './pages/profile/posts-page/post-page.component';
 
 import { DiscoverNetworkComponent } from './pages/discover-network/discover-network.component';
@@ -41,6 +45,7 @@ import { DiscoverCompaniesComponent } from './pages/discover-companies/discover-
 import { ViewProfileComponent } from './pages/view-profile/view-profile.component';
 import { ViewJobComponent } from './pages/view-job/view-job.component';
 import { InterviewTrainingComponent } from './pages/interview-training/interview-training.component';
+import { DemoComponent } from './pages/demo/demo.component';
 import { AddjobofferPageComponent } from './pages/enterprise-pages/addjoboffer-page/addjoboffer-page.component';
 import { AddenterprisePageComponent } from './pages/enterprise-pages/addenterprise-page/addenterprise-page.component';
 import { AddenteventPageComponent } from './pages/enterprise-pages/addentevent-page/addentevent-page.component';
@@ -49,13 +54,13 @@ import { PackAdminComponent } from './pages/pack-admin-pages/pack-admin/pack-adm
 import { EditPackAdminComponent } from './pages/pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
 import { ShowPackDetailsComponent } from './pages/pack-admin-pages/show-pack-details/show-pack-details.component';
 import { PaymentAdminComponent } from './pages/payment/payment-admin/payment-admin.component';
-import { InterviewComponent } from './pages/interview/interview.component';
-import { QuestionComponent } from './pages/question/question.component';
 
 const routes: Routes = [
     { path: 'presentation', component: PresentationComponent },
     { path: 'pages/quizSpace', component: QuizComponent },
     { path: 'pages/Question&AnswersSpace', component: QuestionComponent },
+    { path: 'pages/CandidateQuizSpace', component: CandidateQuizComponent },
+    { path: 'pages/CandidatequizSpace/Candidateinterviews/:id', component: CandidateInterviewComponent },
     { path: 'pages/quizSpace/interviews/:id', component: InterviewComponent },
     { path: 'components', component: ComponentsComponent },
     { path: 'sections', component: SectionsComponent },
@@ -85,6 +90,7 @@ const routes: Routes = [
     { path: 'pages/DiscoverNetwork',     component: DiscoverNetworkComponent },
     { path: 'pages/DiscoverCompanies',     component: DiscoverCompaniesComponent },
     { path: 'pages/InterviewTraining',     component: InterviewTrainingComponent },
+    { path: 'pages/Calendar',     component: DemoComponent },
     { path: 'pages/register',    component: RegisterComponent },
     { path: 'pages/search',      component: SearchComponent },
     { path: 'pages/settings',    component: SettingsComponent },

@@ -5,6 +5,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { InterviewService } from 'app/services/interview-services/interview.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Question } from 'app/services/interview-services/models/question';
+import { QuestionService } from 'app/services/interview-services/question.service';
 
 @Component({
   selector: 'app-quiz',
@@ -13,7 +14,7 @@ import { Question } from 'app/services/interview-services/models/question';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private modalService: NgbModal,private quizService: QuizService, private interviewService: InterviewService) { }
+  constructor(private modalService: NgbModal,private questionService: QuestionService,private quizService: QuizService, private interviewService: InterviewService) { }
   public list: Quiz[] = null;
   isClicked: boolean = false;
   public q: Quiz = null;
@@ -21,14 +22,16 @@ export class QuizComponent implements OnInit {
   msg: string;
   closeResult;
   idSelected:number;
-  questions:Question[]=[];
+  questions:Question[]=null;
+  selectedQuiz:Quiz;
   arr;
   reload() {
     this.quizService.displayQuizForOffer(1).subscribe(l => this.list = l);
-
+    this.questionService.getQuestions().subscribe(u => this.questions = u);
   }
   ngOnInit() {
     this.quizService.displayQuizForOffer(1).subscribe(l => this.list = l);
+    this.questionService.getQuestions().subscribe(u => this.questions = u);
     console.log(this.list);
   }
   cancelQuiz(id: number) {
@@ -58,7 +61,8 @@ export class QuizComponent implements OnInit {
 
   opena(content,qz:Quiz) {
   this.arr=Array(10-qz.questions.length).fill(10-qz.questions.length);
-  console.log(this.arr);
+  this.selectedQuiz=qz;
+  console.log(this.selectedQuiz);
    // this.updateform={JOtitle:title,JOarea:area,JOdescription:description,JOexperience:experience,interests:interests}
   
     this.modalService.open(content, {ariaLabelledBy: 'modal1-basic-title'}).result.then((result) => {
@@ -69,6 +73,7 @@ export class QuizComponent implements OnInit {
    }
     private getDismissReason(reason: any): string {
       this.arr=null;
+      this.selectedQuiz=null;
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
       } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -77,5 +82,9 @@ export class QuizComponent implements OnInit {
         return  `with: ${reason}`;
       }
     }
-
+    assignQuestion(idQ:number,idquestion:number){
+      console.log(idQ);
+      console.log(idquestion);
+      this.quizService.assignQuestion(idQ,idquestion).subscribe(u=>this.reload());
+    }
 }
