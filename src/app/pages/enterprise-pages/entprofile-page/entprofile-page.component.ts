@@ -12,6 +12,7 @@ export class EntprofilePageComponent implements OnInit {
 
   data : Date = new Date();
   entprofile:Entprofile[]=[];
+  searchText;
    public entId;
 
   constructor(private entprofileService : EntprofileService ) { }
@@ -23,6 +24,11 @@ export class EntprofilePageComponent implements OnInit {
     navbar.classList.add('navbar-transparent');
     var body = document.getElementsByTagName('body')[0];
     body.classList.add('landing-page');
+    var body = document.getElementsByTagName('body')[0];
+        body.classList.add('search-page');
+        var navbar = document.getElementsByTagName('nav')[0];
+        navbar.classList.add('bg-danger');
+
 
     this.entprofileService.GetAllEnt().subscribe(pro => {
       this.entprofile = pro;

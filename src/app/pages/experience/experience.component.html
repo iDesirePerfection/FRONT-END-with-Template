@@ -1,0 +1,28 @@
+<button *ngIf="!isViewing" (click)="addExperience()" class=" btn btn-primary btn-round" type="button">
+        <i class=" fa fa-plus"> </i> Add Experience
+</button>
+<hr *ngIf="!isViewing"> 
+<div *ngFor="let exp of experiences;index as i">
+<div  class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+    <div class="manage-buttons">
+        
+
+        <button *ngIf="!isViewing" class=" btn btn-accent btn-just-icon  margin-right-1" (click)="editExperience(exp)">
+            <i class=" fa fa-pencil"> </i>
+        </button>
+        <button *ngIf="!isViewing" class=" btn btn-accent btn-just-icon" (click)='deleteExperience(exp.id)'>
+            <i class=" fa fa-times"> </i>
+        </button>
+    </div>
+    <div class="card-body">
+        <h3 class="card-category">{{exp.designation}}</h3>
+        <h3 class="card-category">{{exp.type}}</h3>
+        <h5 class="card-title">{{exp.startDate}} - {{exp.endDate}}</h5> 
+    </div>
+    
+</div>
+<hr>
+</div>
+
+
+

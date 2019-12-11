@@ -1,4 +1,5 @@
 import { Entprofile } from "app/services/enterprise-services/models/entprofile";
+import { UserPack } from "app/services/UserPack/model/userPack";
 
 export interface User{
     id:number;
@@ -17,6 +18,7 @@ export interface User{
     role:string;
     interests:string;
     accountCreationDate:Date;
+
     // TODO:change any to their types
     enterprise:Entprofile;
     Posts:any[];
@@ -27,7 +29,22 @@ export interface User{
     Blcaklist:any[];
     Whoclaim:any[];
     claimOn:any[];
-    packs:any[];
+    packs:UserPack[];
+
+    //candidate de plus 
+    biography?: string;
+    title?:string;
+    rating?: number;
+    cv?: string;
+    imageUrl?:string;
+    experiences?: any[];
+    certifications?: any[];
+    activities?: any[];
+    skills?: any[];
+    contacts?: any[];
+    views?: any[];
+    subscriptions?: any[];
+    jobApplications?: any[];
     
 
 }

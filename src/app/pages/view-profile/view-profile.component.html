@@ -1,0 +1,186 @@
+<div class="wrapper">
+        <div class="page-header page-header-small"
+            style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg'); height: 1rem !important;">
+            <div class="filter"></div>
+        </div>
+        <div class="profile-content section">
+            <div class="container">
+                <div class="row">
+                    <div class="profile-picture">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new img-no-padding">
+                                <img src="./assets/img/faces/{{currentCandidate.imageUrl}}" alt="...">
+                                <!-- <app-image-upload [image]="candidateImage"></app-image-upload> -->
+                            </div>
+                            <div class="name">
+                                <h4 class="title text-center">{{currentCandidate.firstName}} {{currentCandidate.lastName}}<br /><small>{{currentCandidate.title}}</small></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto text-center">
+                        <p>{{currentCandidate.bio}}</p>
+                        
+                        <br />
+                        <button (click)="followCandidate()" *ngIf="currentCandidate.follow=='Follow'" class="btn btn-outline-default btn-round"> {{currentCandidate.follow}}</button>
+                        <button (click)="unfollowCandidate()" *ngIf="currentCandidate.follow=='Unfollow'" class="btn btn-outline-default btn-round"><i class="fa fa-check"></i> {{currentCandidate.follow}}</button>
+                    </div>
+                </div>
+                <br />
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <ngb-tabset [justify]="'center'">
+                            <!-- EXPERIENCE -->
+                            <ngb-tab title="Experiences">
+                                <ng-template ngbTabContent>
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <ul class="list-unstyled follows">
+                                                <li>
+                                                    <app-experience [isViewing]="true"></app-experience>
+                                                </li>
+    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+                            <!-- SKILLS -->
+                            <ngb-tab title="Skills">
+                                <ng-template ngbTabContent>
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <ul class="list-unstyled follows">
+                                                <li>
+                                                    <app-skill [isViewing]="true"></app-skill>
+    
+    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>>
+                            <!-- Certifications -->
+                            <ngb-tab title="Certifications">
+                                <ng-template ngbTabContent>
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <ul class="list-unstyled follows">
+                                                <li>
+                                                    <div class="card card-just-text" data-background="color"
+                                                        data-color="green" data-radius="none">
+                                                        <div class="card-body">
+                                                            <h6 class="card-category">Best cards</h6>
+                                                            <h4 class="card-title"><a href="javascript:void(0)">Green
+                                                                    Card</a></h4>
+                                                            <p class="card-description">What all of these have in common is
+                                                                that they're pulling information out of the app or the
+                                                                service and making it relevant to the moment. </p>
+                                                        </div>
+                                                    </div>
+    
+                                                </li>
+                                                <hr />
+                                                <li>
+                                                    <div class="card card-just-text" data-background="color"
+                                                        data-color="green" data-radius="none">
+                                                        <div class="card-body">
+                                                            <h6 class="card-category">Best cards</h6>
+                                                            <h4 class="card-title"><a href="javascript:void(0)">Green
+                                                                    Card</a></h4>
+                                                            <p class="card-description">What all of these have in common is
+                                                                that they're pulling information out of the app or the
+                                                                service and making it relevant to the moment. </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+                            <!-- follows -->
+                            <ngb-tab title="Follows">
+                                <ng-template ngbTabContent>
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <ul class="list-unstyled follows">
+    
+                                                <h3 class="text-muted">Not follows anyone yet :(</h3>
+                                                <br>
+                                                <button class="btn btn-warning btn-round">Find artists</button>
+    
+                                            </ul>
+    
+                                        </div>
+    
+                                    </div>
+    
+    
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Following">
+                                <ng-template ngbTabContent>
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <ul class="list-unstyled follows">
+                                                <li *ngFor="let con of currentCandidate.contacts; index as i;">
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-3">
+                                                            <img src="./assets/img/faces/clem-onojeghuo-3.jpg"
+                                                                alt="Circle Image"
+                                                                class="img-circle img-no-padding img-responsive">
+                                                        </div>
+                                                        <div class="col-md-7 col-4">
+                                                            <h6>{{con.firstName}}
+                                                                {{con.lastName}}<br /><small>{{con.email}}</small></h6>
+                                                        </div>
+                                                        <div class="col-md-3 col-2">
+                                                            <div class="unfollow">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            value="" checked>
+                                                                        <span class="form-check-sign"></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <hr />
+    
+                                            </ul>
+    
+                                        </div>
+    
+                                    </div>
+    
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer section-dark">
+        <div class="container">
+            <div class="row">
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                        <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                        <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                    </ul>
+                </nav>
+                <div class="credits ml-auto">
+                    <span class="copyright">
+                        © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>

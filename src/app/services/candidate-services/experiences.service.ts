@@ -5,6 +5,7 @@ import { Experience } from './models/experience.model';
 import { environment } from 'environments/environment';
 import { map, catchError } from 'rxjs/operators';
 
+
 @Injectable({ providedIn: 'root' })
 export class ExperiencesService {
     constructor(private httpClient: HttpClient) { }
@@ -24,13 +25,28 @@ export class ExperiencesService {
         // ] as Experience[])
     }
 
-    addExperienceToCandidate(designation:string,type:string,startDate:string,endDate:string,candidateId:number): Observable<Experience> {
-       return this.httpClient.post<Experience>(environment.backend_url+ 'candidate/addExperience?designation='+designation+'&type='+type+'&startDate='+startDate+'&endDate='+endDate+'&candidateID='+candidateId,null);
+    addExperienceToCandidate(designation:string,type:string,startDate:any,endDate:any,candidateId:number): Observable<Experience> {
+       return this.httpClient.post<Experience>(environment.backend_url+ 'candidate/addExperience?designation='+designation+'&type='+type+'&startDate='+this.convertDateToString(startDate)+'&endDate='+this.convertDateToString(endDate)+'&candidateID='+candidateId,null);
     }
+    updateExperience(candidateId:number,designation:string,type:string,startDate:any,endDate:any): Observable<Experience> {
+        return this.httpClient.put<Experience>(environment.backend_url+ 'candidate/updateExperience?id='+candidateId+'&designation='+designation+'&type='+type+'&startDate='+this.convertDateToString(startDate)+'&endDate='+this.convertDateToString(endDate),null);
+     }
+    
 
     deleteExperience(experienceId:string,candidateId:string) : Observable<{}>
     {
     return this.httpClient.delete(environment.backend_url+ 'candidate/deleteExperience?experienceId='+experienceId+'&candidateId='+candidateId);
     }
 
+    convertDateToString(d:any)
+    {
+        var toReturn:string;
+        toReturn=d.year.toString();
+        toReturn=toReturn.concat("-");
+        toReturn=toReturn.concat(d.month.toString());
+        toReturn=toReturn.concat("-");
+        toReturn=toReturn.concat(d.day.toString());
+        console.log(toReturn);
+        return toReturn;
+    }
 }

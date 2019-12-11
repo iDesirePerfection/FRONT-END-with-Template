@@ -1,0 +1,74 @@
+<div class="main" style="align-content: center;">
+    <div class="section">
+        <div class="container">
+
+            <form style="align-content:  center;">
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <th>Pack Id</th>
+                            <td>{{pack.id}}</td>
+                        </tr>
+                        <tr>
+                            <th>Pack Name</th>
+                            <td>{{pack.title}}</td>
+                        </tr>
+                        <tr>
+                            <th>Pack Description</th>
+                            <td>{{pack.description}}</td>
+                        </tr>
+                        <tr>
+                            <th>Pack Price</th>
+                            <td>{{pack.price}}</td>
+                        </tr>
+                        <tr>
+                            <th> users who have this pack</th>
+                            <td> <button (click)="afficherUserPack()" class="badge badge-pill badge-info mr-1"><i class="fa fa-address-book"></i> Afficher user who have this pack</button></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <table class="table" [hidden]="tab">
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>User Email</th>
+                                        <th>Pack start Date</th>
+                                        <th>Pack end Date</th>
+
+                                        <th>Pack validation</th>
+                                        <th>Payment Id/Action</th>
+                                    </tr>
+                                    <tr *ngFor="let a of listUsers">
+                                        <td>
+                                            {{a.user.lastName}}
+                                        </td>
+                                        <td>
+                                            {{a.user.email}}
+                                        </td>
+                                        <td>
+                                            {{a.startDate}}
+                                        </td>
+                                        <td>
+                                            {{a.endDate}}
+                                        </td>
+                                        <td>
+                                            {{a.valid}}
+                                        </td>
+                                        <td>{{a.payment.id}}<button  [routerLink]="['/pages/admin/payment/',a.payment.id]" class="btn btn-info btn-round mr-1"><i class="fa fa-heart"></i>see payment</button>
+                                           
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+
+
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

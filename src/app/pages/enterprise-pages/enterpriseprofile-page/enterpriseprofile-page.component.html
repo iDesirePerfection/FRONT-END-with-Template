@@ -1,188 +1,266 @@
 <div class="wrapper">
-            <div class="page-header page-header-small" style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg');">
-                <div class="filter"></div>
+    <div class="page-header page-header-small" style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="profile-content section">
+        <div class="container">
+            <div class="row">
+                <div class="profile-picture">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new img-no-padding">
+                            <img src={{entprofile?.file?.path}}>
+                        </div>
+                        <div class="name">
+                            <h4 class="title text-center">{{entprofile.ename}}<br /><small>{{entprofile.edomain}}</small></h4>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="profile-content section">
-                <div class="container">
-                    <div class="row">
-                        <div class="profile-picture">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-new img-no-padding">
-                                    <img src="./assets/img/faces/joe-gardner-2.jpg" alt="...">
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-6 ml-auto mr-auto text-center">
+                    <p>{{entprofile.edescription}} </p>
+                    <br />
+                    <p> enpmloyees : {{entprofile.employeesnumber}}</p>
+                    <br />
+                    <p> location : {{entprofile.elocation}}</p>
+                    <br />
+                    <div *ngIf="checkStatus">
+                        <button class="btn btn-outline-default btn-round" (click)="Opena(ajout,entprofile.eid,entprofile.ename,entprofile.edomain,entprofile.elocation,entprofile.employeesnumber,entprofile.edescription)"><i class="fa fa-cog" ></i> Settings</button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ngb-tabset [justify]="'center'">
+                        <ngb-tab title="Follows">
+                            <ng-template ngbTabContent>
+                                <div class="row following" id="follows">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <ul class="list-unstyled follows">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-3">
+                                                        <img src="./assets/img/faces/clem-onojeghuo-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                    </div>
+                                                    <div class="col-md-7 col-4">
+                                                        <h6>Lincoln<br/><small>Car Producer</small></h6>
+                                                    </div>
+                                                    <div class="col-md-3 col-2">
+                                                        <div class="unfollow">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                                                        <input class="form-check-input" type="checkbox" value="" checked>
+                                                                                                        <span class="form-check-sign"></span>
+                                                                                                    </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-3">
+                                                        <img src="./assets/img/faces/erik-lucatero-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                    </div>
+                                                    <div class="col-md-7 col-4">
+                                                        <h6>Banks<br /><small>Singer</small></h6>
+                                                    </div>
+                                                    <div class="col-md-3 col-2">
+                                                        <div class="unfollow">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                                                        <input class="form-check-input" type="checkbox" value="">
+                                                                                                        <span class="form-check-sign"></span>
+                                                                                                    </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="name">
-                                    <h4 class="title text-center">{{entprofile.ename}}<br /><small>{{entprofile.edomain}}</small></h4>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Following">
+                            <ng-template ngbTabContent>
+                                <h3 class="text-muted">Not following anyone yet :(</h3>
+                                <br>
+                                <button class="btn btn-warning btn-round">Find artists</button>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title">Our Events & Workshops</h4>
+                </div>
+                <div class="col-md-10 ml-auto mr-auto">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th></th>
+                                    <th class="text-right">Price</th>
+                                    <th class="text-right">Participants</th>
+                                    <th class="text-right">Place</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let e of events ;index as i">
+                                    <td>
+                                        <div class="img-container">
+                                            <img src="./assets/img/tables/agenda.png" alt="...">
+                                        </div>
+                                    </td>
+                                    <td class="td-product">
+                                        <strong>{{e.eetitle}}</strong>
+                                        <p>{{e.eedescription}}</p>
+                                    </td>
+                                    <td class="td-price">
+                                        {{e.eeprice}}<small>DT</small>
+                                    </td>
+                                    <td class="td-price">
+                                        {{e.eetickets}}
+                                    </td>
+                                    <td class="td-price">
+                                        {{e.eeplace}}
+                                    </td>
+                                    <td>
+                                        <div *ngIf="checkStatus">
+                                            <button (click)="deleteEvent(e.eeid)" class="btn btn-outline-danger btn-sm mr-1" type="button">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="tr-actions">
+                                    <td colspan="3"></td>
+                                    <td colspan="2" class="text-right">
+                                        <button type="button" class="btn btn-danger btn-lg" [routerLink]="['/pages/enterprise-pages/addentevent-page']">Add New Event<i class="fa fa-chevron-right"></i></button>
+                                    </td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<footer class="footer section-dark">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                            © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                        </span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--popup settings-->
+
+<ng-template #ajout let-modal1>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal1-basic-title">Update Profile</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+    </div>
+
+    <div class="modal-body">
+
+
+        <div class="wrapper">
+            <div class="main">
+                <div class="section">
+                    <div class="container">
+                        <h3></h3>
+                        <form #updateform="ngForm" (ngSubmit)="updateEntProfile()">
+
+
+                            <div class="col-md-7 col-sm-7">
+                                <div class="form-group">
+                                    <h6>Name <span class="icon-danger">*</span></h6>
+                                    <input type="text" style="width: 350px;" class="form-control border-input" placeholder="Name" name="Ename" [(ngModel)]="entprofile.ename" #Ename="ngModel">
+                                </div>
+                                <div class="form-group">
+                                    <h6>Domain <span class="icon-danger">*</span></h6>
+                                    <input type="text" style="width: 350px;" class="form-control border-input" placeholder="domain" name="Edomain" [(ngModel)]="entprofile.edomain" #Edomain="ngModel">
+                                </div>
+                                <div class="form-group">
+                                    <h6>Location <span class="icon-danger">*</span></h6>
+                                    <input type="text" style="width: 350px;" class="form-control border-input" placeholder="location" name="Elocation" [(ngModel)]="entprofile.elocation" #Elocation="ngModel">
+                                </div>
+                                <div class="form-group">
+                                    <h6>Employees <span class="icon-danger">*</span></h6>
+                                    <input type="text" style="width: 80px;" class="form-control border-input" placeholder="employees" name="Employeesnumber" [(ngModel)]="entprofile.employeesnumber" #Employeesnumber="ngModel">
+                                </div>
+                                <div class="form-group">
+                                    <h6>Description</h6>
+                                    <textarea style="width: 350px;" class="form-control textarea-limited" rows="13" maxlength="150" placeholder="Description" name="Edescription" [(ngModel)]="entprofile.edescription" #Edescription="ngModel"></textarea>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 ml-auto mr-auto text-center">
-                            <p>{{entprofile.edescription}} </p>
-                            <br />
-                            <p> enpmloyees : {{entprofile.employeesnumber}}</p>
-                            <br />
-                            <p> location : {{entprofile.elocation}}</p>
-                            <br />
 
-                            <button class="btn btn-outline-default btn-round"  (click)="Opena(ajout,entprofile.eid,entprofile.ename,entprofile.edomain,entprofile.elocation,entprofile.employeesnumber,entprofile.edescription)"><i class="fa fa-cog" ></i> Settings</button>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="nav-tabs-navigation">
-                        <div class="nav-tabs-wrapper">
-                            <ngb-tabset [justify]="'center'">
-                                <ngb-tab title="Follows">
-                                    <ng-template ngbTabContent >
-                                        <div class="row following" id="follows">
-                                            <div class="col-md-6 ml-auto mr-auto">
-                                                <ul class="list-unstyled follows">
-                                                    <li>
-                                                        <div class="row">
-                                                            <div class="col-md-2 col-3">
-                                                                <img src="./assets/img/faces/clem-onojeghuo-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                            </div>
-                                                            <div class="col-md-7 col-4">
-                                                                <h6>Lincoln<br/><small>Car Producer</small></h6>
-                                                            </div>
-                                                            <div class="col-md-3 col-2">
-                                                                <div class="unfollow" >
-                                                                    <div class="form-check">
-                                                                        <label class="form-check-label">
-                                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                                            <span class="form-check-sign"></span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <hr />
-                                                    <li>
-                                                        <div class="row">
-                                                            <div class="col-md-2 col-3">
-                                                                <img src="./assets/img/faces/erik-lucatero-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                            </div>
-                                                            <div class="col-md-7 col-4">
-                                                                <h6>Banks<br /><small>Singer</small></h6>
-                                                            </div>
-                                                            <div class="col-md-3 col-2">
-                                                                <div class="unfollow" >
-                                                                    <div class="form-check">
-                                                                        <label class="form-check-label">
-                                                                            <input class="form-check-input" type="checkbox" value="">
-                                                                            <span class="form-check-sign"></span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="Following">
-                                    <ng-template ngbTabContent>
-                                        <h3 class="text-muted">Not following anyone yet :(</h3>
-                                        <br>
-                                        <button class="btn btn-warning btn-round">Find artists</button>
-                                    </ng-template>
-                                </ngb-tab>
-                            </ngb-tabset>
-                        </div>
+
+
+                            <div class="row buttons-row">
+                                <div class="col-md-4 col-sm-4">
+                                    <button class="btn btn-outline-danger btn-block btn-round" (click)="modal1.dismiss('Cross click')">Cancel</button>
+                                </div>
+                                <div>
+                                    ___________________
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <button type="submit" class="btn btn-outline-primary btn-block btn-round">Save</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="footer section-dark">
-            <div class="container">
-                <div class="row">
-                    <nav class="footer-nav">
-                        <ul>
-                            <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
-                            <li><a href="http://blog.creative-tim.com">Blog</a></li>
-                            <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
-                        </ul>
-                    </nav>
-                    <div class="credits ml-auto">
-                        <span class="copyright">
-                            © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        
-        <!--popup settings-->
-
-        <ng-template #ajout let-modal1>
-                <div class="modal-header">
-                  <h4 class="modal-title" id="modal1-basic-title">Update Profile</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                
-                <div class="modal-body">
-
-
-                        <div class="wrapper">
-                                <div class="main">
-                                    <div class="section">
-                                        <div class="container">
-                                            <h3></h3>
-                                            <form #updateform="ngForm" (ngSubmit)="updateEntProfile()">
-                                                
-                            
-                                                    <div class="col-md-7 col-sm-7">
-                                                        <div class="form-group">
-                                                            <h6>Name <span class="icon-danger">*</span></h6>
-                                                            <input type="text" style="width: 350px;" class="form-control border-input"  placeholder="Name" name="Ename" [(ngModel)]="entprofile.ename" #Ename="ngModel">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <h6>Domain <span class="icon-danger">*</span></h6>
-                                                            <input type="text" style="width: 350px;" class="form-control border-input"  placeholder="domain" name="Edomain" [(ngModel)]="entprofile.edomain" #Edomain="ngModel">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <h6>Location <span class="icon-danger">*</span></h6>
-                                                            <input type="text" style="width: 350px;" class="form-control border-input"  placeholder="location" name="Elocation" [(ngModel)]="entprofile.elocation" #Elocation="ngModel">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <h6>Employees <span class="icon-danger">*</span></h6>
-                                                            <input type="text"  style="width: 80px;"class="form-control border-input"  placeholder="employees" name="Employeesnumber" [(ngModel)]="entprofile.employeesnumber" #Employeesnumber="ngModel">                                                       
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <h6>Description</h6>
-                                                                    <textarea style="width: 350px;" class="form-control textarea-limited"  rows="13" maxlength="150"   placeholder="Description" name="Edescription" [(ngModel)]="entprofile.edescription" #Edescription="ngModel" ></textarea>
-                                                        </div>
-                                                    </div>               
-                                                 
-                            
-                            
-                                                <div class="row buttons-row">
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <button class="btn btn-outline-danger btn-block btn-round" (click)="modal1.dismiss('Cross click')">Cancel</button>
-                                                    </div>
-                                                    <div>
-                                                        ___________________
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <button type="submit" class="btn btn-outline-primary btn-block btn-round">Save</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
 
 
 
 
 
-                </div>
-              </ng-template>
 
+    </div>
+</ng-template>

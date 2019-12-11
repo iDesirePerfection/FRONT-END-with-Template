@@ -4,6 +4,10 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { Location, PopStateEvent } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ChatComponent } from './chat/chat.component';
+import { UserService } from './services/user-services/user.service';
+import { ChatAdapter } from 'ng-chat';
+
 
 
 var didScroll;
@@ -17,13 +21,17 @@ var navbarHeight = 0;
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+    public adapter: ChatAdapter = new ChatComponent();
+    title = 'app';
+    userId = localStorage.getItem('id');
     private _router: Subscription;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
     url: string;
     @ViewChild(NavbarComponent, {static: false}) navbar: NavbarComponent;
 
-    constructor( private renderer : Renderer, private router: Router, private element : ElementRef, public location: Location) {}
+    constructor( private renderer : Renderer, private router: Router, private element : ElementRef
+    , public location: Location,private userservice:UserService) {}
 
     @HostListener('window:scroll', ['$event'])
     hasScrolled() {
