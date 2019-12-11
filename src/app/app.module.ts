@@ -27,6 +27,8 @@ import { EditProfileFormComponent } from './pages/edit-profile-form/edit-profile
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { environment } from 'environments/environment';
+import { NgxAgoraModule } from 'ngx-agora';
 
 @NgModule({
     declarations: [
@@ -52,6 +54,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         NgChatModule,
         HttpClientModule,
         CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+        NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
         
 
     ],
