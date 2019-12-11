@@ -73,6 +73,7 @@ import { PaymentAdminComponent } from './payment/payment-admin/payment-admin.com
 import { PaymentClientComponent } from './payment/payment-client/payment-client.component';
 
 
+
 @NgModule({
     imports: [
         CommonModule,

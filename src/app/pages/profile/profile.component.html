@@ -3,19 +3,51 @@
         style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg'); height: 1rem !important;">
         <div class="filter"></div>
     </div>
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <form class="form-inline ml-auto" style="margin-top:1rem;">
-                <input autocomplete="off"  name="criteria" [(ngModel)]="criteria"  (input)="clearJobs()" (focus)="startSearch()" class="form-control mr-sm-2 no-border" type="text"
-                    placeholder="Search Jobs" style="border:2px solid black !important;">
+                <input autocomplete="off" name="criteria" [(ngModel)]="criteria" (input)="clearJobs()"
+                    (focus)="startSearch()" class="form-control mr-sm-2 no-border" type="text" placeholder="Search Jobs"
+                    style="border:2px solid black !important;">
                 <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i
                         class="nc-icon nc-zoom-split"></i></button>
             </form>
+            <button type="button" (click)="open(Notice, '')" class="btn btn-outline-danger btn-round mr-1"><i
+                    class="fa fa-archive"></i>
+                Claim!</button>
+            <ng-template #Notice let-c="close" let-d="dismiss">
+                <div class="no-title modal-header no-border-header">
+                    <!-- <h4 class="modal-title">Modal title</h4> -->
+                    <button type="button" class="close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h5>Are you sure you want to do this? </h5>
+                </div>
+
+                <div class="modal-body">
+                    <form #addform="ngForm" (ngSubmit)="addClaim()">
+                        <div class="form-group">
+                            <label>reason</label>
+                            <input type="text" placeholder="reason" name="type" [(ngModel)]="addform.type"
+                                #type="ngModel" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" name="description" [(ngModel)]="addform.description"
+                                #description="ngModel" class="form-control" />
+                        </div>
+
+                        <button type="submit" class="btn btn-block btn-round">Send Your Claim</button>
+                    </form>
+                </div>
+            </ng-template>
         </div>
         <div *ngIf="searchStarted">
-            <div  class="row" *ngFor="let job of jobOffersEmpty | slice:0:6 | filter:criteria;" style="margin-top:2px;">
-                <button (click)=viewJob(job.joid) placement="left" ngbTooltip="{{job.interests}}" style="width:183px;  border:1px solid black;"
-                    class="btn btn-secondary ml-auto">
+            <div class="row" *ngFor="let job of jobOffersEmpty | slice:0:6 | filter:criteria;" style="margin-top:2px;">
+                <button (click)=viewJob(job.joid) placement="left" ngbTooltip="{{job.interests}}"
+                    style="width:183px;  border:1px solid black;" class="btn btn-secondary ml-auto">
                     <span class="pull-left">{{job.jotitle}}</span>
                     <span class="pull-right">{{job.vuesNumber}} <i class="fa fa-eye"></i></span>
 
@@ -83,7 +115,7 @@
                                     </div>
                                 </div>
                             </ng-template>
-                        </ngb-tab>>
+                        </ngb-tab>
                         <!-- Certifications -->
                         <ngb-tab title="Certifications">
                             <ng-template ngbTabContent>
@@ -91,30 +123,59 @@
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
                                             <li>
-                                                <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                                                <div class="card card-just-text" data-background="color"
+                                                    data-color="green" data-radius="none">
                                                     <div class="card-body">
                                                         <h6 class="card-category">Best cards</h6>
                                                         <h4 class="card-title"><a href="javascript:void(0)">Green
                                                                 Card</a></h4>
-                                                        <p class="card-description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                                                        <p class="card-description">What all of these have in common is
+                                                            that they're pulling information out of the app or the
+                                                            service and making it relevant to the moment. </p>
                                                     </div>
                                                 </div>
 
                                             </li>
                                             <hr />
                                             <li>
-                                                <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                                                <div class="card card-just-text" data-background="color"
+                                                    data-color="green" data-radius="none">
                                                     <div class="card-body">
                                                         <h6 class="card-category">Best cards</h6>
                                                         <h4 class="card-title"><a href="javascript:void(0)">Green
                                                                 Card</a></h4>
-                                                        <p class="card-description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
+                                                        <p class="card-description">What all of these have in common is
+                                                            that they're pulling information out of the app or the
+                                                            service and making it relevant to the moment. </p>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Packs">
+                            <ng-template ngbTabContent>
+
+                                <table class="table">
+                                    <tr>
+                                        <th>Pack title :</th>
+                                        <td>{{userPack.pack.titre}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pack description : </th>
+                                        <td>{{userPack.pack.description}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Start Date : </th>
+                                        <td>2019-12-11</td>
+                                    </tr>
+                                    <tr>
+                                        <th>End Date </th>
+                                        <td>2020-06-10</td>
+                                    </tr>
+                                </table>
                             </ng-template>
                         </ngb-tab>
                         <!-- follows -->
@@ -145,7 +206,9 @@
                                             <li *ngFor="let con of contacts; index as i;">
                                                 <div class="row">
                                                     <div class="col-md-2 col-3">
-                                                        <img src="./assets/img/faces/clem-onojeghuo-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="./assets/img/faces/clem-onojeghuo-3.jpg"
+                                                            alt="Circle Image"
+                                                            class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-4">
                                                         <h6>{{con.firstName}}
@@ -168,7 +231,9 @@
                                             <li>
                                                 <div class="row">
                                                     <div class="col-md-2 col-3">
-                                                        <img src="./assets/img/faces/erik-lucatero-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="./assets/img/faces/erik-lucatero-2.jpg"
+                                                            alt="Circle Image"
+                                                            class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-4">
                                                         <h6>Banks<br /><small>Singer</small></h6>
@@ -204,6 +269,7 @@
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>
+
                 </div>
             </div>
         </div>

@@ -48,6 +48,8 @@ import { PackAdminComponent } from './pages/pack-admin-pages/pack-admin/pack-adm
 import { EditPackAdminComponent } from './pages/pack-admin-pages/edit-pack-admin/edit-pack-admin.component';
 import { ShowPackDetailsComponent } from './pages/pack-admin-pages/show-pack-details/show-pack-details.component';
 import { PaymentAdminComponent } from './pages/payment/payment-admin/payment-admin.component';
+import { PaymentClientComponent } from './pages/payment/payment-client/payment-client.component';
+
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -85,6 +87,7 @@ const routes: Routes =[
     { path: 'pages/pack-admin-pages/editPackAdmin/:packId',   component: EditPackAdminComponent },
     { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
     { path: 'pages/pack-admin-pages/showPackDetails/:packId',   component: ShowPackDetailsComponent },
+    { path: 'pages/payment/:paymentId',   component: PaymentClientComponent },
     { path: 'pages/admin/payment/:paymentId',   component: PaymentAdminComponent },
     { path: '', redirectTo: 'presentation', pathMatch: 'full' },
     { path: 'pages/enterprise-pages/entprofile-page',       component: EntprofilePageComponent },
@@ -97,6 +100,7 @@ const routes: Routes =[
     { path: 'pages/enterprise-pages/addenterprise-page',       component: AddenterprisePageComponent },
     { path: 'pages/enterprise-pages/addentevent-page',       component: AddenteventPageComponent },
     { path: 'pages/enterprise-pages/jobofferdetail-page/:joid',       component: JobofferdetailPageComponent },
+ 
 ];
 
 @NgModule({

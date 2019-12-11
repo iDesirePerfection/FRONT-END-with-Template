@@ -1,1 +1,95 @@
-<p>payment-client works!</p>
+
+    <div class="page-header page-header-small" style="background-image: url('./assets/img/sections/lots-of-coins.jpg');">
+        <div class="filter filter-danger"></div>
+        <div class="content-center">
+            <div class="container">
+                <h1> Add a job Offer </h1>
+            </div>
+        </div>
+    </div>
+     
+     
+    <div class="wrapper">
+            <div class="main">
+                <div class="section">
+                    <div class="container">
+                        <h3>Payment validation</h3>
+                        <form #addformm="ngForm" (ngSubmit)="addPayment()">
+                            <div class="row">
+                                
+        
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h6>Card Number <span class="icon-danger">*</span></h6>
+                                        <input type="number" class="form-control border-input" placeholder="card number" name="numCard" [(ngModel)]="addform.numCard" #numCard="ngModel" required >
+                                        <div class="alert alert-danger" role="alert" *ngIf="numCard.errors && (numCard.touched || numCard.dirty)">              
+                                                 card number required
+                                              </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>CVV <span class="icon-danger">*</span></h6>
+                                        <input type="number" class="form-control border-input"placeholder="cvv" name="cvv" [(ngModel)]="addform.cvv" #cvv="ngModel" required>
+                                        <div class="alert alert-danger" role="alert" *ngIf="cvv.errors && (cvv.touched || cvv.dirty)">              
+                                                cvv required 
+                                              </div>
+                                    </div>
+                                    <div class=" form-group">
+                                            <label for="startDate"> Card Expiration Date </label>
+                                            <div class=" input-group date" id="startDate">
+                                                <input  class="form-control" placeholder="Card Expiration Date"  ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()" name="cardExpirationDate"  [(ngModel)]="addform.cardExpirationDate" #cardExpirationDate="ngModel" required/>
+                                                <div class=" input-group-append">
+                                                    <span class=" input-group-text">
+                                                        <span class=" glyphicon glyphicon-calendar">
+                                                            <i aria-hidden="true" class=" fa fa-calendar"> </i>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                </div>
+                                
+                                
+                            </div>
+        
+        
+                            <div class="row buttons-row">
+                                <div class="col-md-4 col-sm-4">
+                                    <button class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/pages/pack']">Cancel</button>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <button type="submit" class="btn btn-primary btn-block btn-round">Pay Your Pack</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+     
+     
+     <!--footer-->
+     <footer class="footer section-dark">
+            <div class="container">
+                <div class="row">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                            <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                            <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                        </ul>
+                    </nav>
+                    <div class="credits ml-auto">
+                        <span class="copyright">
+                            © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    

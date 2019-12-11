@@ -27,7 +27,7 @@ import { EditProfileFormComponent } from './pages/edit-profile-form/edit-profile
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
     declarations: [
         AppComponent,
@@ -52,6 +52,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         NgChatModule,
         HttpClientModule,
         CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+        NgxPayPalModule
         
 
     ],

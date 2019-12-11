@@ -15,8 +15,8 @@ export class PackService {
     getAllPacks(): Observable<Pack[]> {
         return this.httpClient.get<Pack[]>(environment.backend_url + 'pack/allPacks');
     }
-    getUsersByPack(idPack: number): Observable<string[]> {
-        return this.httpClient.get<string[]>(environment.backend_url + 'pack/user/'+idPack);
+    getUsersByPack(idPack: number): Observable<UserPack[]> {
+        return this.httpClient.get<UserPack[]>(environment.backend_url + 'pack/user/'+idPack);
     }
     getUsersPremium(id:number):Observable<UserPack[]>{
         return this.httpClient.get<UserPack[]>(environment.backend_url+'pack/userByPack/'+id);
@@ -33,11 +33,14 @@ export class PackService {
     deletePack(id:number):Observable<string>{
         return this.httpClient.delete<string>(environment.backend_url+'pack/deletePack?id='+id);
     }
-    payPack(id:number):Observable<Pack>{
-        return this.httpClient.put<Pack>(environment.backend_url+'pack/payPack/'+id,null);
+    payPack(idU:number,idp:number):Observable<Pack>{
+        return this.httpClient.put<Pack>(environment.backend_url+'pack/payPack/'+idU+'/'+idp,null);
     }
     getPackById(id:number):Observable<Pack>{
         return this.httpClient.get<Pack>(environment.backend_url+'pack/pack/'+id);
+    }
+    getUserByPack1(id:number):Observable<UserPack>{
+        return this.httpClient.get<UserPack>(environment.backend_url+'pack/userByPack1/'+id);
     }
     
 }

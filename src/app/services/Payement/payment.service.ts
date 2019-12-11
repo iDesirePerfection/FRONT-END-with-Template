@@ -5,6 +5,7 @@ import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { Payement } from './model/payement';
 import { User } from '../user-services/models/user';
+import { UserPack } from '../UserPack/model/userPack';
 
 
 
@@ -14,7 +15,7 @@ export class PaymentService  {
     constructor(private httpClient: HttpClient) { }
 
     addClaim(numCard:string,cvv:number,expirationDate:Date,idPack:number): Observable<Payement> {
-        return this.httpClient.put<Payement>(environment.backend_url+ 'payment/add?numCard='+numCard+'&cvv='+cvv+'&expirationDate='+expirationDate+'&idPack='+idPack,null);
+        return this.httpClient.put<Payement>(environment.backend_url+ 'payment/add?numCard='+numCard+'&cvv='+cvv+'&expirationDate=2019-12-17&idPack='+idPack,null);
      }
 
      cancelPayment(id:number):Observable<Payement>{
@@ -40,6 +41,9 @@ export class PaymentService  {
     }
     getUserByPayment(id:number):Observable<User>{
         return this.httpClient.get<User>(environment.backend_url+'payment/getUserByPayment/'+id);
+    }
+    getUserPack(id:number):Observable<UserPack>{
+        return this.httpClient.get<UserPack>(environment.backend_url+'payment/getUserPack/'+id);
     }
 
 }

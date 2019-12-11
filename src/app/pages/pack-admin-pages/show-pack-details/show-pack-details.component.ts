@@ -34,7 +34,7 @@ export class ShowPackDetailsComponent implements OnInit {
   }
   afficherUserPack(){
     this.tab= !this.tab;
-    this.packService.getUsersPremium(10).subscribe(u=>this.listUsers=u);
+    this.packService.getUsersPremium(this.packId).subscribe(u=>this.listUsers=u);
     console.log(this.listUsers);
   }
   payment(id:number){

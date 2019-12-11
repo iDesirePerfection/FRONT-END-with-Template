@@ -1,94 +1,204 @@
-
-<h4 class="title">Pricing cards</h4>
-<div class="container">
-    
-    <div >
-        <ngb-tabset type="pills"  class="nav-pills-danger">
-            <ngb-tab title="All" >
+<div class="wrapper">
+    <div class="page-header page-header-small"
+        style="background-image: url('./assets/img/sections/damir-bosnjak.jpg'); height: 1rem !important;">
+        <div class="filter"></div>
+    </div>
+    <h2 class="title" style="text-align: center;"><a href="javascript:void(0)" class="btn btn-link btn-danger mr-1"><i
+                class="fa fa-archive"></i>Packs</a></h2>
+    <div class="container">
+        <ngb-tabset type="pills" class="nav-pills-danger">
+            <ngb-tab title="All">
                 <ng-template ngbTabContent>
-                        <div class="row">
-                                <div class="col-md-4" *ngFor="let a of listPack"  >
-                            
-                            
-                                    <div class="card card-pricing">
-                                        <div class="card-body">
-                                            <h6 class="card-category">{{a.title}}</h6>
-                                            <h1 class="card-title">{{a.price}}</h1>
-                                            <ul>
-                                                <li><b></b> {{a.description}}</li>
-                                                <li><b></b> {{a.type}} </li>
-                                                <li [hidden]="a.reduction == 0">{{a.reduction}} </li>
-                                                <li [hidden]="a.reduction == 0">{{a.startDate}}</li>
-                                                <li [hidden]="a.reduction == 0">{{a.endDate}}</li>
-                                            </ul>
-                                            <a href="javascript:void(0)" class="btn btn-warning btn-round">
-                                                    <input type="submit" (click)="pay(a.id)" value="Get Started!" style="background-color: #fbc658; border-color: #fbc658;">
-                                            </a>
-                                        </div>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let a of listPack">
+
+
+                            <div class="card card-pricing">
+                                <div class="card-body">
+                                    <h6 class="card-category">{{a.title}}</h6>
+                                    <h1 class="card-title">{{a.price}}</h1>
+                                    <ul>
+                                        <li><b></b> {{a.description}}</li>
+                                        <li><b></b> {{a.type}} </li>
+                                        <li [hidden]="a.reduction == 0">{{a.reduction}} </li>
+                                        <li [hidden]="a.reduction == 0">{{a.startDate}}</li>
+                                        <li [hidden]="a.reduction == 0">{{a.endDate}}</li>
+                                    </ul>
+                                    <a href="javascript:void(0)">
+                                        <button type="button" (click)="open(Notice,a.id, '')"
+                                            class="btn btn-outline-danger btn-round mr-1"><i class="fa fa-archive"></i>
+                                            Get Started!</button>
+
+                                    </a>
+                                </div>
+                            </div>
+                            <ng-template #Notice let-c="close" let-d="dismiss">
+                                <div class="no-title modal-header no-border-header">
+                                    <!-- <h4 class="modal-title">Modal title</h4> -->
+                                    <button type="button" class="close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h5>Are you sure you want to do this? </h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="left-side">
+                                        <button type="button" class="btn btn-default btn-link"
+                                            (click)="c('Close click')">Cancel</button>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="right-side">
+                                        <button type="button"  [routerLink]="['/pages/payment/',a.id]"
+                                            class="btn btn-danger btn-link">Yes</button>
                                     </div>
                                 </div>
-                            
-                            
-                            </div>
+                            </ng-template>
+                        </div>
+
+
+                    </div>
                 </ng-template>
             </ngb-tab>
             <ngb-tab title="Company">
                 <ng-template ngbTabContent>
-                        <div class="row">
-                                <div class="col-md-4" *ngFor="let a of listPack" [hidden]="a.type == 'candidate'">
-                            
-                            
-                                    <div class="card card-pricing">
-                                        <div class="card-body">
-                                            <h6 class="card-category">{{a.title}}</h6>
-                                            <h1 class="card-title">{{a.price}}</h1>
-                                            <ul>
-                                                <li><b></b> {{a.description}}</li>
-                                                <li><b></b> {{a.type}} </li>
-                                                <li [hidden]="a.reduction == 0">{{a.reduction}} </li>
-                                                <li [hidden]="a.reduction == 0">{{a.startDate}}</li>
-                                                <li [hidden]="a.reduction == 0">{{a.endDate}}</li>
-                                            </ul>
-                                            <a href="javascript:void(0)" class="btn btn-warning btn-round">
-                                                    <input type="submit" (click)="pay(a.id)" value="Get Started!" style="background-color: #fbc658;border-color: #fbc658;">
-                                            </a>
-                                        </div>
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let a of listPack" [hidden]="a.type == 'candidate'">
+
+
+                            <div class="card card-pricing">
+                                <div class="card-body">
+                                    <h6 class="card-category">{{a.title}}</h6>
+                                    <h1 class="card-title">{{a.price}}</h1>
+                                    <ul>
+                                        <li><b></b> {{a.description}}</li>
+                                        <li><b></b> {{a.type}} </li>
+                                        <li [hidden]="a.reduction == 0">{{a.reduction}} </li>
+                                        <li [hidden]="a.reduction == 0">{{a.startDate}}</li>
+                                        <li [hidden]="a.reduction == 0">{{a.endDate}}</li>
+                                    </ul>
+                                    <a href="javascript:void(0)">
+                                        <button type="button" (click)="open(Notice,a.id, '')"
+                                            class="btn btn-outline-danger btn-round mr-1"><i class="fa fa-archive"></i>
+                                            Get Started!</button>
+
+                                    </a>
                                 </div>
-                            
-                            
                             </div>
-                
+                            <ng-template #Notice let-c="close" let-d="dismiss">
+                                <div class="no-title modal-header no-border-header">
+                                    <!-- <h4 class="modal-title">Modal title</h4> -->
+                                    <button type="button" class="close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h5>Are you sure you want to do this? </h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="left-side">
+                                        <button type="button" class="btn btn-default btn-link"
+                                            (click)="c('Close click')">Cancel</button>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="right-side">
+                                        <button type="button" [routerLink]="['/pages/payment/',a.id]"
+                                            class="btn btn-danger btn-link">Yes</button>
+                                    </div>
+
+                                </div>
+
+                            </ng-template>
+                        </div>
+
+
+                    </div>
+
                 </ng-template>
             </ngb-tab>
             <ngb-tab title="Candidate">
                 <ng-template ngbTabContent>
-                        <div class="row">
-                                <div class="col-md-4" *ngFor="let a of listPack" [hidden]="a.type == 'company'" >
-                            
-                            
-                                    <div class="card card-pricing" >
-                                        <div class="card-body">
-                                            <h6 class="card-category">{{a.title}}</h6>
-                                            <h1 class="card-title">{{a.price}}</h1>
-                                            <ul>
-                                                <li><b></b> {{a.description}}</li>
-                                                <li><b></b> {{a.type}} </li>
-                                                <li [hidden]="a.reduction == 0">{{a.reduction}} </li>
-                                                <li [hidden]="a.reduction == 0">{{a.startDate}}</li>
-                                                <li [hidden]="a.reduction == 0">{{a.endDate}}</li>
-                                            </ul>
-                                            <a href="javascript:void(0)" class="btn btn-warning btn-round">
-                                               <input type="submit" (click)="pay(a.id)" value="Get Started!" style="background-color: #fbc658;border-color: #fbc658;">
-                                            </a>
-                                        </div>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let a of listPack" [hidden]="a.type == 'company'">
+
+
+                            <div class="card card-pricing">
+                                <div class="card-body">
+                                    <h6 class="card-category">{{a.title}}</h6>
+                                    <h1 class="card-title">{{a.price}}</h1>
+                                    <ul>
+                                        <li><b></b> {{a.description}}</li>
+                                        <li><b></b> {{a.type}} </li>
+                                        <li [hidden]="a.reduction == 0">{{a.reduction}} </li>
+                                        <li [hidden]="a.reduction == 0">{{a.startDate}}</li>
+                                        <li [hidden]="a.reduction == 0">{{a.endDate}}</li>
+                                    </ul>
+                                    <a href="javascript:void(0)">
+                                        <button type="button" (click)="open(Notice,a.id, '')"
+                                            class="btn btn-outline-danger btn-round mr-1"><i class="fa fa-archive"></i>
+                                            Get Started!</button>
+
+                                    </a>
+                                </div>
+                            </div>
+                            <ng-template #Notice let-c="close" let-d="dismiss">
+                                <div class="no-title modal-header no-border-header">
+                                    <!-- <h4 class="modal-title">Modal title</h4> -->
+                                    <button type="button" class="close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h5>Are you sure you want to do this? </h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="left-side">
+                                        <button type="button" class="btn btn-default btn-link"
+                                            (click)="c('Close click')">Cancel</button>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="right-side">
+                                        <button type="button" [routerLink]="['/pages/payment/',a.id]"
+                                            class="btn btn-danger btn-link">Yes</button>
                                     </div>
                                 </div>
-                            
-                            
-                            </div>
-                </ng-template>
-            </ngb-tab>                      
-        </ngb-tabset>
-    </div>
+                            </ng-template>
+                        </div>
 
+
+                    </div>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+        <div *ngIf="loading" class="row">
+            <div class="col-md-4 text-center ml-auto mr-auto">
+                <div class="preloader">
+                    <div class='uil-reload-css' style=''>
+                        <div></div>
+                    </div>
+                    <h5>Loading </h5>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<footer class="footer section-dark">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
