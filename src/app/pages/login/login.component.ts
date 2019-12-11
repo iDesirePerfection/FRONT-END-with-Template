@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'app/services/user-services/user.service';
 import { environment } from 'environments/environment';
 import { User } from 'app/services/user-services/models/user';
+import { Router } from '@angular/router';
+import { NavbarComponent } from 'app/shared/navbar/navbar.component';
 
 @Component({
     selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
     usern: string;
     passw: string;
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService,private router:Router) { }
 
     ngOnInit() {
         var body = document.getElementsByTagName('body')[0];
@@ -71,10 +73,15 @@ export class LoginComponent implements OnInit {
                 else 
                 localStorage.setItem('cv',"defaultCv.pdf");
             }
+            console.log(this.user);
+            this.router.navigate(['/presentation']);
+            
+
+            
         });
 
 
-        console.log(this.user);
+        
     }
 
 

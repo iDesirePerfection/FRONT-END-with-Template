@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    userId="";
+    userName="";
+    role="";
 
     public x = localStorage.getItem("entid"); 
 
@@ -21,6 +24,9 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        this.userId=localStorage.getItem('id');
+        this.userName=localStorage.getItem('firstname');
+        this.role=localStorage.getItem('role');
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -90,6 +96,15 @@ export class NavbarComponent implements OnInit {
 
         }
       )
+    }
+
+    signOut()
+    {
+        this.userservice.logout(localStorage.getItem('id'));
+        localStorage.clear();
+        this.userId="";
+        this.router.navigate(['/pages/login']);
+
     }
 
 

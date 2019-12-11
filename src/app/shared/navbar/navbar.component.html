@@ -12,72 +12,38 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
+            
+              
                 <div ngbDropdown class="nav-item dropdown">
-                    <div class="nav-link dropdown-toggle" ngbDropdownToggle>Components</div>
+                    <div class="nav-link dropdown-toggle" ngbDropdownToggle>Interview Space</div>
                     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
-                        <a ngbDropdownItem [routerLink]="['/components']"><i class="nc-icon nc-tile-56"></i>All Components</a>
-                        <a ngbDropdownItem [routerLink]="['/presentation']"><i class="nc-icon nc-settings"></i>Presentation</a>
-                        <a ngbDropdownItem href="https://demos.creative-tim.com/paper-kit-2-pro-angular/#/documentation/introduction"><i class="nc-icon nc-bullet-list-67"></i>Documentation</a>
-                    </div>
-                </div>
-                <div ngbDropdown class="nav-item dropdown">
-                    <div class="nav-link dropdown-toggle" ngbDropdownToggle>Sections</div>
-                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="headers"><i class="nc-icon nc-tile-56"></i>&nbsp; Headers</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="features"><i class="nc-icon nc-settings"></i>&nbsp; Features</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="blogs"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Blogs</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="teams"><i class="nc-icon nc-single-02"></i>&nbsp; Teams</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="projects"><i class="nc-icon nc-calendar-60"></i>&nbsp; Projects</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="pricing"><i class="nc-icon nc-money-coins"></i>&nbsp; Pricing</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="testimonials"><i class="nc-icon nc-badge"></i>&nbsp; Testimonials</a>
-                        <a class="dropdown-item" [routerLink]="['/sections']" fragment="contact-us"><i class="nc-icon nc-mobile"></i>&nbsp; Contacts</a>
-                    </div>
-                </div>
-                <div ngbDropdown class="nav-item dropdown">
-                    <div class="nav-link dropdown-toggle" ngbDropdownToggle>Examples</div>
-                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
-                    <a class="dropdown-item 
-                       " [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/enterpriseprofile-page']"><i class="nc-icon nc-single-02"></i>&nbsp; Enterprise Profile</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listjoboffer-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Joboffers</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listevent-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Event & Workshop</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/myjobofferlist-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; MY Joboffers</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/aboutus']"><i class="nc-icon nc-bank"></i>&nbsp; About Us</a>
+                    
                     <a class="dropdown-item" [routerLink]="['/pages/quizSpace']"><i class="nc-icon nc-bank"></i>&nbsp; Quiz Space</a>
                     <a class="dropdown-item" [routerLink]="['/pages/CandidateQuizSpace']"><i class="nc-icon nc-bank"></i>&nbsp; Quiz Space Candidate</a>
                         <a class="dropdown-item" [routerLink]="['/pages/Question&AnswersSpace']"><i class="nc-icon nc-bank"></i>&nbsp; Questions and Answers</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/blogpost']"><i class="nc-icon nc-badge"></i>&nbsp; Blog Post</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/blogposts']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Blog Posts</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/contactus']"><i class="nc-icon nc-mobile"></i>&nbsp; Contact Us</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/discover']"><i class="nc-icon nc-world-2"></i>&nbsp; Discover</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/ecommerce']"><i class="nc-icon nc-send"></i>&nbsp; Ecommerce</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/landing']"><i class="nc-icon nc-spaceship"></i>&nbsp; Landing Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/login']"><i class="nc-icon nc-lock-circle-open"></i>&nbsp; Login Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/productpage']"><i class="nc-icon nc-album-2"></i>&nbsp; Product Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/profile']"><i class="nc-icon nc-single-02"></i>&nbsp; Profile Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/register']"><i class="nc-icon nc-bookmark-2"></i>&nbsp; Register Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/search']"><i class="nc-icon nc-zoom-split"></i>&nbsp; Search Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/settings']"><i class="nc-icon nc-settings-gear-65"></i>&nbsp; Settings Page</a>
-                    <a class="dropdown-item" [routerLink]="['/pages/twitter']"><i class="nc-icon nc-tie-bow"></i>&nbsp; Twitter</a>
+                    
                 </div>
         </div>
 
-        <li class="nav-item">
+        <li *ngIf="role=='Candidate'" class="nav-item">
             <a class="nav-link" [routerLink]="['/pages/profile']">
                            Profile
                         </a>
         </li>
-        <div ngbDropdown class="nav-item dropdown">
+        <div *ngIf="role=='Candidate'" ngbDropdown class="nav-item dropdown">
             <div class="nav-link dropdown-toggle" ngbDropdownToggle>Discover</div>
             <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
                 <a ngbDropdownItem [routerLink]="['/pages/DiscoverNetwork']"><i class="nc-icon nc-tile-56"></i>Discover Network</a>
                 <a ngbDropdownItem [routerLink]="['/pages/DiscoverCompanies']"><i class="nc-icon nc-settings"></i>Discover Companies</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listjoboffer-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Joboffers</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listevent-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Event & Workshop</a>
             </div>
         </div>
 
 
 
-        <div ngbDropdown class="nav-item dropdown">
+        <div *ngIf="role!='Candidate'" ngbDropdown class="nav-item dropdown">
             <div class="nav-link dropdown-toggle" ngbDropdownToggle>Enterprise section</div>
             <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
                 <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
@@ -91,10 +57,16 @@
         </div>
 
 
-        <li class="nav-item">
+        <li *ngIf="userId==''" class="nav-item">
             <a class="btn btn-round btn-danger" [routerLink]="['/pages/login']">
                         Sign In
-                    </a>
+            </a>
+        </li>
+        
+        <li *ngIf="userId!=''" class="nav-item">
+            <a class="btn btn-round btn-danger" (click)="signOut()">
+                        Sign Out ({{userName}})
+            </a>
         </li>
        
         </ul>
