@@ -127,7 +127,7 @@
                                             <li *ngFor="let con of contacts; index as i;">
                                                 <div class="row">
                                                     <div class="col-md-2 col-3">
-                                                        <img src="./assets/img/faces/clem-onojeghuo-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="./assets/img/faces/{{con.imageUrl}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                     <div class="col-md-7 col-4">
                                                         <h6>{{con.firstName}}
@@ -147,27 +147,7 @@
                                                 </div>
                                             </li>
                                             <hr />
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-2 col-3">
-                                                        <img src="./assets/img/faces/erik-lucatero-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                    <div class="col-md-7 col-4">
-                                                        <h6>Banks<br /><small>Singer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-2">
-                                                        <div class="unfollow">
-                                                            <div class="form-check">
-                                                                <label class="form-check-label">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        value="">
-                                                                    <span class="form-check-sign"></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            
 
                                         </ul>
 
