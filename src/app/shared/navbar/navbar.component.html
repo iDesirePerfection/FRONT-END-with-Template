@@ -35,7 +35,8 @@
                 </div>
                 <div ngbDropdown class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" ngbDropdownToggle>Examples</div>
-                    <a class="dropdown-item  <a class=" dropdown-item " [routerLink]="[ '/pages/enterprise-pages/entprofile-page'] "><i class="nc-icon nc-bullet-list-67 "></i>&nbsp; Enterprises</a>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
+                    <a class="dropdown-item 
                        " [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
                     <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/enterpriseprofile-page']"><i class="nc-icon nc-single-02"></i>&nbsp; Enterprise Profile</a>
                     <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listjoboffer-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Joboffers</a>

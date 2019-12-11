@@ -1,4 +1,4 @@
-import { User } from "app/services/user-services/model/user";
+import { User } from "app/services/user-services/models/user";
 
 
 export interface Pack{

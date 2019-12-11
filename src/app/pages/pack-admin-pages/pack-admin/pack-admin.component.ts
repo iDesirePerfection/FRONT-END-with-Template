@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PackService } from 'app/services/pack-service/pack.service';
-import { Pack } from 'app/services/pack-service/model/pack';
+import { Pack } from 'app/services/pack-service/models/pack';
 
 
 declare interface Table_With_Checkboxes {

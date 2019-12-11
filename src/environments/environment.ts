@@ -1,4 +1,4 @@
-import { User } from "app/services/user-services/model/user";
+import { User } from "app/services/user-services/models/user";
 
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do

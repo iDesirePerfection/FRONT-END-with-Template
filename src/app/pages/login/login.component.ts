@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from 'app/services/user-services/user.service';
 import { environment } from 'environments/environment';
-import { User } from 'app/services/user-services/model/user';
+import { User } from 'app/services/user-services/models/user';
 
 @Component({
     selector: 'app-login',

@@ -1,4 +1,5 @@
 import { Entprofile } from "app/services/enterprise-services/models/entprofile";
+import { UserPack } from "app/services/UserPack/model/userPack";
 
 export interface User{
     id:number;
@@ -28,7 +29,7 @@ export interface User{
     Blcaklist:any[];
     Whoclaim:any[];
     claimOn:any[];
-    packs:any[];
+    packs:UserPack[];
 
     //candidate de plus 
     biography?: string;
