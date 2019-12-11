@@ -13,7 +13,14 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
             
-              
+                <div  ngbDropdown class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle" ngbDropdownToggle>Packs</div>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
+                        <a class="dropdown-item" [routerLink]="['/pages/pack']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Pack</a>
+                        <a class="dropdown-item" [routerLink]="['/pages/claims']"><i class="nc-icon nc-single-02"></i>&nbsp; Claims Profile</a>
+                        <a *ngIf="role!='Candidate'" class="dropdown-item" [routerLink]="['/pages/pack-admin-pages/packAdmin']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Admin Pack</a>
+                    </div>
+                </div>
                 <div ngbDropdown class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" ngbDropdownToggle>Interview Space</div>
                     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
