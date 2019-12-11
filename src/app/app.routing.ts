@@ -38,6 +38,7 @@ import { DiscoverCompaniesComponent } from './pages/discover-companies/discover-
 import { ViewProfileComponent } from './pages/view-profile/view-profile.component';
 import { ViewJobComponent } from './pages/view-job/view-job.component';
 import { InterviewTrainingComponent } from './pages/interview-training/interview-training.component';
+import { DemoComponent } from './pages/demo/demo.component';
 
 const routes: Routes =[
     { path: 'presentation',         component: PresentationComponent },
@@ -60,6 +61,7 @@ const routes: Routes =[
     { path: 'pages/DiscoverNetwork',     component: DiscoverNetworkComponent },
     { path: 'pages/DiscoverCompanies',     component: DiscoverCompaniesComponent },
     { path: 'pages/InterviewTraining',     component: InterviewTrainingComponent },
+    { path: 'pages/Calendar',     component: DemoComponent },
     { path: 'pages/register',    component: RegisterComponent },
     { path: 'pages/search',      component: SearchComponent },
     { path: 'pages/settings',    component: SettingsComponent },

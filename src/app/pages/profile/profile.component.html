@@ -203,6 +203,15 @@
                                 <button class="btn btn-warning btn-round">Find artists</button>
                             </ng-template>
                         </ngb-tab>
+                        <ngb-tab title="Calendar">
+                            <ng-template ngbTabContent>
+                                <!-- <mwl-calendar-month-view [viewDate]="viewDate" [events]="events"></mwl-calendar-month-view> -->
+                                <mwl-demo-component></mwl-demo-component>
+                                <!-- <button (click)="addEvent()" class="btn btn-primary">
+                                    Add New Event
+                                </button> -->
+                            </ng-template>
+                        </ngb-tab>
                     </ngb-tabset>
                 </div>
             </div>
@@ -210,8 +219,6 @@
     </div>
 </div>
 <app-posts-page></app-posts-page>
-<h1>hello</h1>
-<mwl-calendar-month-view [viewDate]="viewDate" [events]="events"></mwl-calendar-month-view>
 <footer class="footer section-dark">
     <div class="container">
         <div class="row">

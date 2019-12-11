@@ -4,7 +4,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { FormsModule, NgModel } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { NouisliderModule } from 'ng2-nouislider';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AgmCoreModule } from '@agm/core';
 
@@ -57,8 +57,13 @@ import { DiscoverCompaniesComponent } from './discover-companies/discover-compan
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ViewJobComponent } from './view-job/view-job.component';
 import { InterviewTrainingComponent } from './interview-training/interview-training.component';
-import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule } from 'angular-calendar';
+import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule, CalendarModule } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AddEventComponent } from './add-event/add-event.component';
+import { DemoComponent } from './demo/demo.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -78,7 +83,13 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         MatDialogModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
-        CalendarMonthModule
+        CalendarMonthModule,
+        NgbModalModule,
+        FlatpickrModule.forRoot(),
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory
+          })
        
         
 
@@ -124,6 +135,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         ViewProfileComponent,
         ViewJobComponent,
         InterviewTrainingComponent,
+        AddEventComponent,
+        DemoComponent,
+        
         
         
 
@@ -138,7 +152,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         AddExperienceFormComponent,
         EditExperienceFormComponent,
         AddSkillFormComponent,
-        EditProfileFormComponent
+        EditProfileFormComponent,
+        AddEventComponent
     ]
 })
 export class ExamplesModule { }

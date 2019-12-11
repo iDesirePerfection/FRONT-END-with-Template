@@ -7,6 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from 'app/services/user-services/models/user';
 import { Joboffer } from 'app/services/enterprise-services/models/joboffer';
 import { Router } from '@angular/router';
+import { CalendarEvent } from 'calendar-utils';
+import { CandidateEvent } from 'app/services/candidate-services/models/event.model';
+import { CalendarEventActionsComponent } from 'angular-calendar/modules/common/calendar-event-actions.component';
+import { AddEventComponent } from '../add-event/add-event.component';
 
 
 
@@ -18,7 +22,11 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   viewDate = new Date();
-events = [];
+  events:CalendarEvent[] = [];
+  candidateEvents:CandidateEvent[] = [];
+
+
+  
 
   data: Date = new Date();
   contacts: Candidate[] = [];
@@ -49,6 +57,20 @@ events = [];
 
       console.log(this.jobOffers);
       console.log(this.searchStarted);
+    })
+    this.candidateService.getCandidateById(localStorage.getItem('id')).subscribe(can =>{
+      this.candidateEvents=can.activities;
+
+      for(let ev of this.candidateEvents)
+      {
+        var event:CalendarEvent={title:"",start: new Date()};
+        event.title=ev.designation;
+        event.start=new Date(ev.date);
+        event.end=new Date(ev.date);
+        this.events.push(event);
+      }
+      console.log(this.events);
+
     })
 
 
@@ -81,6 +103,25 @@ events = [];
 
     });
 
+
+  }
+  addEvent()
+  {
+    const dialogRef = this.dialog.open(AddEventComponent, {
+      width: '400px',
+      data: new CandidateEvent(),
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.candidateService.addNewEvent(result.designation,result.date,localStorage.getItem('id')).subscribe( ac => console.log(ac));
+      var event:CalendarEvent={title:"",start: new Date()};
+        event.title=result.designation;
+        event.start=new Date(result.date);
+        event.end=new Date(result.date);
+        this.events.push(event);
+        console.log(this.events);
+
+    });
 
   }
 
