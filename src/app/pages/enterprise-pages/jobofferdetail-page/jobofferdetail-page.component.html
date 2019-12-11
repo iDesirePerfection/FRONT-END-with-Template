@@ -1,0 +1,191 @@
+
+<div class="wrapper">
+        <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/clark-street-mercantile.jpg');">
+            <div class="filter"></div>
+        </div>
+        <div class="main">
+            <div class="section">
+                <div class="container">
+                        <div class="row title-row">
+                            <div class="col-md-2">
+                                <h4 class="shop">Job Offer</h4>
+                            </div>
+                            <div class="col-md-4 ml-auto">
+                                <div class="pull-right">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7 col-sm-6">
+    
+                                <div id="carousel" class="ml-auto mr-auto">
+                                    <div class="card page-carousel">
+                                        <ngb-carousel>
+                                            <ng-template ngbSlide>
+                                                <img class="d-block img-fluid" src={{joboffers.enterprise?.file?.path}} alt="Awesome Item">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>{{joboffers.enterprise.ename}}</p>
+                                                </div>
+                                            </ng-template>
+                                           
+                                        </ngb-carousel>
+                                    </div>
+                                </div> <!-- end carousel -->
+    
+                            </div>
+                            <div class="col-md-5 col-sm-6">
+                                <h2>{{joboffers.jotitle}}</h2>
+                                <h4 class="price">{{joboffers.joarea}}</h4>
+                                <hr />
+                                <p>{{joboffers.jodescription}}</p>
+                                <span class="label label-default shipping">Experience needed : {{joboffers.joexperience}} years</span>
+                                <hr />
+                                <span class="card-category text-info"><i class="fa fa-clock-o" aria-hidden="true"></i>{{joboffers.jodate}}</span><button class="btn btn-link"> <i class="fa fa-eye"></i> {{joboffers.vuesNumber}}</button>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-7 offset-md-5 col-sm-8">
+                                        <button class="btn btn-danger btn-block btn-round">Register &nbsp;<i class="fa fa-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    
+            <div class="section">
+                <div class="container">
+                    <div class="row card-body-row">
+                        <div class="col-md-4 col-sm-4">
+                           <div class="info">
+                               
+                                <div class="icon icon-success">
+                                        <i class="nc-icon nc-bulb-63"></i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title"> Online test </h4>
+                                        <p>First of all a  recruter will test your technical khnowlegde with a simple test.</p>
+                                    </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                           <div class="info">
+                                <div class="icon icon-danger">
+                                    <i class="nc-icon nc-camera-compact"></i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title"> online interview</h4>
+                                    <p>Do a test-run with your computer. ...
+                                        Pick the perfect spot. ...
+                                        Eliminate distractions. ....</p>
+                                </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                           <div class="info">
+                                <div class="icon icon-warning">
+                                        <i class="nc-icon nc-send"></i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title"> Response </h4>
+                                        <p>based on the test and the interview the company will send a response </p>
+                                    </div>
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq">
+    
+                        <h4>Frequently Asked Questions</h4> <br/>
+                        <ngb-accordion #acc="ngbAccordion">
+                            <ngb-panel>
+                                <ng-template ngbPanelTitle>
+                                    <h5 class="mb-0 panel-title">
+                                        <a class="collapsed">
+                                            1. "Tell me a little about yourself."
+                                            <i class="nc-icon nc-minimal-down"></i>
+                                        </a>
+                                    </h5>
+                                </ng-template>
+                                <ng-template ngbPanelContent>
+                                        If you're the candidate, talk about why you took certain jobs. Explain why you left. 
+                                        Explain why you chose a certain school. Share why you decided to go to grad school. 
+                                        Discuss why you took a year off to backpack through Europe, and what you got out of the experience.
+
+                                        When you answer this question, connect the dots on your resume so the interviewer understands 
+                                        not just what you've done, but also why.
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel>
+                                <ng-template ngbPanelTitle>
+                                    <h5 class="mb-0 panel-title">
+                                        <a class="collapsed">
+                                            2. "What are your biggest weaknesses?"
+                                            <i class="nc-icon nc-minimal-down"></i>
+                                        </a>
+                                    </h5>
+                                </ng-template>
+                                <ng-template ngbPanelContent>
+                                        Every candidate knows how to answer this question: Just pick a theoretical weakness and magically 
+                                        transform that flaw into a strength in disguise!
+
+                                        For example: "My biggest weakness is getting so absorbed in my work that I lose all track of time.
+                                        Every day I look up and realize everyone has gone home! I know I should be more aware of the clock,
+                                        but when I love what I'm doing I just can't think of anything else."
+                                        
+                                        So your "biggest weakness" is that you'll put in more hours than everyone else? Great...
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel>
+                                <ng-template ngbPanelTitle>
+                                    <h5 class="mb-0 panel-title">
+                                        <a class="collapsed">
+                                            3. "Where do you see yourself in five years?"
+                                            <i class="nc-icon nc-minimal-down"></i>
+                                        </a>
+                                    </h5>
+                                </ng-template>
+                                <ng-template ngbPanelContent>
+                                        Answers to this question go one of two basic ways. Candidates try to show their incredible ambition 
+                                        (because that's what they think you want) by providing an extremely optimistic answer: "I want your job!"
+                                         Or they try to show their humility (because that's what they think you want) by providing a meek, self-deprecating answer: 
+                                         "There are so many talented people here. I just want to do a great job and see where my talents take me."
+
+                                        In either case you learn nothing, other than possibly how well candidates can sell themselves.
+                                        
+                                        For interviewers, here's a better question: "What business would you love to start?"
+                                        
+                                        That question applies to any organization, because every employee at every company should have an entrepreneurial mind-set.
+                                </ng-template>
+                            </ngb-panel>
+                        </ngb-accordion>
+                    </div>
+                    
+                </div>
+            </div>
+          
+        </div>
+    </div>
+    
+
+
+    
+    <footer class="footer section-black">
+        <div class="container">
+            <div class="row">
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                        <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                        <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                    </ul>
+                </nav>
+                <div class="credits ml-auto">
+                    <span class="copyright">
+                        © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    

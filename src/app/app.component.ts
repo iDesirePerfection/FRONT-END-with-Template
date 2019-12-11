@@ -9,6 +9,7 @@ import { UserService } from './services/user-services/user.service';
 import { ChatAdapter } from 'ng-chat';
 
 
+
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
@@ -17,7 +18,7 @@ var navbarHeight = 0;
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
     public adapter: ChatAdapter = new ChatComponent();

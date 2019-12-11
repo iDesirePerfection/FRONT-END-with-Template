@@ -28,7 +28,7 @@
               "src/assets/css/nucleo-icons.css",
               "src/assets/scss/paper-kit.scss",
               "src/assets/demo/demo.css",
-              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/rellax/rellax.min.js"

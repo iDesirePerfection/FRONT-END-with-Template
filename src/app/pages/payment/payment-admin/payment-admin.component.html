@@ -1,0 +1,61 @@
+<div class="main" style="align-content: center;">
+    <div class="section">
+        <div class="container">
+
+            
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <th>Payment Id</th>
+                            <td>{{payment?.id}}</td>
+                        </tr>
+                        <tr>
+                            <th>Card Number</th>
+                            <td>{{payment?.numCard}}</td>
+                        </tr>
+                        <tr>
+                            <th>CVV</th>
+                            <td>{{payment?.cvv}}</td>
+                        </tr>
+                        <tr>
+                            
+                            <th>Expiration Date</th>
+                            <td>{{payment?.cardExpirationDate}}</td>
+                        </tr>
+                        <tr>
+                            <th>Canceled </th>
+                            <td>{{payment?.canceled}}</td>
+                        </tr>
+                        <tr>
+                            <th>Payment validation</th>
+                            
+                            <td>{{payment?.validation}}</td>
+                        </tr>
+                    </table>
+                    <button type="button" (click)="validerPayment()" class="btn btn-info btn-round mr-1"><i class="fa fa-check-circle"></i> Validate payment</button>
+                    <button type="button" (click)="getUser(Notice, '')"  class="btn btn-info btn-round mr-1"><i class="fa fa-address-book"></i> show user information</button>
+                      
+                           
+                        
+                </div>
+           
+        </div>
+    </div>
+</div>
+
+<ng-template #Notice let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title">User Information {{user?.lastName}}</h5>
+        
+    </div>
+    <div class="modal-body">
+        <p>UserName : {{user?.username}} </p>
+        <p>First Name : {{user?.firstName}}</p>
+        <p>Email : {{user?.email}}</p>
+        <p>Account Creation Date : {{ user?.accountCreationDate}}</p>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-link" (click)="c('Close click')">Okay</button>
+    </div>
+</ng-template>

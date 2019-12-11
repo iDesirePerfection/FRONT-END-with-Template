@@ -1,0 +1,144 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/QuestAns.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="container">
+        <div style="text-align: center;">
+            <h3>Questions and Answers</h3>
+        </div>
+
+        <ngb-tabset type="pills" class="nav-pills-danger">
+            <ngb-tab title="Questions">
+                <ng-template ngbTabContent>
+                    <div class="section section-blog">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4" *ngFor="let q of questions">
+                                    <div class="card card-blog">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                {{q.question}}
+                                                <button type="button" ngbTooltip="Remove"
+                                                    class="btn btn-danger btn-link btn-sm"
+                                                    (click)="deleteQuestion(q.id)">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </h5>
+                                            <br>
+                                            <ul *ngFor="let a of q.answers">
+                                                <li>
+                                                    {{a.answer}} : <label *ngIf="a.correct===true">correct
+                                                        answer</label>
+                                                </li>
+                                            </ul>
+                                            <div style="text-align: center;" *ngIf="q.answers.length < 2">
+                                                <button class="btn btn-round btn-danger" (click)="open(ans,q)">
+                                                    Assing Answers
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="switchState">
+                    </bSwitch> <strong style="font-size: larger;"> Add Questions</strong>
+                    <div [hidden]="!switchState">
+                        <div class="main">
+                            <div class="section section-gray">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 ml-auto mr-auto text-center">
+
+                                            <p>here you can add a question then check above to assing it the answers</p>
+                                            <form #questionForm="ngForm" (ngSubmit)="onSubmit(questionForm)"
+                                                class="contact">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input name="question" type="text" class="form-control"
+                                                            placeholder="Question" [(ngModel)]="quest"
+                                                            #question="ngModel">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-block btn-round">Add
+                                                            Question</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Answers">
+                <ng-template ngbTabContent>
+                    hello Sir2
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+
+    </div>
+</div>
+
+<footer class="footer section-black">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<ng-template #ans let-modal1>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal1-basic-title">Answers</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <ul *ngFor="let an of answers">
+            <li>
+               <strong style="font-weight: bolder;font-size: larger; color: brown;"> {{an.answer}} </strong> <label *ngIf="an.correct===true">: correct answer</label> <button
+                    [disabled]="selectedQuestion.answers.length >= 2" (click)="assign(an.id)"
+                    class="btn btn-info btn-round mr-1"> Assign </button>
+                    <span *ngIf="an.correct===false"> <button class="btn btn-info btn-round mr-1" (click)="setCorrect(an.id)">setCorrect</button></span>
+                <br>
+
+            </li>
+        </ul>
+        <div style="text-align: right;">
+            <button type="button" class="btn btn-info btn-just-icon mr-1" (click)="showForm()">
+                <i class="nc-icon nc-simple-add" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-md-6 ml-auto mr-auto text-center" [hidden]="showAns">
+            <form #answerForm="ngForm" (ngSubmit)="onSubmitAnsForm(answerForm)">
+
+                <input name="answer" type="text" class="form-control" placeholder="Answer" [(ngModel)]="answerText"
+                    #answerT="ngModel">
+                <br>
+                <button type="submit" class="btn btn-info btn-block btn-round">Add
+                    Answer</button>
+
+            </form>
+        </div>
+    </div>
+</ng-template>

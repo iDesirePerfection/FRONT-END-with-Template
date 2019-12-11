@@ -7,19 +7,41 @@
     </div>
 </div>
 
+<!--search-->
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+                <form role="search" class="form-inline search-form">
+                    <div class="input-group no-border">
+                      <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i class="fa fa-search"></i></span>
+                      <input type="text" class="form-control input-xtreme no-border" placeholder="Find Enterprise" aria-describedby="basic-addon1" name="search" [(ngModel)]="searchText" autocomplete="off">
+                    </div>
+                </form>
+                <h6 class="text-muted">Is this what you are looking for?</h6>
+            </div>
+        </div>
+    </div>
+
+
+<!--search-->
+
 <!--     *********     BLOGS 1      *********      -->
-<div *ngFor="let p of entprofile;index as i">
+<div class="col-md-10 ml-auto mr-auto">
+<h2 class="title">Our Companies</h2>
+</div>
+<div *ngFor="let p of entprofile | filter:searchText;index as i">
 <div class="blog-1" id="blog-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
-                    <h2 class="title">Our Companies</h2>
-                    <br />
+                    
                     <div class="card card-plain card-blog">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <img class="img" src="assets/img/sections/stephanie-krist.jpg"/>
+                                    <img class="img"  src={{p?.file?.path}} style="width:100%; height:250px;"/>
                                 </div>
                             </div>
                             <div class="col-md-7">
@@ -70,3 +92,24 @@
         </div>
     </div>
 </div>
+
+
+<!--footer-->
+<footer class="footer footer-black">
+        <div class="container">
+            <div class="row">
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                        <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                        <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                    </ul>
+                </nav>
+                <div class="credits ml-auto">
+                    <span class="copyright">
+                        © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>

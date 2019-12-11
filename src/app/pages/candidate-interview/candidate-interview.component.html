@@ -1,0 +1,64 @@
+<div [hidden]="!show">
+        <div  class="wrapper">
+            <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/interview.jpg');">
+                <div class="filter"></div>
+            </div>
+            <div  class="main">
+        
+                <div class="section">
+                    <div class="container">
+                        <div class="row add-row">
+                            <div class="col-md-4 col-sm-4">
+                                <h4>Interview for {{quiz.jobOffer.jotitle}}</h4>
+                                <p>{{quiz.jobOffer.jodescription}}.</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h5>{{quiz.candidate.firstName}} {{quiz.candidate.lastName}} </h5>
+                                <p class="price"><strong>{{quiz.interview.state}} -- Score: {{quiz.interview.score}}</strong></p>
+                                <p> the interview date is {{quiz.interview.date | date: "longDate"}} <br>and starts at
+                                    {{quiz.interview.time}} </p>
+                            </div>
+                            <div class="col-md-3 ml-auto col-sm-4">
+                                <img src="./assets/img/pending.png" alt="Rounded Image" class="img-rounded img-responsive">
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button [disabled]="clicked" (click)="livechat()" class="btn btn-info btn-round"> start video interview</button>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer section-black">
+            <div class="container">
+                <div class="row">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                            <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                            <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                        </ul>
+                    </nav>
+                    <div class="credits ml-auto">
+                        <span class="copyright">
+                            © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+        <div [hidden]="show">
+                <div [id]="localCallId" class="local">
+                        <button (click)="rate()" class="btn btn-info btn-round">End Call</button>
+                </div>
+            
+                <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
+                </div>
+                <!-- <br>
+                <div style="text-align: center;">
+                     <button (click)="livechat()" class="btn btn-info btn-round">End Call</button> 
+                </div> -->
+            </div>
+        
+        

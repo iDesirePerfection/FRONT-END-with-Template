@@ -9,8 +9,9 @@ import { User } from "app/services/user-services/models/user";
 export const environment = {
   production: false,
   backend_url: 'http://localhost:9080/profesional-network-web/rest/',
-  
-  
+  agora: {
+    appId: '000a4932bece4a7d9f5fbb7f36b66218'
+  }
   
 };
 

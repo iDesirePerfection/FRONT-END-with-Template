@@ -1,0 +1,149 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/interview.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="main">
+        <div class="section section-gray">
+            <div class="container tim-container">
+                <div [ngStyle]="hello" style="text-align: center;">
+                    <strong>Quiz</strong>
+                    <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="switchState"
+                        (changeState)="show()">
+                    </bSwitch> <strong>interviews</strong>
+                </div>
+                <div class="row" [hidden]="switchState">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h4 class="title">
+                            <small>Potential candidates</small>
+                        </h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Candidate Name</th>
+                                        <th>quiz score</th>
+                                        <th>quiz state</th>
+                                        <th class="text-right">questions</th>
+                                        <th class="text-right">Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let l of list">
+                                        <td class="text-center">{{l.candidate.firstName}} {{l.candidate.lastName}}</td>
+                                        <td>{{l.score}}</td>
+                                        <td>{{l.state}}</td>
+                                        <td class="text-right"> {{l.questions.length}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" ngbTooltip="set up an interview"
+                                                (click)="setInterview(l)" class="btn btn-info btn-link btn-sm">
+                                                <i class="fa fa-user"></i>
+                                            </button>
+                                            <button type="button" ngbTooltip="Edit Profile" (click)="opena(quest,l)"
+                                                class="btn btn-success btn-link btn-sm">
+                                                <i class="fa fa-edit"></i>
+
+                                            </button>
+                                            <button type="button" ngbTooltip="Remove"
+                                                class="btn btn-danger btn-link btn-sm" (click)="cancelQuiz(l.id)">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <button type="button" [hidden]="isClicked" (click)="validateQuiz()"
+                                class="btn btn-info btn-round mr-1"><i class="fa fa-check"></i>Select
+                                Candidates</button>
+                            <div class="typography-line">
+                                <p [hidden]="!isClicked" class="text-success"> the selection process has been done
+                                    refresh the page to see changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 [hidden]="!switchState" class="text-center creators">Interviews</h2>
+                <div [hidden]="!switchState" style="text-align: right;"><button type="button" class="btn btn-info"
+                        (click)="chooseEmployee()">Complete the selection process <i
+                            class="fa fa-chevron-right"></i></button></div>
+                <div class="row" [hidden]="!switchState">
+                    <div class="col-md-4" *ngFor="let l of list">
+                        <div class="card card-profile card-plain">
+                            <div class="card-body">
+                                <div class="card-avatar">
+                                    <a href="#avatar">
+                                        <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="...">
+                                        <h4 class="card-title"> {{l.candidate.firstName}} {{l.candidate.lastName}} </h4>
+                                    </a>
+                                </div>
+                                <h4> {{l.candidate.firstName}} {{l.candidate.lastName}} </h4>
+                                <p class="card-description text-center">
+                                    Time: {{l.interview.date | date: "longDate"}} <strong style="font-size: xx-large;">
+                                        . </strong>{{l.interview.time}} <br> State {{l.interview.state}}
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn btn-info btn-round mr-1"><a style="color: white; font-weight: bold;"
+                                        [routerLink]="['/pages/quizSpace/interviews',l.id]">Details</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer section-black">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<ng-template #quest let-modal1>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal1-basic-title">Questions</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div *ngIf="selectedQuiz.questions.length!=0">
+            <h4>the questions of this quiz</h4> <br>
+            <div *ngFor="let qz of selectedQuiz.questions">
+                    <li>
+                            <strong style="font-weight: bolder;font-size: larger; color: brown;"> {{qz.question}} </strong>
+                        </li>
+                        <br>
+            </div>
+        </div>
+        <h4>assign more questions</h4> <br>
+        <div *ngFor="let n of questions">
+            <li>
+                <strong style="font-weight: bolder;font-size: larger; color: brown;"> {{n.question}} </strong>
+                <button class="btn btn-info btn-round mr-1" >
+                    Assign </button>
+            </li>
+            <br>
+        </div>
+
+    </div>
+</ng-template>

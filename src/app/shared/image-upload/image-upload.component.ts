@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, OnChanges,EventEmitter } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { FileUpload } from 'app/services/fileupload-services/fileupload.service';
 
 @Component({
   selector: 'app-image-upload',
@@ -9,13 +11,21 @@ export class ImageUploadComponent implements OnInit,OnChanges {
     @Input() isRound: boolean = false;
     @Input() image: string;
     @Output() updated = new EventEmitter<string>();
+    filename:string;
+    @Output() change = new EventEmitter();
+
     state: any = {}
-    constructor() {
+    options:any;
+    constructor(private fileupload :FileUpload) {
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        
     }
+   
+
+    
 
     ngOnInit() {
         this.state = {
@@ -37,10 +47,15 @@ export class ImageUploadComponent implements OnInit,OnChanges {
             this.updated.emit(this.state.imagePreviewUrl);
             console.log(typeof this.state.imagePreviewUrl);
         }
+        console.log('mrnghir change');
+        this.filename=file.name;
+        this.change.emit(this.filename);
+        console.log(this.filename);
         reader.readAsDataURL(file);
     }
     handleSubmit(e){
         e.preventDefault();
+       
         // this.state.file is the file/image uploaded
         // in this function you can save the image (this.state.file) on form submit
         // you have to call it yourself
@@ -55,7 +70,7 @@ export class ImageUploadComponent implements OnInit,OnChanges {
         input.click();
 
         
-        
+   
     }
     handleRemove(){
         this.state.file = null;

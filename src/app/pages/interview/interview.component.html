@@ -1,0 +1,108 @@
+<div [hidden]="!show">
+<div  class="wrapper">
+    <div class="page-header page-header-xs" style="background-image: url('./assets/img/sections/interview.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div  class="main">
+
+        <div class="section">
+            <div class="container">
+                <div class="row add-row">
+                    <div class="col-md-4 col-sm-4">
+                        <h4>Interview for {{quiz.jobOffer.jotitle}}</h4>
+                        <p>{{quiz.jobOffer.jodescription}}.</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h5>{{quiz.candidate.firstName}} {{quiz.candidate.lastName}} </h5>
+                        <p class="price"><strong>{{quiz.interview.state}} -- Score: {{quiz.interview.score}}</strong></p>
+                        <p> the interview date is {{quiz.interview.date | date: "longDate"}} <br>and starts at
+                            {{quiz.interview.time}} </p>
+                    </div>
+                    <div class="col-md-3 ml-auto col-sm-4">
+                        <img src="./assets/img/pending.png" alt="Rounded Image" class="img-rounded img-responsive">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button [disabled]="!rating" (click)="livechat()" class="btn btn-info btn-round"> start video interview</button>
+                    <button (click)="open(inter,quiz.interview.id,quiz.jobOffer.joid,quiz.candidate.id)" class="btn btn-info btn-round"> Set date and time</button>
+                </div>
+                <br>
+                <div [hidden]="showScore" style="text-align: center;" class="form-group">
+                        <ngb-rating [formControl]="score">
+                                <ng-template let-fill="fill">
+                                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                      </ng-template>
+                        </ngb-rating>
+                        <div class="form-text small">
+                          <div *ngIf="score.valid" class="text-success">Thanks!</div>
+                          <div *ngIf="score.invalid" class="text-danger">Please rate the candidate</div>
+                        </div>
+                        <button class="btn btn-info btn-round" (click)="setScore()">submit score</button>
+                      </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer section-black">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<div [hidden]="show">
+        <div [id]="localCallId" class="local">
+                <button (click)="rate()" class="btn btn-info btn-round">End Call</button>
+        </div>
+    
+        <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
+        </div>
+        <!-- <br>
+        <div style="text-align: center;">
+             <button (click)="livechat()" class="btn btn-info btn-round">End Call</button> 
+        </div> -->
+    </div>
+
+<ng-template #inter let-modal1>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal1-basic-title">Choose Time and Date</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="form-group">
+            <ngb-timepicker [formControl]="ctrl" required></ngb-timepicker>
+            <div *ngIf="ctrl.valid" class="small form-text text-success">Great choice</div>
+            <div class="small form-text text-danger" *ngIf="!ctrl.valid">
+                <div *ngIf="ctrl.errors['required']">Select some time during work hours</div>
+                <div *ngIf="ctrl.errors['tooLate']">Oh no, it's way too late</div>
+                <div *ngIf="ctrl.errors['tooEarly']">It's a bit too early</div>
+            </div>
+            <div class='input-group date'>
+                    <input class="form-control" placeholder={{quiz.interview.date}}
+                         name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+                         <div class="input-group-append">
+           <span class="input-group-text">
+             <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+           </span>
+         </div>
+                </div>
+        </div>
+        <button class="btn btn-info btn-round" (click)="showInfo()">Set new Time and date</button>
+
+    </div>
+</ng-template>

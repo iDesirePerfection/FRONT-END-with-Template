@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-translate">
             <div class="navbar-header">
-                <a class="navbar-brand" [routerLink]="['/presentation']">Paper Kit 2 PRO Angular</a>
+                <a class="navbar-brand" [routerLink]="['/presentation']">Professional Network</a>
             </div>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar bar1"></span>
@@ -35,51 +35,69 @@
                 </div>
                 <div ngbDropdown class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" ngbDropdownToggle>Examples</div>
-                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger"> 
-                            <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
-                            <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/enterpriseprofile-page']"><i class="nc-icon nc-single-02"></i>&nbsp; Enterprise Profile</a>
-                            <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listjoboffer-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Joboffers</a>
-                            <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listevent-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Event & Workshop</a>
-                            <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/myjobofferlist-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; MY Joboffers</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/aboutus']"><i class="nc-icon nc-bank"></i>&nbsp; About Us</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/addproduct']"><i class="nc-icon nc-basket"></i>&nbsp; Add Product</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/blogpost']"><i class="nc-icon nc-badge"></i>&nbsp; Blog Post</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/blogposts']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Blog Posts</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/contactus']"><i class="nc-icon nc-mobile"></i>&nbsp; Contact Us</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/discover']"><i class="nc-icon nc-world-2"></i>&nbsp; Discover</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/ecommerce']"><i class="nc-icon nc-send"></i>&nbsp; Ecommerce</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/landing']"><i class="nc-icon nc-spaceship"></i>&nbsp; Landing Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/login']"><i class="nc-icon nc-lock-circle-open"></i>&nbsp; Login Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/productpage']"><i class="nc-icon nc-album-2"></i>&nbsp; Product Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/profile']"><i class="nc-icon nc-single-02"></i>&nbsp; Profile Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/register']"><i class="nc-icon nc-bookmark-2"></i>&nbsp; Register Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/search']"><i class="nc-icon nc-zoom-split"></i>&nbsp; Search Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/settings']"><i class="nc-icon nc-settings-gear-65"></i>&nbsp; Settings Page</a>
-                        <a class="dropdown-item" [routerLink]="['/pages/twitter']"><i class="nc-icon nc-tie-bow"></i>&nbsp; Twitter</a>
-                    </div>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
+                    <a class="dropdown-item 
+                       " [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/enterpriseprofile-page']"><i class="nc-icon nc-single-02"></i>&nbsp; Enterprise Profile</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listjoboffer-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Joboffers</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listevent-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Event & Workshop</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/myjobofferlist-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; MY Joboffers</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/aboutus']"><i class="nc-icon nc-bank"></i>&nbsp; About Us</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/quizSpace']"><i class="nc-icon nc-bank"></i>&nbsp; Quiz Space</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/CandidateQuizSpace']"><i class="nc-icon nc-bank"></i>&nbsp; Quiz Space Candidate</a>
+                        <a class="dropdown-item" [routerLink]="['/pages/Question&AnswersSpace']"><i class="nc-icon nc-bank"></i>&nbsp; Questions and Answers</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/blogpost']"><i class="nc-icon nc-badge"></i>&nbsp; Blog Post</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/blogposts']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Blog Posts</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/contactus']"><i class="nc-icon nc-mobile"></i>&nbsp; Contact Us</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/discover']"><i class="nc-icon nc-world-2"></i>&nbsp; Discover</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/ecommerce']"><i class="nc-icon nc-send"></i>&nbsp; Ecommerce</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/landing']"><i class="nc-icon nc-spaceship"></i>&nbsp; Landing Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/login']"><i class="nc-icon nc-lock-circle-open"></i>&nbsp; Login Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/productpage']"><i class="nc-icon nc-album-2"></i>&nbsp; Product Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/profile']"><i class="nc-icon nc-single-02"></i>&nbsp; Profile Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/register']"><i class="nc-icon nc-bookmark-2"></i>&nbsp; Register Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/search']"><i class="nc-icon nc-zoom-split"></i>&nbsp; Search Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/settings']"><i class="nc-icon nc-settings-gear-65"></i>&nbsp; Settings Page</a>
+                    <a class="dropdown-item" [routerLink]="['/pages/twitter']"><i class="nc-icon nc-tie-bow"></i>&nbsp; Twitter</a>
                 </div>
-                
-                <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/pages/profile']">
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/pages/profile']">
                            Profile
                         </a>
-                </li>
-                <div ngbDropdown class="nav-item dropdown">
-                        <div class="nav-link dropdown-toggle" ngbDropdownToggle>Discover</div>
-                        <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
-                            <a ngbDropdownItem [routerLink]="['/pages/DiscoverNetwork']"><i class="nc-icon nc-tile-56"></i>Discover Network</a>
-                            <a ngbDropdownItem [routerLink]="['/pages/DiscoverCompanies']"><i class="nc-icon nc-settings"></i>Discover Companies</a>
-                        </div>
-                    </div>
-                    
-                
-                <li class="nav-item">
-                    <a class="btn btn-round btn-danger" [routerLink]="['/pages/login']">
+        </li>
+        <div ngbDropdown class="nav-item dropdown">
+            <div class="nav-link dropdown-toggle" ngbDropdownToggle>Discover</div>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
+                <a ngbDropdownItem [routerLink]="['/pages/DiscoverNetwork']"><i class="nc-icon nc-tile-56"></i>Discover Network</a>
+                <a ngbDropdownItem [routerLink]="['/pages/DiscoverCompanies']"><i class="nc-icon nc-settings"></i>Discover Companies</a>
+            </div>
+        </div>
+
+
+
+        <div ngbDropdown class="nav-item dropdown">
+            <div class="nav-link dropdown-toggle" ngbDropdownToggle>Enterprise section</div>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/entprofile-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Enterprises</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/enterpriseprofile-page/',x]"><i class="nc-icon nc-single-02"></i>&nbsp; Enterprise Profile</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listjoboffer-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Joboffers</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/listevent-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; Event & Workshop</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/myjobofferlist-page']"><i class="nc-icon nc-bullet-list-67"></i>&nbsp; MY Joboffers</a>
+                <a class="dropdown-item" [routerLink]="['/pages/enterprise-pages/addenterprise-page']"><i class="nc-icon nc-basket"></i>&nbsp; Add new enterprise</a>
+
+            </div>
+        </div>
+
+
+        <li class="nav-item">
+            <a class="btn btn-round btn-danger" [routerLink]="['/pages/login']">
                         Sign In
                     </a>
-                </li>
-                
-            </ul>
-        </div>
+        </li>
+       
+        </ul>
+    </div>
     </div>
 </nav>

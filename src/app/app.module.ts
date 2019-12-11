@@ -12,6 +12,8 @@ import { ExamplesModule } from './pages/examples.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { environment } from 'environments/environment';
+import { NgxAgoraModule } from 'ngx-agora';
 import { HeaderComponent } from './pages/header/header.component';
 import { NgChatModule } from 'ng-chat';
  
@@ -51,6 +53,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         AngularFontAwesomeModule,
         NgChatModule,
         HttpClientModule,
+        NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
         CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
         
 
