@@ -15,6 +15,9 @@ export class PostsService {
         return this.httpClient.get<Post[]>(environment.backend_url + 'post/myposts');
     }
 
+    getAll(): Observable<Post[]> {
+        return this.httpClient.get<Post[]>(environment.backend_url + 'post/all');
+    }
     addPost(content:string): Observable<Post> {
        return this.httpClient.post<Post>(environment.backend_url + 'post/add?content=' + content,null);
     }

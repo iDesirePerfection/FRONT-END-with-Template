@@ -1,0 +1,263 @@
+<div class="wrapper">
+    <div class="page-header page-header-small" style="background-image: url('./assets/img/sections/rodrigo-ardilha.jpg'); height: 1rem !important;">
+        <div class="filter"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="container tim-container">
+                <div class="row">
+
+
+
+                    <div class="col-md-8 ml-auto mr-auto">
+
+
+                        <!-- end media-post -->
+                        <div class="media" *ngFor="let post of posts;index as i">
+
+                            <a class="pull-left" href="javascript:void(0)">
+                                <div class="avatar">
+                                    <img class="media-object" alt="Tim Picture" src="assets/img/faces/joe-gardner-2.jpg">
+                                </div>
+                            </a>
+                            <div class="media-body">
+
+
+                                <div *ngIf="post?.type==='Image'; else notImage">
+                                    <img src="{{post?.file?.path}}" class="img-rounded img-responsive" alt="Rounded Image">
+                                    <div class="img-details">
+                                        <div class="author">
+                                            <img src="assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                        </div>
+                                        <p>{{post?.user?.firstName}} {{post?.user?.lastName}}</p>
+                                    </div>
+                                </div>
+                                <ng-template #notImage>
+                                    <h5 class="media-heading">{{post?.user?.firstName}} {{post?.user?.lastName}}</h5>
+                                </ng-template>
+
+                                <div class="pull-right">
+                                    <h6 class="text-muted">{{post?.date}}</h6>
+
+                                </div>
+                                <p (click)='toggleShowInput()' [hidden]=!showInput>{{post.content}}</p>
+
+                                <input [hidden]=showInput type="text " value=" " placeholder=" " class="form-control " [(ngModel)]="post.content" />
+                                <button type="button" (click)='toggleShowInput();updatePost(post.id,post.content);' [hidden]=showInput class="btn btn-info btn-link">Save</button>
+                                <button type="button" (click)='toggleShowInput()' [hidden]=showInput class="btn btn-info btn-link">Cancel</button>
+                                <div class="media-footer">
+
+                                    <label *ngIf="unlikedId==post.id; else elseLike ">
+                            
+                            <a href="javascript:void(0) " id=Like{{i}} class="btn btn-link " (click)="addLike(post) ">
+                                <i class="fa fa-thumbs-up " aria-hidden="true "></i> {{likesNumberAfterUnlike(post)}}
+                            </a>
+                        </label>
+                                    <ng-template #elseLike>
+                                        <a href="javascript:void(0) " id=Like{{i}} [ngClass]="{ 'btn-danger':didLike(post)} " class="btn btn-link " (click)="addLike(post) ">
+                                            <i class="fa fa-thumbs-up " aria-hidden="true "></i> {{likesNumber(post)}}
+                                        </a>
+                                    </ng-template>
+                                    <label *ngIf="unlikedId==post.id; else elseDislike ">
+                            <a href="javascript:void(0) " id=Dislike{{i}}  class="btn btn-link " (click)="addDislike(post) ">
+                                <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumberAfterUndislike(post)}}
+                            </a>
+                            </label>
+                                    <ng-template #elseDislike>
+                                        <a href="javascript:void(0) " id=Dislike{{i}} [ngClass]="{ 'btn-primary':didDislike(post)} " class="btn btn-link " (click)="addDislike(post) ">
+                                            <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumber(post)}}
+                                        </a>
+                                    </ng-template>
+
+                                    <a [hidden]=allowed(post.user.id) href="javascript:void(0) " class="btn btn-link ">
+                                 Follow 
+                            </a>
+                                    <a [hidden]=!allowed(post.user.id) class="btn btn-link " (click)=" open(deletePost, 'sm') ">
+                                        <i class="fa fa-times-circle fa-1x " aria-hidden="true "> </i>Delete &middot;
+                                    </a>
+                                    <a class="btn btn-link " [hidden]=!allowed(post.user.id) (click)='toggleShowInput()'><i class="fa fa-pencil fa-1x " aria-hidden="true "></i>Edit </a>
+                                    <a class="btn btn-link " [hidden]=allowed(post.user.id) (click)=" open(sharePost, 'sm') "><i class="fa fa-share fa-1x " aria-hidden="true "> </i>Share</a>&middot;
+                                    <a class="btn btn-link " (click)=" open(Likes, 'sm') "><i class="fa fa-info fa-1x " aria-hidden="true "> </i>Reactions</a>&middot;
+                                </div>
+
+
+
+                                <ng-template #Likes let-c="close " let-d="dismiss ">
+                                    <div class="modal-header modal-register no-border-header text-center ">
+                                        <button type="button " class="close " (click)="d( ' Cross click ') ">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+                                        <h6 class="text-muted ">Reactions on your post</h6>
+                                        <div *ngFor="let reaction of post?.reactions ">
+                                            <p>{{reaction.reactingUser.firstName}} {{reaction.reactingUser.lastName}} : {{reaction.type}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <!-- popup -->
+                                <ng-template #deletePost let-c="close " let-d="dismiss ">
+                                    <div class="no-title modal-header no-border-header ">
+                                        <!-- <h4 class="modal-title ">Modal title</h4> -->
+                                        <button type="button " class="close " (click)="d( 'Cross click ') ">
+            <span aria-hidden="true ">&times;</span>
+        </button>
+                                    </div>
+                                    <div class="modal-body text-center ">
+                                        <h6 class="text-muted ">Confirm</h6>
+                                        <h5>Do you want to remove your post? </h5>
+                                    </div>
+                                    <div class="modal-footer ">
+                                        <div class="left-side ">
+                                            <button type="button " class="btn btn-default btn-link " (click)="c( 'Close click ') ">No</button>
+                                        </div>
+                                        <div class="divider "></div>
+                                        <div class="right-side ">
+                                            <button type="button " (click)=removePost(post?.id) (click)="c( 'Close click ') " class="btn btn-danger btn-link ">Yes</button>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <!-- end popup -->
+
+                                <!-- popup -->
+                                <ng-template #sharePost let-c="close " let-d="dismiss ">
+                                    <div class="no-title modal-header no-border-header ">
+                                        <!-- <h4 class="modal-title ">Modal title</h4> -->
+                                        <button type="button " class="close " (click)="d( 'Cross click ') ">
+            <span aria-hidden="true ">&times;</span>
+        </button>
+                                    </div>
+                                    <div class="modal-body text-center ">
+                                        <h6 class="text-muted ">Confirm</h6>
+                                        <h5>Do you want to share this post? </h5>
+                                    </div>
+                                    <div class="modal-footer ">
+                                        <div class="left-side ">
+                                            <button type="button " class="btn btn-default btn-link " (click)="c( 'Close click ') ">No</button>
+                                        </div>
+                                        <div class="divider "></div>
+                                        <div class="right-side ">
+                                            <button type="button " (click)=shareAction(post.id) (click)="c( 'Close click ') " class="btn btn-danger btn-link ">Yes</button>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <!-- end popup -->
+
+
+                                <div class="media " *ngFor="let comment of post?.comments ">
+                                    <a class="pull-left " href="javascript:void(0) ">
+                                        <div class="avatar ">
+                                            <img class="media-object " alt="64x64 " src="assets/img/faces/erik-lucatero-2.jpg ">
+                                        </div>
+                                    </a>
+                                    <div class="media-body ">
+                                        <h5 class="media-heading ">{{comment?.commentingUser?.firstName}}</h5>
+                                        <div class="pull-right ">
+                                            <h6 class="text-muted ">{{comment?.date}}</h6>
+
+
+                                        </div>
+                                        <p (click)='toggleShowInputCom()' [hidden]=!showInputCom>{{comment?.content}}</p>
+                                        <input [hidden]=showInputCom type="text " value=" " placeholder=" " class="form-control " [(ngModel)]="comment.content " />
+                                        <button type="button " (click)='toggleShowInputCom();updateComment(comment.id,comment.content);' [hidden]=showInputCom class="btn btn-info btn-link ">Save</button>
+                                        <button type="button " (click)='toggleShowInputCom()' [hidden]=showInputCom class="btn btn-info btn-link ">Cancel</button>
+                                        <div class="media-footer ">
+                                            <a class="btn btn-link " [hidden]=!allowed(comment.commentingUser.id) (click)="open(deleteCom, 'sm ') "><i class="fa fa-times-circle fa-1x " aria-hidden="true "></i>Delete</a>
+                                            <a class="btn btn-link " [hidden]=!allowed(comment.commentingUser.id) (click)="open(editComment, 'sm ') "><i class="fa fa-pencil fa-1x "  aria-hidden="true "></i>Edit</a>
+                                        </div>
+
+                                        <!-- popup -->
+                                        <ng-template #deleteCom let-c="close " let-d="dismiss ">
+                                            <div class="no-title modal-header no-border-header ">
+                                                <!-- <h4 class="modal-title ">Modal title</h4> -->
+                                                <button type="button " class="close " (click)="d( 'Cross click ') ">
+            <span aria-hidden="true ">&times;</span>
+        </button>
+                                            </div>
+                                            <div #deleteCom class="modal-body text-center ">
+                                                <h6 class="text-muted ">Confirm</h6>
+                                                <h5>Do you want to remove your comment? </h5>
+                                            </div>
+                                            <div class="modal-footer ">
+                                                <div class="left-side ">
+                                                    <button type="button " class="btn btn-default btn-link " (click)="c( 'Close click ') ">No</button>
+                                                </div>
+                                                <div class="divider "></div>
+                                                <div class="right-side ">
+                                                    <button type="button " (click)=deleteComment(comment?.id) (click)="c( 'Close click ') " class="btn btn-danger btn-link ">Yes</button>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <!-- end popup -->
+
+                                        <!-- popup -->
+                                        <ng-template #editComment let-c="close " let-d="dismiss ">
+                                            <div class="modal-header modal-register no-border-header text-center ">
+                                                <button type="button " class="close " (click)="d( 'Cross click ') ">
+          <span aria-hidden="true ">&times;</span>
+        </button>
+
+                                            </div>
+                                            <div class="modal-body ">
+                                                <div class="form-group ">
+                                                    <h6 class="text-muted ">Confirm</h6>
+                                                    <h5 class="modal-title text-center ">Edit your comment</h5>
+                                                    <input type="text " value=" " placeholder=" " class="form-control " />
+                                                </div>
+                                                <button class="btn btn-block btn-round ">Edit</button>
+                                            </div>
+                                        </ng-template>
+                                        <!-- end popup -->
+                                    </div>
+
+                                </div>
+
+                                <!-- end media -->
+                                <div class="media media-post ">
+                                    <a class="pull-left author " href="javascript:void(0) ">
+                                        <div class="avatar ">
+                                            <img class="media-object " alt="64x64 " src="assets/img/faces/erik-lucatero-2.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="media-body ">
+                                        <textarea id="plu{{i}} " class="form-control " placeholder="Write a nice reply or go home... " rows="4 " [(ngModel)]="comment.content "></textarea>
+                                        <div class="media-footer ">
+                                            <a href="javascript:void(0) " class="btn btn-info pull-right " (click)=addComment(post.id)>Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end media-post -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end media -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<footer class="footer section-dark">
+    <div class="container">
+        <div class="row">
+
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

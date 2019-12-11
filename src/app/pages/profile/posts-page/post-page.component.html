@@ -84,15 +84,10 @@
                                 <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumber(post)}}
                             </a>
                         </ng-template>
-
-                        <a href="javascript:void(0) " class="btn btn-link ">
-                                 Follow &middot;
-                            </a>
                         <a class="btn btn-link " (click)=" open(deletePost, 'sm') ">
                             <i class="fa fa-times-circle fa-1x " aria-hidden="true "> </i>Delete &middot;
                         </a>
                         <a class="btn btn-link " (click)='toggleShowInput()'><i class="fa fa-pencil fa-1x " aria-hidden="true "></i>Edit </a>&middot;
-                        <a class="btn btn-link " (click)=" open(sharePost, 'sm') "><i class="fa fa-share fa-1x " aria-hidden="true "> </i>Share</a>&middot;
                         <a class="btn btn-link " (click)=" open(Likes, 'sm') "><i class="fa fa-info fa-1x " aria-hidden="true "> </i>Reactions</a>&middot;
                     </div>
 

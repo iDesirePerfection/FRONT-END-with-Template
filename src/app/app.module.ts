@@ -29,13 +29,15 @@ import { EditProfileFormComponent } from './pages/edit-profile-form/edit-profile
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         HeaderComponent,
-        ChatComponent
+        ChatComponent,
+        NewsfeedComponent
 
     ],
     imports: [
