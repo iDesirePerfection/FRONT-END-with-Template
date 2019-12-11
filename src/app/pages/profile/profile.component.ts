@@ -35,9 +35,11 @@ export class ProfileComponent implements OnInit {
   searchStarted:boolean=false;
   criteria:string;
   basicCandidate: BasicCandidate = { firstName: "", lastName: "", title: "", bio: "",imageUrl:"./assets/img/faces/"};
+  id:string;
   constructor(private candidateService: CandidateService, public dialog: MatDialog,private router: Router) { }
 
   ngOnInit() {
+    this.id=localStorage.getItem('id');
     var body = document.getElementsByTagName('body')[0];
     body.classList.add('profile-page');
     var navbar = document.getElementsByTagName('nav')[0];
@@ -114,12 +116,21 @@ export class ProfileComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.candidateService.addNewEvent(result.designation,result.date,localStorage.getItem('id')).subscribe( ac => console.log(ac));
-      var event:CalendarEvent={title:"",start: new Date()};
-        event.title=result.designation;
-        event.start=new Date(result.date);
-        event.end=new Date(result.date);
-        this.events.push(event);
-        console.log(this.events);
+
+
+        this.events = [
+          ...this.events,
+          {
+            title: result.designation,
+            start: new Date(result.date),
+            end: new Date(result.date),
+            draggable: true,
+            resizable: {
+              beforeStart: true,
+              afterEnd: true
+            }
+          }
+        ];
 
     });
 

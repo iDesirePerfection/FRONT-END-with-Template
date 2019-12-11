@@ -38,7 +38,7 @@
                                         <div class="col-md-6 ml-auto mr-auto">
                                             <ul class="list-unstyled follows">
                                                 <li>
-                                                    <app-experience [isViewing]="true"></app-experience>
+                                                    <app-experience [isViewing]="true" [id]="currentCandidate.id"></app-experience>
                                                 </li>
     
                                             </ul>
@@ -53,7 +53,7 @@
                                         <div class="col-md-6 ml-auto mr-auto">
                                             <ul class="list-unstyled follows">
                                                 <li>
-                                                    <app-skill [isViewing]="true"></app-skill>
+                                                    <app-skill [isViewing]="true" id="currentCandidate.id"></app-skill>
     
     
                                                 </li>
@@ -102,25 +102,7 @@
                                 </ng-template>
                             </ngb-tab>
                             <!-- follows -->
-                            <ngb-tab title="Follows">
-                                <ng-template ngbTabContent>
-                                    <div class="row following" id="follows">
-                                        <div class="col-md-6 ml-auto mr-auto">
-                                            <ul class="list-unstyled follows">
-    
-                                                <h3 class="text-muted">Not follows anyone yet :(</h3>
-                                                <br>
-                                                <button class="btn btn-warning btn-round">Find artists</button>
-    
-                                            </ul>
-    
-                                        </div>
-    
-                                    </div>
-    
-    
-                                </ng-template>
-                            </ngb-tab>
+                            
                             <ngb-tab title="Following">
                                 <ng-template ngbTabContent>
                                     <div class="row following" id="follows">

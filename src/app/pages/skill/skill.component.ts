@@ -14,10 +14,11 @@ export class SkillComponent implements OnInit {
   skills: Skill[] = [];
   sk:any={};
   @Input() isViewing: boolean;
+  @Input() id:string;
   constructor(private skillService: SkillService,public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.skillService.getSkillsByCandidateId(localStorage.getItem('id')).subscribe(skills => {
+    this.skillService.getSkillsByCandidateId(this.id).subscribe(skills => {
       console.log(skills);
       this.skills = skills;
     });
@@ -31,7 +32,7 @@ export class SkillComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       
-    this.skillService.addSkillToCandidate(result.designation,result.rating,parseInt(localStorage.getItem('id'))).subscribe(exp=>{
+    this.skillService.addSkillToCandidate(result.designation,result.rating,parseInt(this.id)).subscribe(exp=>{
       console.log(exp);
       this.skills.push(exp);
     });
@@ -51,7 +52,7 @@ export class SkillComponent implements OnInit {
         }
     }
 
-    this.skillService.deleteSkill(id.toString(),localStorage.getItem('id')).subscribe();
+    this.skillService.deleteSkill(id.toString(),this.id).subscribe();
 
   }
 

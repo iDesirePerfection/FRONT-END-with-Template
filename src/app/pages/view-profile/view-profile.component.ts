@@ -11,6 +11,7 @@ import { Candidate } from 'app/services/candidate-services/models/candidate.mode
 export class ViewProfileComponent implements OnInit {
   currentCandidate: Candidate= {imageUrl:"pp fahd.jpg"};
   data: Date = new Date();
+  
 
   constructor(private route: ActivatedRoute,private candidateService: CandidateService) { }
 

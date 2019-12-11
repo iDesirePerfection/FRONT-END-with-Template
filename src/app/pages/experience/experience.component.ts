@@ -19,10 +19,11 @@ export class ExperienceComponent implements OnInit {
   exp:any={};
   experiences: Experience[] = [];
   @Input() isViewing: boolean;
+  @Input() id;
   constructor(public dialog: MatDialog,private experiencesService: ExperiencesService) { }
 
   ngOnInit() {
-    this.experiencesService.getExperiencesByCandidateId(localStorage.getItem('id')).subscribe(exps => {
+    this.experiencesService.getExperiencesByCandidateId(this.id).subscribe(exps => {
       this.experiences = exps;
     });
   }
@@ -35,7 +36,7 @@ export class ExperienceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       
-    this.experiencesService.addExperienceToCandidate(result.designation,result.type,result.startDate,result.endDate,parseInt(localStorage.getItem('id'))).subscribe(exp=>{
+    this.experiencesService.addExperienceToCandidate(result.designation,result.type,result.startDate,result.endDate,parseInt(this.id)).subscribe(exp=>{
       console.log(exp);
       this.experiences.push(exp);
     });
@@ -79,7 +80,7 @@ export class ExperienceComponent implements OnInit {
         }
     }
 
-    this.experiencesService.deleteExperience(id.toString(),localStorage.getItem('id')).subscribe();
+    this.experiencesService.deleteExperience(id.toString(),this.id).subscribe();
   }
 
   test() {
