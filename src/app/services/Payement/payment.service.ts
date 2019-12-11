@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { Payement } from './model/payement';
-import { User } from '../user-services/model/user';
+import { User } from '../user-services/models/user';
 
 
 

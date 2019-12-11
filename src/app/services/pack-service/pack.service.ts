@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Pack } from './models/pack';
 import { ThrowStmt } from '@angular/compiler';
-import { User } from '../user-services/model/user';
+import { User } from '../user-services/models/user';
 import { UserPack } from '../UserPack/model/userPack';
 
 

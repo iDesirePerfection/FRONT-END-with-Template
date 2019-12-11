@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaymentService } from 'app/services/Payement/payment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Payement } from 'app/services/Payement/model/payement';
-import { User } from 'app/services/user-services/model/user';
+import { User } from 'app/services/user-services/models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
