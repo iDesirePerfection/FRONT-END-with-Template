@@ -9,14 +9,15 @@
 
                 <a class="author" href="javascript:void(0)">
                     <div class="avatar">
-                        <img class="media-object" alt="64x64" src="assets/img/faces/ayo-ogunseinde-2.jpg">
+                        <img class="media-object" alt="64x64" src="assets/img/faces/joe-gardner-2.jpg">
                     </div>
                 </a>
                 <div class="media-body">
                     <textarea class="form-control textarea-limited pull-left" placeholder="Write some nice stuff or nothing..." rows="3" name="content" [(ngModel)]="post.content"> </textarea>
                     <div class="col-md-6" style="position:absolute;top:230px;left:750px;height:200px;width: 200px;">
                         <div class="media-area media-area-small">
-                            <app-image-upload></app-image-upload>
+                            <app-image-upload (change)="fileChange($event)"></app-image-upload>
+                            <p> FILENAME : {{filename}} </p>
 
                         </div>
                     </div>
@@ -32,12 +33,25 @@
 
                 <a class="pull-left" href="javascript:void(0)">
                     <div class="avatar">
-                        <img class="media-object" alt="Tim Picture" src="assets/img/faces/ayo-ogunseinde-2.jpg">
+                        <img class="media-object" alt="Tim Picture" src="assets/img/faces/joe-gardner-2.jpg">
                     </div>
                 </a>
                 <div class="media-body">
 
-                    <h5 class="media-heading">{{post?.user?.firstName}}</h5>
+
+                    <div *ngIf="post?.type==='Image'; else notImage">
+                        <img src="{{post?.file?.path}}" class="img-rounded img-responsive" alt="Rounded Image">
+                        <div class="img-details">
+                            <div class="author">
+                                <img src="assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                            </div>
+                            <p>{{post?.user?.firstName}} {{post?.user?.lastName}}</p>
+                        </div>
+                    </div>
+                    <ng-template #notImage>
+                        <h5 class="media-heading">{{post?.user?.firstName}} {{post?.user?.lastName}}</h5>
+                    </ng-template>
+
                     <div class="pull-right">
                         <h6 class="text-muted">{{post?.date}}</h6>
 
@@ -49,24 +63,24 @@
                     <button type="button" (click)='toggleShowInput()' [hidden]=showInput class="btn btn-info btn-link">Cancel</button>
                     <div class="media-footer">
 
-                        <label *ngIf="unlikedId == post.id; else elseLike">
+                        <label *ngIf="unlikedId==post.id; else elseLike ">
                             
-                            <a href="javascript:void(0)" id=Like{{i}} class="btn btn-link " (click)="addLike(post)">
+                            <a href="javascript:void(0) " id=Like{{i}} class="btn btn-link " (click)="addLike(post) ">
                                 <i class="fa fa-thumbs-up " aria-hidden="true "></i> {{likesNumberAfterUnlike(post)}}
                             </a>
                         </label>
                         <ng-template #elseLike>
-                            <a href="javascript:void(0)" id=Like{{i}} [ngClass]="{'btn-danger':didLike(post)}" class="btn btn-link " (click)="addLike(post)">
+                            <a href="javascript:void(0) " id=Like{{i}} [ngClass]="{ 'btn-danger':didLike(post)} " class="btn btn-link " (click)="addLike(post) ">
                                 <i class="fa fa-thumbs-up " aria-hidden="true "></i> {{likesNumber(post)}}
                             </a>
                         </ng-template>
-                        <label *ngIf="unlikedId == post.id; else elseDislike">
-                            <a href="javascript:void(0)" id=Dislike{{i}}  class="btn btn-link " (click)="addDislike(post)">
+                        <label *ngIf="unlikedId==post.id; else elseDislike ">
+                            <a href="javascript:void(0) " id=Dislike{{i}}  class="btn btn-link " (click)="addDislike(post) ">
                                 <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumberAfterUndislike(post)}}
                             </a>
                             </label>
                         <ng-template #elseDislike>
-                            <a href="javascript:void(0)" id=Dislike{{i}} [ngClass]="{'btn-primary':didDislike(post)}" class="btn btn-link " (click)="addDislike(post)">
+                            <a href="javascript:void(0) " id=Dislike{{i}} [ngClass]="{ 'btn-primary':didDislike(post)} " class="btn btn-link " (click)="addDislike(post) ">
                                 <i class="fa fa-thumbs-down " aria-hidden="true "></i> {{dislikesNumber(post)}}
                             </a>
                         </ng-template>
@@ -159,9 +173,9 @@
 
                             </div>
                             <p (click)='toggleShowInputCom()' [hidden]=!showInputCom>{{comment?.content}}</p>
-                            <input [hidden]=showInputCom type="text " value=" " placeholder=" " class="form-control " [(ngModel)]="comment.content" />
-                            <button type="button" (click)='toggleShowInputCom();updateComment(comment.id,comment.content);' [hidden]=showInputCom class="btn btn-info btn-link">Save</button>
-                            <button type="button" (click)='toggleShowInputCom()' [hidden]=showInputCom class="btn btn-info btn-link">Cancel</button>
+                            <input [hidden]=showInputCom type="text " value=" " placeholder=" " class="form-control " [(ngModel)]="comment.content " />
+                            <button type="button " (click)='toggleShowInputCom();updateComment(comment.id,comment.content);' [hidden]=showInputCom class="btn btn-info btn-link ">Save</button>
+                            <button type="button " (click)='toggleShowInputCom()' [hidden]=showInputCom class="btn btn-info btn-link ">Cancel</button>
                             <div class="media-footer ">
                                 <a class="btn btn-link " (click)="open(deleteCom, 'sm ') "><i class="fa fa-times-circle fa-1x " aria-hidden="true "></i>Delete</a>
                                 <a class="btn btn-link " (click)="open(editComment, 'sm ') "><i class="fa fa-pencil fa-1x "  aria-hidden="true "></i>Edit</a>
@@ -217,7 +231,7 @@
                     <div class="media media-post ">
                         <a class="pull-left author " href="javascript:void(0) ">
                             <div class="avatar ">
-                                <img class="media-object " alt="64x64 " src="assets/img/faces/kaci-baum-2.jpg ">
+                                <img class="media-object " alt="64x64 " src="assets/img/faces/erik-lucatero-2.jpg">
                             </div>
                         </a>
                         <div class="media-body ">

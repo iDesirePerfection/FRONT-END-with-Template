@@ -18,6 +18,9 @@ export class PostsService {
     addPost(content:string): Observable<Post> {
        return this.httpClient.post<Post>(environment.backend_url + 'post/add?content=' + content,null);
     }
+    addPostWithFile(content:string,filename:string): Observable<Post> {
+       return this.httpClient.post<Post>(environment.backend_url + 'post/addFile?content=' + content + '&file=' + filename,null);
+    }
 
     deletePost(id:number): Observable<{}>
     {

@@ -36,6 +36,7 @@ myContent = 'This is the content';
 dislikeremoved: number= 0;
 closeResult: string;
 test:number;
+filename:string='';
 public post:Post={content:''};
 public comment:Comment={idPost:0,content:''};
 public reaction:Reaction={idPost:0,type:''};
@@ -66,6 +67,7 @@ ngOnInit() {
     });
 }
 
+
 toggleShowInput = function()
      {
          this.showInput = !this.showInput;
@@ -75,6 +77,9 @@ toggleShowInput = function()
          this.showInputCom = !this.showInputCom;
      }
   addPost() {
+    console.log('file name ============ ' + this.filename);
+    if(this.filename === '')
+    {
     this.postsService.addPost(this.post.content).subscribe(post=>{
       this.refreshData();
        const options = {
@@ -82,6 +87,16 @@ toggleShowInput = function()
   };
       this.toastr.info(null, 'your post was shared!');
     });
+    }
+    else{
+    this.postsService.addPostWithFile(this.post.content, this.filename).subscribe(post=>{
+      this.refreshData();
+       const options = {
+'positionClass': 'toast-bottom',
+  };
+      this.toastr.info(null, 'your post was shared with a file!');
+    });
+    }
   this.emptyInput=!this.emptyInput;
   }
     shareAction(id :number) {
@@ -129,14 +144,12 @@ toggleShowInput = function()
   addLike(post: Post) {
           this.refreshData();
         if (this.didLike(post)) {
-      console.log('you have a like at this point and you clicked like');
       this.getReactionId(post)
       setTimeout(function(){ this.deleteReaction(this.reactionId);console.log('fasakht like after 1s');}.bind(this), 100);
       setTimeout(function(){ this.refreshData(); }.bind(this), 500);
      this.likeremoved = 1;
     }
       else if (this.didDislike(post)) {
-      console.log('you have a dislike at this point and you clicked like');
       this.getReactionId(post)
       this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s,adding like!');
       this.refreshData();
@@ -149,7 +162,6 @@ toggleShowInput = function()
     this.dislikeremoved = 0;
       this.likeremoved = 0;
       this.refreshData();
-          console.log('adding 1 like from null');
     }); }.bind(this), 100);
     }
   }
@@ -167,23 +179,21 @@ toggleShowInput = function()
       this.getReactionId(post)
       setTimeout(function(){ this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s');}.bind(this), 100);
       setTimeout(function(){ this.refreshData(); }.bind(this), 500);
-      console.log('you have a dislike at this point and you clicked dislike');
       this.dislikeremoved = 1;
     }
       else if (this.didLike(post)) {
       console.log('you have a like at this point and you clicked dislike');
       this.getReactionId(post)
-      this.deleteReaction(this.reactionId);console.log('fasakht dislike after 1s,adding like!');
+      this.deleteReaction(this.reactionId);
       this.refreshData();
       this.likeremoved = 1;
-      setTimeout(function(){ this.addDislike(post);console.log('add dislike after 1s,refreshing!');this.refreshData(); }.bind(this), 100);
+      setTimeout(function(){ this.addDislike(post);this.refreshData(); }.bind(this), 100);
     }
     else {
       setTimeout(function(){this.reactionsService.addReaction(post.id, 'Dislike').subscribe(Post=>{
       this.dislikeremoved = 0;
       this.likeremoved = 0;
       this.refreshData();
-          console.log('adding 1 dislike from null');
     });}.bind(this), 100);
     }
   }
@@ -297,5 +307,9 @@ delete(id:number){
             return  `with: ${reason}`;
         }
     }
+fileChange(event) {
+    this.filename = 'assets/img/' + event;
+  }
+
 
 }

@@ -10,20 +10,20 @@
 <!--search-->
 
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-12 ml-auto mr-auto text-center">
-                            <form role="search" class="form-inline search-form">
-                                <div class="input-group no-border">
-                                  <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i class="fa fa-search"></i></span>
-                                  <input type="text" class="form-control input-xtreme no-border" placeholder="Find a joboffer" aria-describedby="basic-addon1" name="search" [(ngModel)]="searchText" autocomplete="off">
-                                </div>
-                            </form>
-                            <h6 class="text-muted">Is this what you are looking for?</h6>
-                        </div>
-                    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+            <form role="search" class="form-inline search-form">
+                <div class="input-group no-border">
+                    <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control input-xtreme no-border" placeholder="Find a joboffer" aria-describedby="basic-addon1" name="search" [(ngModel)]="searchText" autocomplete="off">
                 </div>
-    
+            </form>
+            <h6 class="text-muted">Is this what you are looking for?</h6>
+        </div>
+    </div>
+</div>
+
 
 <!--search-->
 
@@ -34,116 +34,118 @@
         <ngb-panel id="config-panel-one">
             <ng-template ngbPanelTitle>
                 <h5 class="mb-0 panel-title">
-                <a class="collapsed">
+                    <a class="collapsed">
                     Experience
                     <i class="nc-icon nc-minimal-down"></i>
                 </a>
                 </h5>
             </ng-template>
-        <ng-template ngbPanelContent>
-            <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="10" [step]="1" [(ngModel)]="exp" [tooltips]="true" (change)="getJobofferByExp()"></nouislider>                                </ng-template>
+            <ng-template ngbPanelContent>
+                <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="10" [step]="1" [(ngModel)]="exp" [tooltips]="true" (change)="getJobofferByExp()"></nouislider>
+            </ng-template>
         </ngb-panel>
     </ngb-accordion>
-</div>    
+</div>
 <!-- section -->
 <div class="section section-blog">
-        
-        <div class="container">
-             <div class="row">
-                <div class="col-md-4" *ngFor="let j of collection.joboffers   | filter:searchText | paginate: config; index as i">
-                    <div class="card card-blog"  >
-                            <div class="container2">
-                                        
-                                    <img src={{j.enterprise?.file?.path}} alt="Norway" style="width:100%; height:250px;">
-                                    <div class="text-block">
-                                            <button _ngcontent-nna-c4="" class="btn btn-outline-danger mr-1" type="button" [routerLink]="['/pages/enterprise-pages/jobofferdetail-page/',j.joid]">Register</button>
-                                          </div>
-                                    
-                                
-                            </div>
-                     <div class="card-body">
-                         <h6 class="card-category text-info"><i class="fa fa-clock-o" aria-hidden="true"></i>{{j.jodate}}</h6>
-                         <h5 class="card-title">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let j of collection.joboffers   | filter:searchText | paginate: config; index as i">
+                <div class="card card-blog">
+                    <div class="container2">
+
+                        <img src={{j.enterprise?.file?.path}} alt="Norway" style="width:100%; height:250px;">
+                        <div class="text-block">
+                            <button _ngcontent-nna-c4="" class="btn btn-outline-danger mr-1" type="button" [routerLink]="['/pages/enterprise-pages/jobofferdetail-page/',j.joid]">Register</button>
+                        </div>
+
+
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-info"><i class="fa fa-clock-o" aria-hidden="true"></i>{{j.jodate}}</h6>
+                        <h5 class="card-title">
                             <a href="javascript:void(0)">{{j.jotitle}}</a>
-                         </h5>
-                         <p class="card-description">
-                                <i class="fa fa-location-arrow" aria-hidden="true"></i> {{j.joarea}}<br>
+                        </h5>
+                        <p class="card-description">
+                            <i class="fa fa-location-arrow" aria-hidden="true"></i> {{j.joarea}}<br>
                         </p>
-                         <p class="card-description">
-                             {{j.jodescription}}<br>
-                         </p>
-                         <p class="card-description">
+                        <p class="card-description">
+                            {{j.jodescription}}<br>
+                        </p>
+                        <p class="card-description">
                             experience : {{j.joexperience}}<br>
                         </p>
-                         
-                         <hr>
-                         <div class="card-footer">
-                             <div class="author">
-                                 <a href="javascript:void(0)">
+
+                        <hr>
+                        <div class="card-footer">
+                            <div class="author">
+                                <a href="javascript:void(0)">
                                     <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="..." class="avatar img-raised">
                                     <span>{{j.enterprise.ename}}</span>
-                                 </a>
-                             </div>
-                             <div class="stats">
-                                     <i class="fa fa-eye" aria-hidden="true"></i> {{j.vuesNumber}} vues
-                                 </div>
-                         </div>
-                     </div>
-                 </div>
-                 </div> 
-            
-        </div>
-    </div>
-</div><!-- section -->
-
-<div class="container">
-        <div class="row">
-           <div class="col-md-4">
-                
-            </div>
-            <div class="col-md-4">
-                <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-            </div>
-            <div class="col-md-4">
-                
-            </div>
-            
-        </div>
-</div>
-<!--trending-->
-
-<div class="features-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto text-center">
-                    <h2 class="title">Is this what you are looking for?</h2>
-                    <h5 class="description">those are the joboffers that got the most vues in our website.</h5>
-                    <br/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4" *ngFor="let hj of hotjoboffers  | slice:0:3; index as i" >
-                    <div class="card" data-background="image" style="background-image: url('assets/img/sections/jan-sendereks.jpg')">
-                        <div class="card-body">
-                            <h6 class="card-category">{{hj.jotitle}}</h6>
-                            <div class="card-icon">
-                                <i class="fa fa-free-code-camp"  style="color:red"></i>
-                            </div>
-                            <p class="card-description">{{hj.jodescription}}</p>
-
-                            <div class="card-footer">
-                                <a href="javascript:void(0)" class="btn btn-link btn-neutral">
-                                    <i class="fa fa-building-o" aria-hidden="true"></i> {{hj.enterprise.ename}}
                                 </a>
+                            </div>
+                            <div class="stats">
+                                <i class="fa fa-eye" aria-hidden="true"></i> {{j.vuesNumber}} vues
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
+
         </div>
     </div>
+</div>
+<!-- section -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+</div>
+<!--trending-->
+
+<div class="features-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">Is this what you are looking for?</h2>
+                <h5 class="description">those are the joboffers that got the most vues in our website.</h5>
+                <br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let hj of hotjoboffers  | slice:0:3; index as i">
+                <div class="card" data-background="image" style="background-image: url('assets/img/sections/jan-sendereks.jpg')">
+                    <div class="card-body">
+                        <h6 class="card-category">{{hj.jotitle}}</h6>
+                        <div class="card-icon">
+                            <i class="fa fa-free-code-camp" style="color:red"></i>
+                        </div>
+                        <p class="card-description">{{hj.jodescription}}</p>
+
+                        <div class="card-footer">
+                            <a href="javascript:void(0)" class="btn btn-link btn-neutral">
+                                <i class="fa fa-building-o" aria-hidden="true"></i> {{hj.enterprise.ename}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -154,20 +156,20 @@
 
 <!--footer-->
 <footer class="footer footer-black">
-        <div class="container">
-            <div class="row">
-                <nav class="footer-nav">
-                    <ul>
-                        <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
-                        <li><a href="http://blog.creative-tim.com">Blog</a></li>
-                        <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
-                    </ul>
-                </nav>
-                <div class="credits ml-auto">
-                    <span class="copyright">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="http://blog.creative-tim.com">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
                         © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
                     </span>
-                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
