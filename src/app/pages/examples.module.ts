@@ -30,13 +30,10 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { Page404Component } from './page404/page404.component';
 import { Page422Component } from './page422/page422.component';
 import { Page500Component } from './page500/page500.component';
-<<<<<<< HEAD
 import { ClaimsComponent } from './claims/claims.component';
 import { PackComponent } from './pack/pack.component';
-=======
 import { AnswersComponent } from './answers/answers.component';
 import { QuizComponent } from './quiz/quiz.component';
->>>>>>> origin/yassineBranch
 import { EntprofilePageComponent } from './enterprise-pages/entprofile-page/entprofile-page.component';
 import { EnterpriseprofilePageComponent } from './enterprise-pages/enterpriseprofile-page/enterpriseprofile-page.component';
 import { ListjobofferPageComponent } from './enterprise-pages/listjoboffer-page/listjoboffer-page.component';
@@ -44,7 +41,6 @@ import { ListeventPageComponent } from './enterprise-pages/listevent-page/listev
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { MyjobofferlistPageComponent } from './enterprise-pages/myjobofferlist-page/myjobofferlist-page.component';
-<<<<<<< HEAD
 import { PostsPageComponent } from './profile/posts-page/post-page.component';
 import { AddjobofferPageComponent } from './enterprise-pages/addjoboffer-page/addjoboffer-page.component';
 import { AddenterprisePageComponent } from './enterprise-pages/addenterprise-page/addenterprise-page.component';
@@ -77,13 +73,11 @@ import { DateAdapter, CalendarMonthViewComponent, CalendarMonthModule } from 'an
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { PaymentAdminComponent } from './payment/payment-admin/payment-admin.component';
 import { PaymentClientComponent } from './payment/payment-client/payment-client.component';
-=======
 import { InterviewComponent } from './interview/interview.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { NgxAgoraModule } from 'ngx-agora';
 import { environment } from 'environments/environment';
 import { QuestionComponent } from './question/question.component';
->>>>>>> origin/yassineBranch
 
 
 @NgModule({
@@ -99,29 +93,18 @@ import { QuestionComponent } from './question/question.component';
             apiKey: 'NO_API_KEY'
         }),
         ImageUploadModule,
-        
         FormsModule,
         Ng2SearchPipeModule,
-<<<<<<< HEAD
         RouterModule, 
         MatDialogModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
         NgxPaginationModule,
-        CalendarMonthModule
-       
-        
-
-
-        
-        
-        
-=======
+        CalendarMonthModule,
         RouterModule,
         StarRatingModule.forRoot(),
         NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
 
->>>>>>> origin/yassineBranch
     ],
     declarations: [
         ExamplesComponent,
@@ -144,19 +127,15 @@ import { QuestionComponent } from './question/question.component';
         Page404Component,
         Page422Component,
         Page500Component,
-<<<<<<< HEAD
         ClaimsComponent,
         PackComponent,
-=======
         AnswersComponent,
         QuizComponent,
->>>>>>> origin/yassineBranch
         EntprofilePageComponent,
         EnterpriseprofilePageComponent,
         ListjobofferPageComponent,
         ListeventPageComponent,
         MyjobofferlistPageComponent,
-<<<<<<< HEAD
         PackAdminComponent,
         EditPackAdminComponent,
         ShowPackDetailsComponent,
@@ -176,12 +155,9 @@ import { QuestionComponent } from './question/question.component';
         AddenteventPageComponent,
         JobofferdetailPageComponent,
         PaymentAdminComponent,
-        PaymentClientComponent
-       
-=======
+        PaymentClientComponent,
         InterviewComponent,
         QuestionComponent
->>>>>>> origin/yassineBranch
     ],
     exports: [
         
