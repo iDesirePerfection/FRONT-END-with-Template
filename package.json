@@ -29,7 +29,7 @@
         "@angular/platform-server": "8.1.2",
         "@angular/router": "8.1.2",
         "@ng-bootstrap/ng-bootstrap": "5.1.0",
-        "ajv": "6.10.2",
+        "ajv": "6.12.3",
         "agora-rtc-sdk": "2.6.1",
         "ngx-agora": "^1.5.13",
         "ajv-keywords": "3.4.1",
